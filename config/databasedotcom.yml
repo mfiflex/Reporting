@@ -1,0 +1,8 @@
+client_id: 3MVG9y6x0357HlecdO70xcX6VWjZu1BLyoMd1KLgM.NuGSvoZOu13ErNH6N4l4ejtD_.QIc_UDCoarqWHWvzj
+client_secret: 6582382726401683260
+username: admin@30df.org
+password: Merc1243HGRcayiE38dzluu4LkACcfOjy
+debugging: true
+host: login.salesforce.com
+verify_mode: OpenSSL::SSL::VERIFY_NONE
+#sobject_module: SFDC_Models       # See below for details on using modules

@@ -1,7 +1,9 @@
 <h1>Clients to be imported</h1>
 
 <h3>
+	<%=@insertScriptStr%>
+	
 	<% @q_result.each do |client| %>
-	<li><%= client%></li>
+	<li><%=client.headers()%></li>
 	<% end %>
 </h3>

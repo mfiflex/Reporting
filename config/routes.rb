@@ -1,4 +1,18 @@
 MFiFlexInternetBanking::Application.routes.draw do
+  get "import_client/importC"
+
+  get "accounts/search"
+
+  get "accounts/index"
+
+  match "/accounts/:id", to: "accounts#show", as: 'account'
+
+  root :to => 'accounts#index'
+  
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

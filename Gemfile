@@ -1,12 +1,24 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+#gem 'asf-soap-adapter', :require => 'activerecord-activesalesforce-adapter'
+#gem 'facets', '2.8.4'
+#gem 'omniauth'
+#gem 'httparty'
+#gem 'rforcedotcom'
+gem 'salesforce_bulk'
+
+gem 'databasedotcom'
+gem 'databasedotcom-rails'
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # gem 'sqlite3'
-gem 'sqlite3', :group => [:development, :test]
+gem 'pg', :group => [:development, :test]
 group :production do
   gem 'thin'
   gem 'pg'
