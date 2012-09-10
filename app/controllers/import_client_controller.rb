@@ -2,8 +2,10 @@ require 'salesforce_bulk'
 require 'csv'
 require 'Constants'
 require 'pg'
+require "action_mailer"
 
 class ImportClientController < ApplicationController
+  include MFiFlexConstants
     
   def importC
     config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
@@ -11,71 +13,9 @@ class ImportClientController < ApplicationController
     
     # Query
     # res = salesforce.query(MFiFlexConstants::CENTER_OBJ_NAME,MFiFlexConstants::CENTER_OBJ_QUERY);
-    res = salesforce.query("mfiforce__Client__c", "select id,
-                          ownerid,
-                          isdeleted,
-                          name,
-                          createddate,
-                          mfiforce__group__c,
-                          mfiforce__salutation__c,
-                          mfiforce__first_name__c ,
-                          mfiforce__middle_name__c ,
-                          mfiforce__last_name__c ,
-                          mfiforce__government_id__c ,
-                          mfiforce__date_of_birth__c ,
-                          mfiforce__gender__c,
-                          mfiforce__marital_status__c,
-                          mfiforce__number_of_children__c,
-                          mfiforce__citizenship__c,
-                          mfiforce__ethnicity__c,
-                          mfiforce__education_level__c,
-                          mfiforce__business_activity__c,
-                          mfiforce__handicapped__c,
-                          mfiforce__spouse_father_s_first_name__c ,
-                          mfiforce__spouse_father_s_middle_name__c ,
-                          mfiforce__spouse_father_s_last_name__c ,
-                          mfiforce__spouse_or_father__c,
-                          mfiforce__client_start_date__c ,
-                          mfiforce__address_1__c ,
-                          mfiforce__address_2__c ,
-                          mfiforce__address_3__c ,
-                          mfiforce__city__c,
-                          mfiforce__zipcode__c,
-                          mfiforce__telephone_no__c ,
-                          mfiforce__notes__c ,
-                          mfiforce__status__c,
-                          mfiforce__loan_officer__c,
-                          mfiforce__trained__c ,
-                          mfiforce__office__c,
-                          mfiforce__id_count__c,
-                          mfiforce__country__c,
-                          mfiforce__state__c,
-                          mfiforce__vicinity__c ,
-                          mfiforce__approval_date__c ,
-                          mfiforce__fee_set__c,
-                          mfiforce__total_fees_charged__c ,
-                          mfiforce__fees_collected__c ,
-                          mfiforce__religion__c ,
-                          mfiforce__center__c,
-                          mfiforce__home_town__c ,
-                          mfiforce__district__c,
-                          mfiforce__nominee__c,
-                          mfiforce__clientcnt__c,
-                          mfiforce__zone__c,
-                          mfiforce__check_for_duplicates__c,
-                          mfiforce__source_loan_officer__c,
-                          mfiforce__current_loan_officer__c,
-                          mfiforce__employment_business_details_count__c,
-                          mfiforce__home_evaluation_count__c,
-                          mfiforce__financial_education__c,
-                          mfiforce__sales_income_estimate_count__c,
-                          mfiforce__family_employment_details_count__c,
-                          mfiforce__client_training__c,
-                          mfiforce__ismember__c,
-                          mfiforce__new_field__c,
-                          mfiforce__isbioscanregistered__c
-                          from mfiforce__client__c")
-
+    
+    res = salesforce.query(getClientObjName,getClientQuery);
+    
     @q_result = res.result.records
     
     #get Connection
@@ -92,25 +32,16 @@ class ImportClientController < ApplicationController
       @insertScriptStr =  "insert into mfiforce__client__c (" + headerStr + ") values (" + fieldStr + ")"
       insertResult = conn.exec(@insertScriptStr); 
       #insertRes = conn.exec('insert into mfiforce__client__c(id,name,isDeleted,createddate)
-       #   values($1,$2,$3,$4)',
-        #    [client.field(0),client.field(3),client.field(2),client.field(4)])  
+      #   values($1,$2,$3,$4)',
+      #    [client.field(0),client.field(3),client.field(2),client.field(4)])
+      
     end
-    #,$4,$5,$6,$7,$8,$9,$10,
-    #$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
-    #$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,
-    #$31,$32,$33,$34,$35,$36,$37,$38,$39,$40,
-    #$41,$42,$43,$44,$45,$46,$47,$48,$49,$50,
-    #$51,$52,$53,$54,$55,$56,$57,$58,$59,$60,
-    #$61,$62
     
-    #client.field(1),client.field(2),client.field(3),client.field(4),client.field(5),client.field(6),client.field(7),client.field(8),client.field(9),client.field(10),
-#client.field(11),client.field(12),client.field(13),client.field(14),client.field(15),client.field(16),client.field(17),client.field(18),client.field(19),client.field(20),
-#client.field(21),client.field(22),client.field(23),client.field(24),client.field(25),client.field(26),client.field(27),client.field(28),client.field(29),client.field(30),
-#client.field(31),client.field(32),client.field(33),client.field(34),client.field(35),client.field(36),client.field(37),client.field(38),client.field(39),client.field(40),
-#client.field(41),client.field(42),client.field(43),client.field(44),client.field(45),client.field(46),client.field(47),client.field(48),client.field(49),client.field(50),
-#client.field(51),client.field(52),client.field(53),client.field(54),client.field(55),client.field(56),client.field(57),client.field(58),client.field(59),client.field(60),
-#client.field(61),client.field(62)
-    
+    rescue Exception => e  
+      puts e.message  
+      puts e.backtrace.inspect 
+      #UserMailer.deliver_contact('snehal.fulzele@mfiflex.com', 'Test it is Test!', 'Could not import clients today. Please contact MFiFlex.')
+      Mailer.mailTo('snehal.fulzele@gmail.com','MFiFlex could not import clients today. Error message: ' + e.message).deliver
   end
   
    def csv_client_import 

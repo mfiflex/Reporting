@@ -17,3 +17,18 @@ MFiFlexInternetBanking::Application.initialize!
 #  config.database_configuration_file = File.join(RAILS_ROOT, 'config', 'salesforce.yml')
 #  config.time_zone = 'UTC'
 #end
+
+ActionMailer::Base.delivery_method = :smtp
+
+ActionMailer::Base.smtp_settings = {
+   :address => "smtp.gmail.com",
+   :port => 587,
+   :domain => "mfiflex.com",
+   :authentication => 'plain',
+   :user_name => "support@mfiflex.com",
+   :password => "Plebeian123",
+   :tls => true,
+   :enable_starttls_auto => true 
+}
+
+#Notifier.deliver_email("snehal.fulzele@mfiflex.com")
