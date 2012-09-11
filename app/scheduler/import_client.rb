@@ -8,13 +8,9 @@ class ImportClient
   include MFiFlexConstants
     
   def import(salesforceUserName,salesforcePassword,pgConn)
-    #Read config in the caller code
-    #config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query
-    # res = salesforce.query(MFiFlexConstants::CENTER_OBJ_NAME,MFiFlexConstants::CENTER_OBJ_QUERY);
-    
     res = salesforce.query(getClientObjName,getClientQuery);
     
     @q_result = res.result.records

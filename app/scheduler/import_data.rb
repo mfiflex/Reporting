@@ -6,6 +6,7 @@ require "action_mailer"
 
 class ImportSalesforceToPG
   include MFiFlexConstants
+  include Databasedotcom::Rails::Controller
     
   def importEverything
     #Read config in the caller code
@@ -15,6 +16,7 @@ class ImportSalesforceToPG
     
     importC = ImportClient.new
     #importC.import(config[:username],config[:password],conn)
+    puts config[:username]
     #TODO read salesforce user/password info from a config file
     importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)
       

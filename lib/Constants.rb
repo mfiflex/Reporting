@@ -1,13 +1,17 @@
 module MFiFlexConstants
-    
+      
+      #CRM objects
       def getClientObjName
         return "mfiforce__Client__c"  
       end
       
-      def getClientQuery
-        #CRM objects
-        #@CLIENT_OBJ_NAME = "mfiforce__Client__c"
+      def getClientQuery        
         clientQueryStr = "select id,
+                            createddate,
+                            createdbyid,
+                            lastmodifieddate,
+                            lastmodifiedbyid,
+                            systemmodstamp,
                             ownerid,
                             isdeleted,
                             name,
