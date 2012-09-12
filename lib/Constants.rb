@@ -349,7 +349,7 @@ module MFiFlexConstants
 										isdeleted,
 										ownerid
 									From mfiforce__loan_balance_s_snapshot__c"
-			return LoanBalanceSSnapshotStr;
+			return loanBalanceSSnapshotStr;
 		end
 	#LOAN_DISBURSAL_TRANSACTION_OBJ_NAME = "mfiforce__loan_disbursal_transaction__c"
 		def getloanDisbursalTransactionObjName
