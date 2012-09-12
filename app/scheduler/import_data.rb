@@ -16,18 +16,22 @@ class ImportSalesforceToPG
     databaseConfig =  Rails.configuration.database_configuration
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
     
-    importC = ImportClient.new
-    # importC.import(config[:username],config[:password],conn)
-    # Loading config this way is not applicable for salesforcE_bulk gem.
-    # Might need to add logic to read data from multiple salesforce instances 
-    #TODO read salesforce user/password info from a config file
+    
+    #Importing Clients..
     #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)
+    importC = ImportClient.new
     importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing Groups..
+    importG = ImportGroup.new
+    importG.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
       
     rescue Exception => e  
       puts e.message  
       puts e.backtrace.inspect 
       Mailer.mailTo('snehal.fulzele@gmail.com','MFiFlex could not import data today. Error message: ' + e.message).deliver
+    ensure
+      conn.close
   end
   
 end
