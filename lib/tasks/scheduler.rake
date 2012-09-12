@@ -3,6 +3,6 @@ task :import_data => :environment do
     puts "Begin Importing data..."
     require 'import_data.rb'
     iSFtoPGTask =  ImportSalesforceToPG.new
-    iSFtoPGTask.importEverything
+    iSFtoPGTask.importEverything('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy')
     puts "done."
 end

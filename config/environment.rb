@@ -25,8 +25,8 @@ ActionMailer::Base.smtp_settings = {
    :port => 587,
    :domain => "mfiflex.com",
    :authentication => 'plain',
-   :user_name => "support@mfiflex.com",
-   :password => "Plebeian123",
+   :user_name => "snehal.fulzele@mfiflex.com",
+   :password => "Merc$123",
    :tls => true,
    :enable_starttls_auto => true 
 }

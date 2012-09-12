@@ -74,16 +74,17 @@ module MFiFlexConstants
                             mfiforce__new_field__c,
                             mfiforce__isbioscanregistered__c
                             from mfiforce__client__c"
-                            
-          return clientQueryStr; 
-        #GROUP_OBJ_NAME = "mfiforce__Group__c"
-        #GROUP_OBJ_QUERY = ""
-        
-        #CENTER_OBJ_NAME = "mfiforce__Center__c"
-        #CENTER_OBJ_QUERY = ""
-        
-        #MIS transactions
-        
-        #Accounting
+                                                        
+          return clientQueryStr;
       end
+      
+      #GROUP_OBJ_NAME = "mfiforce__Group__c"
+      #GROUP_OBJ_QUERY = ""
+      
+      #CENTER_OBJ_NAME = "mfiforce__Center__c"
+      #CENTER_OBJ_QUERY = ""
+      
+      #MIS transactions
+        
+      #Accounting  
 end

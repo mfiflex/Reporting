@@ -26,8 +26,31 @@ class ImportClient
       fieldStr = fieldList.map { |i| "'" + i.to_s + "'" }.join(",")
       
       fieldStr = fieldStr.gsub("''","null")
-      @insertScriptStr =  "insert into mfiforce__client__c (" + headerStr + ") values (" + fieldStr + ")"
-      insertResult = conn.exec(@insertScriptStr);       
+      insertScriptStr =  "insert into " + getClientObjName + "(" + headerStr + ") values (" + fieldStr + ")"
+      # Try inserting: If it doesn't insert then try to update
+      begin
+        insertResult = conn.exec(insertScriptStr);
+      rescue Exception => e  
+        #logic to update
+        updateStr = ""
+        i = 0
+          headerList.each do |hdr|
+             puts client.field(i)
+             if(client.field(i).nil? or client.field(i)=='')
+               updateStr = updateStr + " " + hdr + " = NULL " 
+             else
+               updateStr = updateStr + " " + hdr + " = '" + client.field(i) + "'"
+             end  
+              
+             i = i+1  
+             if(headerList.size != i)
+              updateStr = updateStr + ","  
+             end
+          end
+          
+          updateScriptStr = "update " + getClientObjName + " set " + updateStr + " where Id = '" + client.field(0) + "'"
+          updateResult = conn.exec(updateScriptStr)  
+      end       
     end
     
     rescue Exception => e  
