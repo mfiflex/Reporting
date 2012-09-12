@@ -8,7 +8,7 @@ class ImportSalesforceToPG
   include MFiFlexConstants
   include Databasedotcom::Rails::Controller
     
-  def importEverything(salesforceUsername,salesforcePassword)
+  def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId)
     #Read config in the caller code
     config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
     #get Connection
@@ -22,7 +22,7 @@ class ImportSalesforceToPG
     # Might need to add logic to read data from multiple salesforce instances 
     #TODO read salesforce user/password info from a config file
     #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)
-    importC.import(salesforceUsername,salesforcePassword,conn)
+    importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
       
     rescue Exception => e  
       puts e.message  

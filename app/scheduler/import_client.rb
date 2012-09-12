@@ -7,7 +7,7 @@ require "action_mailer"
 class ImportClient
   include MFiFlexConstants
     
-  def import(salesforceUserName,salesforcePassword,pgConn)
+  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId)
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query
@@ -19,23 +19,35 @@ class ImportClient
     conn = pgConn 
     
     @q_result.each do |client|
-      headerList = client.headers
-      headerStr = headerList.map { |i| i.to_s }.join(",")
-      
-      fieldList = client.fields
-      fieldStr = fieldList.map { |i| "'" + i.to_s + "'" }.join(",")
-      
-      fieldStr = fieldStr.gsub("''","null")
-      insertScriptStr =  "insert into " + getClientObjName + "(" + headerStr + ") values (" + fieldStr + ")"
-      # Try inserting: If it doesn't insert then try to update
       begin
+        headerList = client.headers
+        headerStr = headerList.map { |i| i.to_s }.join(",")
+        
+        if(!salesforceOrgId.nil?)
+            headerStr = headerStr + "," + "salesforce_org_id"
+        end
+        
+        fieldList = client.fields
+        fieldStr = fieldList.map { |i| "'" + i.to_s + "'" }.join(",")
+        
+        fieldStr = fieldStr.gsub("''","null")
+        
+        if(!salesforceOrgId.nil?)
+            fieldStr = fieldStr + ",'" + salesforceOrgId + "'"
+        end
+        
+        insertScriptStr =  "insert into " + getClientObjName + "(" + headerStr + ") values (" + fieldStr + ")"
+        # Try inserting: If it doesn't insert then try to update
         insertResult = conn.exec(insertScriptStr);
+        
       rescue Exception => e  
+        puts e.message  
+        
         #logic to update
         updateStr = ""
         i = 0
           headerList.each do |hdr|
-             puts client.field(i)
+             #puts client.field(i)
              if(client.field(i).nil? or client.field(i)=='')
                updateStr = updateStr + " " + hdr + " = NULL " 
              else
