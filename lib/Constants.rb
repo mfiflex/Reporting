@@ -168,7 +168,7 @@ module MFiFlexConstants
 								mfiforce__group__c,
 								mfiforce__co_applicant__c,
 								mfiforce__guarantor__c,
-								mfiforce__current_loan_officer__c
+								mfiforce__current_loan_officer__c,
 								mfiforce__source_loan_officer__c,
 								mfiforce__account_type__c,
 								mfiforce__savings_product__c,
@@ -317,8 +317,7 @@ module MFiFlexConstants
 												createdbyid,
 												createddate,
 												name,
-												isdeleted,
-												ownerid
+												isdeleted
 												From mfiforce__loan_approval_prerequisites__c"
 			return loanApprovalPrerequisitedStr;
 		end
@@ -346,8 +345,7 @@ module MFiFlexConstants
 										createdbyid,
 										createddate,
 										name,
-										isdeleted,
-										ownerid
+										isdeleted
 									From mfiforce__loan_balance_s_snapshot__c"
 			return loanBalanceSSnapshotStr;
 		end
@@ -371,8 +369,7 @@ module MFiFlexConstants
 											createdbyid,
 											createddate,
 											name,
-											isdeleted,
-											ownerid
+											isdeleted
 											From mfiforce__loan_disbursal_transaction__c"
 			return loanDisbursalTransactionStr;
 		end
@@ -392,8 +389,7 @@ module MFiFlexConstants
 											createdbyid,
 											createddate,
 											name,
-											isdeleted,
-											ownerid
+											isdeleted
 											From mfiforce__loan_loss_provisioning_setup__c"
 			return loanLossProvisioningStr;
 		end
@@ -441,10 +437,10 @@ module MFiFlexConstants
 	#LOAN_PAYMENT_TRANSACTION_QUERY
 		def getLoanPaymentTransactionQuery
 			loanPaymentTransactionObjNameStr = "Select Id,
-													mfiforce__c,heck__c,
+													mfiforce__check__c,
 													mfiforce__rejected__c,
 													mfiforce__write_off_recovery_payment__c,
-													mfiforce__c,leared__c,
+													mfiforce__cleared__c,
 													mfiforce__payment_mode__c,
 													mfiforce__missed_loan_installment__c,
 													mfiforce__early_total_repayment_of_the_loan__c,
@@ -461,8 +457,7 @@ module MFiFlexConstants
 													createdbyid,
 													createddate,
 													name,
-													isdeleted,
-													ownerid
+													isdeleted
 													From mfiforce__loan_payment_transaction__c"
 			return loanPaymentTransactionObjNameStr;
 		end
@@ -486,7 +481,7 @@ module MFiFlexConstants
 								mfiforce__loan_product_type__c,
 								mfiforce__max_loan_cycle_number__c,
 								mfiforce__loan_cycle_setup__c,
-								mfiforce__c,ash_based_accounting__c,
+								mfiforce__cash_based_accounting__c,
 								mfiforce__initial_rounding_precision__c,
 								mfiforce__product_write_off_recovery_account__c,
 								mfiforce__product_loan_loss_provision_account__c,
@@ -507,15 +502,15 @@ module MFiFlexConstants
 								mfiforce__frequency_of_loan_payment__c,
 								mfiforce__repayment_procedure__c,
 								mfiforce__interest_calculation_method__c,
-								mfiforce__c,ompare_with_cash_flow__c,
+								mfiforce__compare_with_cash_flow__c,
 								mfiforce__minimum_installment_amount__c,
 								mfiforce__maximum_gap_between_installments__c,
 								mfiforce__minimum_gap_between_installments__c,
 								mfiforce__product_int_on_overdue_income_acc__c,
-								mfiforce__c,urrency__c,
+								mfiforce__currency__c,
 								mfiforce__product_suspended_int_on_overdue_acc__c,
 								mfiforce__grace_period_duration__c,
-								mfiforce__c,an_waive_interest_on_prepaid_loan__c,
+								mfiforce__can_waive_interest_on_prepaid_loan__c,
 								mfiforce__default_overdue_interest_rate__c,
 								mfiforce__default_interest_rate__c,
 								mfiforce__min_interest_rate__c,
@@ -557,8 +552,7 @@ module MFiFlexConstants
 												createdbyid,
 												createddate,
 												name,
-												isdeleted,
-												ownerid
+												isdeleted
 												From mfiforce__loan_product_accounting_setup__c"
 			return loanProductAccountingSetupStr;
 		end
@@ -574,7 +568,7 @@ module MFiFlexConstants
 										mfiforce__default_number_of_installments__c,
 										mfiforce__default_interest_rate__c,
 										mfiforce__min_loan_amount__c,
-										mfiforce__c,ycle_number__c,
+										mfiforce__cycle_number__c,
 										mfiforce__loan_product__c,
 										mfiforce__minimum_installment_amount__c,
 										mfiforce__minimum_gap_between_installments__c,
@@ -592,8 +586,7 @@ module MFiFlexConstants
 										createdbyid,
 										createddate,
 										name,
-										isdeleted,
-										ownerid
+										isdeleted
 										From mfiforce__loan_product_cycle__c"
 			return loanProductCycleStr;
 		end
@@ -645,7 +638,7 @@ module MFiFlexConstants
 			loanWriteOffTransactionStr = "Select Id,
 												mfiforce__fees_remaining__c,
 												mfiforce__rejected__c,
-												mfiforce__c,leared__c,
+												mfiforce__cleared__c,
 												mfiforce__receipt_id__c,
 												mfiforce__transaction_date__c,
 												mfiforce__total_amount_remaining__c,
@@ -659,8 +652,7 @@ module MFiFlexConstants
 												createdbyid,
 												createddate,
 												name,
-												isdeleted,
-												ownerid
+												isdeleted
 												From mfiforce__loan_write_off_transaction__c"
 			return loanWriteOffTransactionStr;
 		end

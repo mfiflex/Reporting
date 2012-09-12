@@ -21,7 +21,8 @@ module ConnectionUtil
         
         insertScriptStr =  "insert into " + objectName + "(" + headerStr + ") values (" + fieldStr + ")"
         # Try inserting: If it doesn't insert then try to update
-        insertResult = conn.exec(insertScriptStr);
+        #puts insertScriptStr
+        insertResult = conn.exec(insertScriptStr);        
         
       rescue Exception => e  
         puts e.message  
