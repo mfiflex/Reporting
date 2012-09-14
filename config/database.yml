@@ -7,11 +7,19 @@ development:
   pool: 5
   timeout: 5000
   adapter: postgresql
-  database: mfiforce
-  host: localhost
+  database: d6g1u2icavaa9l
+  host: ec2-107-20-196-252.compute-1.amazonaws.com
   port: 5432
-  username: postgres
-  password:
+  username: imgqlwqlfhbazx
+  password: xedeXDG8LflvWWCh0xS-rS7x4B
+  #pool: 5
+  #timeout: 5000
+  #adapter: postgresql
+  #database: mfiforce
+  #host: localhost
+  #port: 5432
+  #username: postgres
+  #password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

@@ -13,7 +13,7 @@ class ImportGroup
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getGroupObjName,getGroupQuery);
+    res = salesforce.query(getGroupObjName,getGroupQuery)
     
     q_result = res.result.records
     

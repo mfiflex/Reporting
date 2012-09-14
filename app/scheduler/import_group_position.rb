@@ -5,7 +5,7 @@ require 'connection_util'
 require 'pg'
 require "action_mailer"
 
-class ImportClient
+class ImportGroupPosition
   include MFiFlexConstants
   include ConnectionUtil
     
@@ -13,12 +13,17 @@ class ImportClient
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getClientObjName,getClientQuery)
+    res = salesforce.query(getGroupPositionObjName,getGroupPositionQuery);
     
     q_result = res.result.records
     
     #Upsert into Postgres
-    upsertRecords(getClientObjName,q_result,pgConn,salesforceOrgId)
+    upsertRecords(getGroupPositionObjName,q_result,pgConn,salesforceOrgId)
+    
+    rescue Exception => e  
+      puts e.message  
+      puts e.backtrace.inspect 
+      Mailer.mailTo('snehal.fulzele@gmail.com','MFiFlex could not query Group Position data today. Error message: ' + e.message).deliver
     
   end
   

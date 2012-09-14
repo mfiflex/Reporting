@@ -5,7 +5,7 @@ require 'connection_util'
 require 'pg'
 require "action_mailer"
 
-class ImportClient
+class ImportMfAccount
   include MFiFlexConstants
   include ConnectionUtil
     
@@ -13,12 +13,12 @@ class ImportClient
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getClientObjName,getClientQuery)
+    res = salesforce.query(getMfAccountObjName,getMfAccountQuery);
     
     q_result = res.result.records
     
     #Upsert into Postgres
-    upsertRecords(getClientObjName,q_result,pgConn,salesforceOrgId)
+    upsertRecords(getMfAccountObjName,q_result,pgConn,salesforceOrgId)
     
   end
   

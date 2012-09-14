@@ -16,12 +16,13 @@ class ImportSalesforceToPG
     databaseConfig =  Rails.configuration.database_configuration
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
     
-    
+    #Setp 12
     #Importing Clients..
     #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake 
     importC = ImportClient.new
     importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
     
+    #Sept 13
     #Importing Groups..
     importG = ImportGroup.new
     importG.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
@@ -89,6 +90,87 @@ class ImportSalesforceToPG
     #Importing ImportLoansHistory..
     importLoansHistory = ImportLoansHistory.new
     importLoansHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Sept 14th
+    #Importing ImportFeeJunction..
+    importFeeJunction = ImportFeeJunction.new
+    importFeeJunction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportFeeSet..
+    importFeeSet = ImportFeeSet.new
+    importFeeSet.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportFee..
+    importFee = ImportFee.new
+    importFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportFee..
+    importFiscalYear = ImportFiscalYear.new
+    importFiscalYear.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportFunderPortfolio..
+    importFunderPortfolio = ImportFunderPortfolio.new
+    importFunderPortfolio.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportFunder..
+    importFunder = ImportFunder.new
+    importFunder.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportGroupPosition..
+    importGroupPosition = ImportGroupPosition.new
+    importGroupPosition.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportMeetingSchedule..
+    importMeetingSchedule = ImportMeetingSchedule.new
+    importMeetingSchedule.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportMfAccount..
+    importMfAccount = ImportMfAccount.new
+    importMfAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportMfAccountType..
+    importMfAccountType = ImportMfAccountType.new
+    importMfAccountType.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportSavingsAccountInterest..
+    importSavingsAccountInterest = ImportSavingsAccountInterest.new
+    importSavingsAccountInterest.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportSavingsAccount..
+    importSavingsAccount = ImportSavingsAccount.new
+    importSavingsAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportSavingsPaymentCollectionRecord..
+    importSavingsPaymentCollectionRecord = ImportSavingsPaymentCollectionRecord.new
+    importSavingsPaymentCollectionRecord.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportSavingsProductAccountingSetup..
+    importSavingsProductAccountingSetup = ImportSavingsProductAccountingSetup.new
+    importSavingsProductAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportSavingsProduct..
+    importSavingsProduct = ImportSavingsProduct.new
+    importSavingsProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportSavingsWithdrawalTransaction..
+    importSavingsWithdrawalTransaction = ImportSavingsWithdrawalTransaction.new
+    importSavingsWithdrawalTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportTransactionEntry..
+    importTransactionEntry= ImportTransactionEntry.new
+    importTransactionEntry.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportTransactionSource..
+    importTransactionSource = ImportTransactionSource.new
+    importTransactionSource.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportTransaction..
+    importTransaction = ImportTransaction.new
+    importTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    
+    #Importing ImportUserBranchInfo..
+    importUserBranchInfo = ImportUserBranchInfo.new
+    importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
     
     rescue Exception => e  
       puts e.message  
