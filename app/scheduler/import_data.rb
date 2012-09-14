@@ -8,7 +8,7 @@ class ImportSalesforceToPG
   include MFiFlexConstants
   include Databasedotcom::Rails::Controller
     
-  def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId)
+  def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId,whereClause)
     #Read config in the caller code
     config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
     #get Connection
@@ -20,157 +20,157 @@ class ImportSalesforceToPG
     #Importing Clients..
     #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake 
     importC = ImportClient.new
-    importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Sept 13
     #Importing Groups..
     importG = ImportGroup.new
-    importG.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importG.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
     #Importing Center..
     importCenter = ImportCenter.new
-    importCenter.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importCenter.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanAccountHistory..
     importLHistory = ImportLoanAccountHistory.new
-    importLHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanAccount..
     importLAcc = ImportLoanAccount.new
-    importLAcc.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLAcc.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanApprovalPrerequisites..
     importLAppPreerq = ImportLoanApprovalPrerequisites.new
-    importLAppPreerq.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLAppPreerq.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanBalanceSSnapshot..
     importLBalSnapshot = ImportLoanBalanceSSnapshot.new
-    importLBalSnapshot.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLBalSnapshot.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanDisbursalTransaction..
     importLDisTxn = ImportLoanDisbursalTransaction.new
-    importLDisTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLDisTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanLossProvisioningSetup..
     importLLPS = ImportLoanLossProvisioningSetup.new
-    importLLPS.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)  
+    importLLPS.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)  
     
     #Importing ImportLoanPaymentCollection..
     importLPCollection = ImportLoanPaymentCollection.new
-    importLPCollection.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLPCollection.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanPaymentTransaction..
     importLPTxn = ImportLoanPaymentTransaction.new
-    importLPTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLPTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanProductAccountingSetup..
     importLPAccountingSetup = ImportLoanProductAccountingSetup.new
-    importLPAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLPAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanProductCycle..
     importLPCycle = ImportLoanProductCycle.new
-    importLPCycle.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLPCycle.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanProduct..
     importLProduct = ImportLoanProduct.new
-    importLProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanPurpose..
     importLPurpose = ImportLoanPurpose.new
-    importLPurpose.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLPurpose.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanPurpose..
     importLStatus = ImportLoanStatus.new
-    importLStatus.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLStatus.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoanWriteOffTransaction..
     importLWOffTxn = ImportLoanWriteOffTransaction.new
-    importLWOffTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLWOffTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportLoansHistory..
     importLoansHistory = ImportLoansHistory.new
-    importLoansHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importLoansHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Sept 14th
     #Importing ImportFeeJunction..
     importFeeJunction = ImportFeeJunction.new
-    importFeeJunction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importFeeJunction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportFeeSet..
     importFeeSet = ImportFeeSet.new
-    importFeeSet.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importFeeSet.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportFee..
     importFee = ImportFee.new
-    importFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportFee..
     importFiscalYear = ImportFiscalYear.new
-    importFiscalYear.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importFiscalYear.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportFunderPortfolio..
     importFunderPortfolio = ImportFunderPortfolio.new
-    importFunderPortfolio.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importFunderPortfolio.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportFunder..
     importFunder = ImportFunder.new
-    importFunder.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importFunder.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportGroupPosition..
     importGroupPosition = ImportGroupPosition.new
-    importGroupPosition.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importGroupPosition.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportMeetingSchedule..
     importMeetingSchedule = ImportMeetingSchedule.new
-    importMeetingSchedule.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importMeetingSchedule.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportMfAccount..
     importMfAccount = ImportMfAccount.new
-    importMfAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importMfAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportMfAccountType..
     importMfAccountType = ImportMfAccountType.new
-    importMfAccountType.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importMfAccountType.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportSavingsAccountInterest..
     importSavingsAccountInterest = ImportSavingsAccountInterest.new
-    importSavingsAccountInterest.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importSavingsAccountInterest.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportSavingsAccount..
     importSavingsAccount = ImportSavingsAccount.new
-    importSavingsAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importSavingsAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportSavingsPaymentCollectionRecord..
     importSavingsPaymentCollectionRecord = ImportSavingsPaymentCollectionRecord.new
-    importSavingsPaymentCollectionRecord.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importSavingsPaymentCollectionRecord.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportSavingsProductAccountingSetup..
     importSavingsProductAccountingSetup = ImportSavingsProductAccountingSetup.new
-    importSavingsProductAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importSavingsProductAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportSavingsProduct..
     importSavingsProduct = ImportSavingsProduct.new
-    importSavingsProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importSavingsProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportSavingsWithdrawalTransaction..
     importSavingsWithdrawalTransaction = ImportSavingsWithdrawalTransaction.new
-    importSavingsWithdrawalTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importSavingsWithdrawalTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportTransactionEntry..
     importTransactionEntry= ImportTransactionEntry.new
-    importTransactionEntry.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importTransactionEntry.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportTransactionSource..
     importTransactionSource = ImportTransactionSource.new
-    importTransactionSource.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importTransactionSource.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportTransaction..
     importTransaction = ImportTransaction.new
-    importTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     #Importing ImportUserBranchInfo..
     importUserBranchInfo = ImportUserBranchInfo.new
-    importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId)
+    importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
     
     rescue Exception => e  
       puts e.message  

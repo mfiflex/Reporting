@@ -9,11 +9,11 @@ class ImportMeetingSchedule
   include MFiFlexConstants
   include ConnectionUtil
     
-  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId)
+  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId,whereClause)
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getMeetingScheduleObjName,getMeetingScheduleQuery);
+    res = salesforce.query(getMeetingScheduleObjName,getMeetingScheduleQuery+whereClause)
     
     q_result = res.result.records
     

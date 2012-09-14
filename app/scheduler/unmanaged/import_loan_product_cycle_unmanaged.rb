@@ -3,17 +3,17 @@ require 'csv'
 require 'constants_unmanaged'
 require 'connection_util'
 require 'pg'
-require "action_mailer"
+require 'action_mailer'
 
 class ImportLoanProductCycleUnmanaged
   include MFiFlexUnmanagedConstants
   include ConnectionUtil
     
-  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId)
+  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId,whereClause)
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getLoanProductCycleObjName,getLoanProductCycleQuery);
+    res = salesforce.query(getLoanProductCycleObjName,getLoanProductCycleQuery+whereClause)
     
     q_result = res.result.records
     

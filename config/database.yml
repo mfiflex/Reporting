@@ -4,22 +4,22 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  pool: 5
-  timeout: 5000
-  adapter: postgresql
-  database: d6g1u2icavaa9l
-  host: ec2-107-20-196-252.compute-1.amazonaws.com
-  port: 5432
-  username: imgqlwqlfhbazx
-  password: xedeXDG8LflvWWCh0xS-rS7x4B
   #pool: 5
   #timeout: 5000
   #adapter: postgresql
-  #database: mfiforce
-  #host: localhost
+  #database: d6g1u2icavaa9l
+  #host: ec2-107-20-196-252.compute-1.amazonaws.com
   #port: 5432
-  #username: postgres
-  #password:
+  #username: imgqlwqlfhbazx
+  #password: xedeXDG8LflvWWCh0xS-rS7x4B
+  pool: 5
+  timeout: 5000
+  adapter: postgresql
+  database: mfiforce
+  host: localhost
+  port: 5432
+  username: postgres
+  password:
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -34,15 +34,16 @@ test:
   username: postgres
   password: 
 
+#MFiFlex App Heroku Basic Database
 production:
   pool: 5
   timeout: 5000
   adapter: postgresql
-  database: d2oehajbeuoovp
-  host: ec2-107-22-183-27.compute-1.amazonaws.com
+  database: d8uvbj0jdgoid8
+  host: ec2-107-22-168-211.compute-1.amazonaws.com
   port: 5432
-  username: nneqrwzmpiwyrh
-  password: NOYnLeLzBGOcRMwJmCwxS9vwYh
+  username: xtllgtjvpkfxya
+  password: d96Z2zvxt1T-JN2RBU1lt0T99A
 
 #salesforce-default-realm:
 #    adapter: activesalesforce

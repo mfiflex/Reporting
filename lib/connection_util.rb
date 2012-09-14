@@ -11,7 +11,7 @@ module ConnectionUtil
         end
         
         fieldList = resultCSVRecord.fields
-        fieldStr = fieldList.map { |i| "'" + quote(i.to_s) + "'" }.join(",")
+        fieldStr = fieldList.map { |i| "'" + i.to_s + "'" }.join(",")
         
         fieldStr = fieldStr.gsub("''","null")
         
@@ -35,7 +35,7 @@ module ConnectionUtil
              if(resultCSVRecord.field(i).nil? or resultCSVRecord.field(i)=='')
                updateStr = updateStr + " " + hdr + " = NULL " 
              else
-               updateStr = updateStr + " " + hdr + " = '" + quote(resultCSVRecord.field(i)) + "'"
+               updateStr = updateStr + " " + hdr + " = '" + resultCSVRecord.field(i) + "'"
              end  
               
              i = i+1  

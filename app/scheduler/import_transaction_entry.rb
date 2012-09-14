@@ -9,11 +9,11 @@ class ImportTransactionEntry
   include MFiFlexConstants
   include ConnectionUtil
     
-  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId)
+  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId,whereClause)
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getTransactionEntryObjName,getTransactionEntryQuery);
+    res = salesforce.query(getTransactionEntryObjName,getTransactionEntryQuery+whereClause)
     
     q_result = res.result.records
     

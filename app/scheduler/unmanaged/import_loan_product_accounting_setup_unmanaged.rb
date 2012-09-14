@@ -3,17 +3,17 @@ require 'csv'
 require 'Constants_Unmanaged'
 require 'connection_util'
 require 'pg'
-require "action_mailer"
+require 'action_mailer'
 
 class ImportLoanProductAccountingSetupUnmanaged
   include MFiFlexUnmanagedConstants
   include ConnectionUtil
     
-  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId)
+  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId,whereClause)
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getLoanProductAccountingSetupObjName,getLoanProductAccountingSetupQuery);
+    res = salesforce.query(getLoanProductAccountingSetupObjName,getLoanProductAccountingSetupQuery+whereClause)
     
     q_result = res.result.records
     

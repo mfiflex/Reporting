@@ -9,11 +9,11 @@ class ImportFee
   include MFiFlexConstants
   include ConnectionUtil
     
-  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId)
+  def import(salesforceUserName,salesforcePassword,pgConn,salesforceOrgId,whereClause)
     salesforce = SalesforceBulk::Api.new(salesforceUserName,salesforcePassword)
     
     # Query using BULK API
-    res = salesforce.query(getFeeObjName,getFeeQuery);
+    res = salesforce.query(getFeeObjName,getFeeQuery+whereClause)
     
     q_result = res.result.records
     
