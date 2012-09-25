@@ -27,8 +27,8 @@ ActionMailer::Base.smtp_settings = {
    :authentication => 'plain',
    :user_name => "snehal.fulzele@mfiflex.com",
    :password => "Merc$123",
-   :tls => true,
    :enable_starttls_auto => true 
 }
 
+#:tls => true,
 #Notifier.deliver_email("snehal.fulzele@mfiflex.com")
