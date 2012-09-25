@@ -2,24 +2,24 @@ require 'salesforce_bulk'
 require 'csv'
 require 'Constants'
 require 'pg'
-require "action_mailer"
+require 'mailer'
 
 class ImportClientController < ApplicationController
   include MFiFlexConstants
     
   def importC
     config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
-    salesforce = SalesforceBulk::Api.new('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy')
+    salesforce = SalesforceBulk::Api.new('admin@30df.org','Merc12432v9GPaFCwqTHDoj4n5TnV0Vw9w')
     
     # Query
-    # res = salesforce.query(MFiFlexConstants::CENTER_OBJ_NAME,MFiFlexConstants::CENTER_OBJ_QUERY);
+    # res = salesforce.query(MFiFlexConstants::CENTER_OBJ_NAME,MFiFlexConstants::CENTER_OBJ_QUERY)
     
-    res = salesforce.query(getClientObjName,getClientQuery);
+    res = salesforce.query(getClientObjName,getClientQuery)
     
     @q_result = res.result.records
     
     #get Connection
-    conn = PG.connect('localhost', '5432', '','','mfiforce', 'postgres','' )
+    conn = PG.connect('localhost', '5432', '','','mfiforce', 'postgres','welcome' )
     
     @q_result.each do |client|
       headerList = client.headers
@@ -30,7 +30,7 @@ class ImportClientController < ApplicationController
       
       fieldStr = fieldStr.gsub("''","null")
       @insertScriptStr =  "insert into mfiforce__client__c (" + headerStr + ") values (" + fieldStr + ")"
-      insertResult = conn.exec(@insertScriptStr); 
+      insertResult = conn.exec(@insertScriptStr) 
       #insertRes = conn.exec('insert into mfiforce__client__c(id,name,isDeleted,createddate)
       #   values($1,$2,$3,$4)',
       #    [client.field(0),client.field(3),client.field(2),client.field(4)])

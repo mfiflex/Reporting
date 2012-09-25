@@ -3,7 +3,7 @@ require 'csv'
 require 'constants_unmanaged'
 require 'connection_util'
 require 'pg'
-require 'action_mailer'
+require 'mailer'
 
 class ImportLoanProductCycleUnmanaged
   include MFiFlexUnmanagedConstants

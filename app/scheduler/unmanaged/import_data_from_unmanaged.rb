@@ -2,7 +2,7 @@ require 'salesforce_bulk'
 require 'csv'
 require 'constants_unmanaged'
 require 'pg'
-require 'action_mailer'
+require 'mailer'
 require_rel '../unmanaged'
 
 class ImportUnmanagedSalesforceToPG

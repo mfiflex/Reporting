@@ -64,7 +64,7 @@ module MFiFlexUnmanagedConstants
                             current_loan_officer__c
                             from client__c"
                                                         
-          return clientQueryStr;
+          return clientQueryStr
       end
       
    #GROUP_OBJ_NAME = "Group__c"
@@ -112,7 +112,7 @@ module MFiFlexUnmanagedConstants
                 Zipcode__c, 
                 Zone__c 
                 FROM Group__c"
-      return groupQueryStr;
+      return groupQueryStr
     end      
    
     #CENTER_OBJ_NAME = "Center__c"
@@ -141,7 +141,7 @@ module MFiFlexUnmanagedConstants
                 isdeleted,
                 ownerid
                 From Center__c"
-      return centerQueryStr;
+      return centerQueryStr
     end
   #LOANACCOUNT_OBJ_NAME = "loan_account__c"
     def getLoanAccountObjName
@@ -233,7 +233,7 @@ module MFiFlexUnmanagedConstants
                 isdeleted,
                 ownerid
                 From Loan_Account__c"
-        return loanAccountQueryStr;
+        return loanAccountQueryStr
     end
   #LOANACCOUNTHISTORY_OBJ_NAME = "loan_account_history__c"
     def getLoanAccountHistoryObjName
@@ -271,7 +271,7 @@ module MFiFlexUnmanagedConstants
                     isdeleted,
                     ownerid
                     From loan_account_history__c"
-      return loanAccountHistoryStr;
+      return loanAccountHistoryStr
     end
   #LOAN_APPROVAL_PREREQUISITES_OBJ_NAME = "loan_approval_prerequisites__c"
     def getLoanApprovalPrerequisitedObjName
@@ -307,7 +307,7 @@ module MFiFlexUnmanagedConstants
                         name,
                         isdeleted
                         From loan_approval_prerequisites__c"
-      return loanApprovalPrerequisitedStr;
+      return loanApprovalPrerequisitedStr
     end
   #LOAN_BALANCE_S_SNAPSHOT_OBJ_NAME = "loan_balance_s_snapshot__c"
     def getLoanBalanceSSnapshotObjName
@@ -335,7 +335,7 @@ module MFiFlexUnmanagedConstants
                     name,
                     isdeleted
                   From loan_balance_s_snapshot__c"
-      return loanBalanceSSnapshotStr;
+      return loanBalanceSSnapshotStr
     end
   #LOAN_DISBURSAL_TRANSACTION_OBJ_NAME = "loan_disbursal_transaction__c"
     def getloanDisbursalTransactionObjName
@@ -359,7 +359,7 @@ module MFiFlexUnmanagedConstants
                       name,
                       isdeleted
                       From loan_disbursal_transaction__c"
-      return loanDisbursalTransactionStr;
+      return loanDisbursalTransactionStr
     end
   #LOAN_LOSS_PROVISIONING_OBJ_NAME = "loan_loss_provisioning_setup__c"
     def getLoanLossProvisioningObjName
@@ -379,7 +379,7 @@ module MFiFlexUnmanagedConstants
                       name,
                       isdeleted
                       From loan_loss_provisioning_setup__c"
-      return loanLossProvisioningStr;
+      return loanLossProvisioningStr
     end
   #LOAN_PAYMENT_COLLECTION_OBJ_NAME = "loan_payment_collection__c"
     def getLoanPaymentCollectionObjName
@@ -416,7 +416,7 @@ module MFiFlexUnmanagedConstants
                       isdeleted,
                       ownerid
                       From loan_payment_collection__c"
-      return loanPaymentCollectionStr;
+      return loanPaymentCollectionStr
     end
   #LOAN_PAYMENT_TRANSACTION_OBJ_NAME = "loan_payment_transaction__c"
     def getLoanPaymentTransactionObjName
@@ -447,7 +447,7 @@ module MFiFlexUnmanagedConstants
                           name,
                           isdeleted
                           From loan_payment_transaction__c"
-      return loanPaymentTransactionObjNameStr;
+      return loanPaymentTransactionObjNameStr
     end
   #LOAN_PRODUCT_OBJ_NAME = "loan_product__c"
     def getLoanProductObjName
@@ -520,7 +520,7 @@ module MFiFlexUnmanagedConstants
                 isdeleted,
                 ownerid
                 From loan_product__c"
-      return loanProductStr;
+      return loanProductStr
     end
   #LOAN_PRODUCT_ACCOUNTING_SETUP_OBJ_NAME = "loan_product_accounting_setup__c"
     def getLoanProductAccountingSetupObjName
@@ -542,7 +542,7 @@ module MFiFlexUnmanagedConstants
                         name,
                         isdeleted
                         From loan_product_accounting_setup__c"
-      return loanProductAccountingSetupStr;
+      return loanProductAccountingSetupStr
     end
   #LOAN_PRODUCT_CYCLE_OBJ_NAME = "loan_product_cycle__c"
     def getLoanProductCycleObjName
@@ -576,7 +576,7 @@ module MFiFlexUnmanagedConstants
                     name,
                     isdeleted
                     From loan_product_cycle__c"
-      return loanProductCycleStr;
+      return loanProductCycleStr
     end
   #LOAN_PURPOSE_OBJ_NAME = "loan_purpose__c"
     def getLoanPurposeObjName
@@ -596,7 +596,7 @@ module MFiFlexUnmanagedConstants
                   isdeleted,
                   ownerid
                   From loan_purpose__c"
-      return loanPurposeStr;
+      return loanPurposeStr
     end
   #LOAN_STATUS_OBJ_NAME = "loan_status__c"
     def getLoanStatusObjName
@@ -615,7 +615,7 @@ module MFiFlexUnmanagedConstants
                 isdeleted,
                 ownerid
                 From loan_status__c"
-      return loanStatusStr;
+      return loanStatusStr
     end
   #LOAN_WRITE_OFF_TRANSACTION_OBJ_NAME = "loan_write_off_transaction__c"
     def getLoanWriteOffTransactionObjName
@@ -642,7 +642,7 @@ module MFiFlexUnmanagedConstants
                         name,
                         isdeleted
                         From loan_write_off_transaction__c"
-      return loanWriteOffTransactionStr;
+      return loanWriteOffTransactionStr
     end
   #lOANS_HISTORY_OBJ_NAME = "loans_history__c"
     def getLoansHistoryObjName
@@ -666,7 +666,7 @@ module MFiFlexUnmanagedConstants
                 isdeleted,
                 ownerid
                 From loans_history__c"
-      return loansHistoryStr;
+      return loansHistoryStr
     end
     
     #SAVINGS_ACCOUNT_OBJ_NAME="Savings_Account__c"
@@ -712,7 +712,7 @@ module MFiFlexUnmanagedConstants
                   Uncleared_Deposit_Amount__c, 
                   Uncleared_Withdrawal_Amount__c 
                   FROM Savings_Account__c"
-      return savingsAccountQueryStr;
+      return savingsAccountQueryStr
       end
   #SAVINGS_ACCOUNT_INTEREST_OBJ_NAME = "savings_account_interest__c"
     def getSavingsAccountInterestObjName
@@ -761,7 +761,7 @@ module MFiFlexUnmanagedConstants
                           SystemModstamp, 
                           Total_Collection_Amount__c 
                           FROM Savings_Payment_Collection_Record__c"
-      return savingsPaymentCollectionRecordStr;
+      return savingsPaymentCollectionRecordStr
     end
   #SAVINGS_PRODUCT_OBJ_NAME = "savings_product__c"
     def getSavingsProductObjName
@@ -802,7 +802,7 @@ module MFiFlexUnmanagedConstants
                 Time_Period_for_Int_Rate_Calculation__c, 
                 Type_of_Owner__c
                 FROM Savings_Product__c"
-      return savingsProductStr;
+      return savingsProductStr
     end
   #SAVINGS_PRODUCT_ACCOUNTING_SETUP_OBJ_NAME = "savings_product_accounting_setup__c"
     def getSavingsProductAccountingSetupObjName
@@ -824,7 +824,7 @@ module MFiFlexUnmanagedConstants
                         Use_Default_Setup__c, 
                         User_Defined_Rule__c 
                         FROM Savings_Product_Accounting_Setup__c"
-      return savingsProductAccountingSetupStr;
+      return savingsProductAccountingSetupStr
     end
   #SAVINGS_WITHDRAWAL_TRANSACTION_OBJ_NAME = "savings_withdrawal_transaction__c"
     def getSavingsWithdrawalTransactionObjName
@@ -846,7 +846,7 @@ module MFiFlexUnmanagedConstants
                         Withdrawal_Amount__c, 
                         Withdrawal_Date__c 
                         FROM Savings_Withdrawal_Transaction__c"
-      return savingsWithdrawalTransactionStr;
+      return savingsWithdrawalTransactionStr
     end
   #TRANSACTION_OBJ_NAME = "transaction__c"
     def getTrasactionObjName
@@ -877,7 +877,7 @@ module MFiFlexUnmanagedConstants
                 Transaction_Source__c, 
                 Document_Number__c 
                 FROM Transaction__c"
-      return transactionStr;
+      return transactionStr
     end
   #TRANSACTION_ENTRY_OBJ_NAME = "transaction_entry__c"
     def getTransactionEntryObjName
@@ -906,7 +906,7 @@ module MFiFlexUnmanagedConstants
                   Transaction__c, 
                   Name 
                   FROM Transaction_Entry__c"
-      return transactoinEntryStr;
+      return transactoinEntryStr
     end
   #TRANSACTION_SOURCE_OBJ_NAME = "transaction_source__c"
     def getTransactionSourceObjName
@@ -924,7 +924,7 @@ module MFiFlexUnmanagedConstants
                   SystemModstamp, 
                   Name 
                   FROM Transaction_Source__c"
-      return transactionSourceStr;
+      return transactionSourceStr
     end
   #USER_BRANCH_INFO_OBJ_NAME = "user_branch_info__c"
     def getUserBranchInfoObjName
@@ -945,7 +945,7 @@ module MFiFlexUnmanagedConstants
                 User__c, 
                 Name 
                 FROM User_Branch_Info__c"
-      return userBranchInfoStr;
+      return userBranchInfoStr
     end
   #FISCAL_YEAR_OBJ_NAME = "fiscal_year__c"
     def getFiscalYearObjName
@@ -968,7 +968,7 @@ module MFiFlexUnmanagedConstants
               Status__c, 
               SystemModstamp 
               FROM Fiscal_Year__c"
-      return fiscalYearStr;
+      return fiscalYearStr
     end
   #FUNDER_OBJ_NAME = "funder__c"
     def getFunderObjName
@@ -993,7 +993,7 @@ module MFiFlexUnmanagedConstants
               SystemModstamp, 
               User__c 
               FROM Funder__c"
-      return funderStr;
+      return funderStr
     end
   #FUNDER_PORTFOLIO_OBJ_NAME = "funder_portfolio__c"
     def getFunderPortfolioObjName
@@ -1015,7 +1015,7 @@ module MFiFlexUnmanagedConstants
                   LastModifiedDate, 
                   SystemModstamp 
                   FROM Funder_Portfolio__c"
-      return funderPortfolioStr;
+      return funderPortfolioStr
     end
   #GROUP_OBJ_NAME = "group__c"
     def getGroupObjName
@@ -1066,7 +1066,7 @@ module MFiFlexUnmanagedConstants
             Zipcode__c, 
             Zone__c 
             FROM Group__c"
-      return groupStr;
+      return groupStr
     end
   #GROUP_POSITION_OBJ_NAME = "group_position__c "
     def getGroupPositionObjName
@@ -1084,7 +1084,7 @@ module MFiFlexUnmanagedConstants
                 OwnerId, 
                 SystemModstamp 
                 FROM Group_Position__c"
-      return groupPositionStr;
+      return groupPositionStr
     end
   #FEE_OBJ_NAME = "fee__c "
     def getFeeObjName
@@ -1111,7 +1111,7 @@ module MFiFlexUnmanagedConstants
           SystemModstamp, 
           Time_of_charge__c 
           FROM Fee__c"
-      return feeStr;
+      return feeStr
     end
   #FEE_JUNCTION_OBJ_NAME = "fee_junction__c"
     def getFeeJunctionObjName
@@ -1129,7 +1129,7 @@ module MFiFlexUnmanagedConstants
               Name,
               IsDeleted
               From fee_junction__c"
-      return feeJunctionStr;
+      return feeJunctionStr
     end
   #FEE_SET_OBJ_NAME = "fee_set__c"
     def getFeeSetObjName
@@ -1149,7 +1149,7 @@ module MFiFlexUnmanagedConstants
             OwnerId, 
             SystemModstamp
             FROM Fee_Set__c"
-          return feeSetStr;
+          return feeSetStr
     end
   #MEETING_SCHEDULE_OBJ_NAME = "meeting_schedule__c"
     def getMeetingScheduleObjName
@@ -1169,7 +1169,7 @@ module MFiFlexUnmanagedConstants
                 Start_Date__c, 
                 SystemModstamp 
                 FROM Meeting_Schedule__c"
-      return meetingScheduleStr;
+      return meetingScheduleStr
     end
   #MF_ACCOUNT_OBJ_NAME = "mf_account__c"
     def getMfAccountObjName
@@ -1199,7 +1199,7 @@ module MFiFlexUnmanagedConstants
               SystemModstamp, 
               isLeaf__c 
               FROM MF_Account__c"
-      return mfAccountStr;
+      return mfAccountStr
     end
   #MF_ACCOUNT_TYPE_OBJ_NAME = "mf_account_type__c"
     def getMfAccountTypeObjName
@@ -1217,6 +1217,6 @@ module MFiFlexUnmanagedConstants
                 OwnerId, 
                 SystemModstamp 
                 FROM MF_Account_Type__c"
-      return mfAccountTypeStr;
+      return mfAccountTypeStr
     end
 end

@@ -1,3 +1,5 @@
+require 'mailer'
+
 module ConnectionUtil
   
   def upsertRecords(objectName,queryResult,conn,salesforceOrgId)
@@ -22,7 +24,7 @@ module ConnectionUtil
         insertScriptStr =  "insert into " + objectName + "(" + headerStr + ") values (" + fieldStr + ")"
         # Try inserting: If it doesn't insert then try to update
         #puts insertScriptStr
-        insertResult = conn.exec(insertScriptStr);        
+        insertResult = conn.exec(insertScriptStr)        
         
       rescue Exception => e  
         puts e.message  
