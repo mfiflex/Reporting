@@ -1983,7 +1983,7 @@ module MFiFlexConstants
 			return monthProcessStr
 		end
 	#CRM OBJECT_ = "mfiforce__Office___c"
-		def getOfficeObjName
+		def getOfficeNameObjName
 			return "mfiforce__Office___c"
 		end
 	#OFFICE__QUERY

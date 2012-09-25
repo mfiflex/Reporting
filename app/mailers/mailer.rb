@@ -13,6 +13,8 @@ class Mailer < ActionMailer::Base
    end
    
    def mailTo(recipient,message)
+    puts "Message is - "
+    puts message
     mail(:to => recipient,:subject => "Something went wrong.",:message => message)
   end
    
