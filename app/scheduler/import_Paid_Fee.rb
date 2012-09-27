@@ -1,6 +1,6 @@
 require 'salesforce_bulk'
 require 'csv'
-require 'Constants'
+require 'constants'
 require 'connection_util'
 require 'pg'
 require 'mailer'
