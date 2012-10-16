@@ -12,14 +12,26 @@ development:
   #port: 5432
   #username: imgqlwqlfhbazx
   #password: xedeXDG8LflvWWCh0xS-rS7x4B
+  
+  #TEST LOCAL UNAMANGED
+  #pool: 5
+  #timeout: 5000
+  #adapter: postgresql
+  #database: unmanaged
+  #host: localhost
+  #port: 5432
+  #username: postgres
+  #password: welcome
+  
   pool: 5
   timeout: 5000
   adapter: postgresql
-  database: unmanaged
-  host: localhost
+  database: d8uvbj0jdgoid8
+  host: ec2-107-22-168-211.compute-1.amazonaws.com
   port: 5432
-  username: postgres
-  password: welcome
+  username: xtllgtjvpkfxya
+  password: d96Z2zvxt1T-JN2RBU1lt0T99A
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

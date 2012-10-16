@@ -60,7 +60,9 @@ module MFiFlexUnmanagedConstants
                             zone__c,
                             check_for_duplicates__c,
                             source_loan_officer__c,
-                            current_loan_officer__c
+                            current_loan_officer__c,
+                            Sector__c,
+                            Membership_Amount_Paid__c
                             from client__c"
                                                         
           return clientQueryStr;
@@ -116,7 +118,6 @@ module MFiFlexUnmanagedConstants
 	#ACCOUNTING_RULE_LINE_QUERY
 		def getAccountingRuleLineQuery
 			accountingRuleLineStr = "SELECT Id, 
-									Id__c, 
 									CreatedById, 
 									CreatedDate,
 									LastModifiedById, 
