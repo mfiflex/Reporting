@@ -173,8 +173,8 @@ class ImportSalesforceToPG
       importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingPeriod..
-      importAccountingPeriod = ImportAccountingPeriod.new
-      importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importAccountingPeriod = ImportAccountingPeriod.new
+      #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
       importAccountingRuleHeader = ImportAccountingRuleHeader.new

@@ -9,12 +9,12 @@ gem "meta_search",    '>= 1.1.0.pre'
 #gem 'httparty'
 #gem 'rforcedotcom'
 gem 'salesforce_bulk'
-
+gem 'resque'
 gem 'databasedotcom'
 gem 'databasedotcom-rails'
 gem 'heroku'
 gem 'require_all'
-
+gem 'debugger'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

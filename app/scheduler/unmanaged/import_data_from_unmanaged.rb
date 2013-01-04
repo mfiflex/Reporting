@@ -174,8 +174,8 @@ class ImportUnmanagedSalesforceToPG
       importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingPeriod..
-      importAccountingPeriod = ImportAccountingPeriodUnmanaged.new
-      importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importAccountingPeriod = ImportAccountingPeriodUnmanaged.new
+      #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
       importAccountingRuleHeader = ImportAccountingRuleHeaderUnmanaged.new
