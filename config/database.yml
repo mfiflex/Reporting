@@ -23,15 +23,14 @@ development:
   #username: postgres
   #password: welcome
   
-  #pool: 5
-  #timeout: 5000
-  #adapter: postgresql
-  #database: d8uvbj0jdgoid8
-  #host: ec2-107-22-168-211.compute-1.amazonaws.com
-  #port: 5432
-  #username: xtllgtjvpkfxya
-  #password: d96Z2zvxt1T-JN2RBU1lt0T99A
-
+  pool: 5
+  timeout: 5000
+  adapter: postgresql
+  database: d2359mpupn06ra
+  host: ec2-54-243-181-33.compute-1.amazonaws.com
+  port: 5432
+  username: hqbdwjbxkjuujm
+  password: zsiFy3el6WqW_MYVHh-MZMS7A1
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
