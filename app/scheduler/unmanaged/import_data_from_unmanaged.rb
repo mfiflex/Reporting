@@ -433,7 +433,7 @@ class ImportUnmanagedSalesforceToPG
     rescue Exception => e  
       puts e.message  
       puts e.backtrace.inspect 
-      Mailer.mailTo('snehal.fulzele@gmail.com','MFiFlex could not import data today. Error message: ' + e.message).deliver
+      Mailer.mailTo('gaurav.singh@mfiflex.co.in','MFiFlex could not import data today. Error message: ' + e.message).deliver
     ensure
       conn.close
   end

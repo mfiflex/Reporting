@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base
-  default from: "snehal.fulzele@mfiflex.com"
+  default from: "gaurav.singh@mfiflex.co.in"
   
   def contact(recipient, subject, message, sent_at = Time.now)
       @subject = subject
@@ -7,7 +7,7 @@ class Mailer < ActionMailer::Base
       @from = 'support@mfiflex.com'
       @sent_on = sent_at
       @body["title"] = 'This is title'
-      @body["email"] = 'snehal.fulzele@mfiflex.com'
+      @body["email"] = 'gaurav.singh@mfiflex.co.in'
       @body["message"] = message
       @headers = {}
    end

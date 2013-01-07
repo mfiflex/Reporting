@@ -40,8 +40,8 @@ class ImportClientController < ApplicationController
     rescue Exception => e  
       puts e.message  
       puts e.backtrace.inspect 
-      #UserMailer.deliver_contact('snehal.fulzele@mfiflex.com', 'Test it is Test!', 'Could not import clients today. Please contact MFiFlex.')
-      Mailer.mailTo('snehal.fulzele@gmail.com','MFiFlex could not import clients today. Error message: ' + e.message).deliver
+      #UserMailer.deliver_contact('gaurav.singh@mfiflex.co.in', 'Test it is Test!', 'Could not import clients today. Please contact MFiFlex.')
+      Mailer.mailTo('gaurav.singh@mfiflex.co.in','MFiFlex could not import clients today. Error message: ' + e.message).deliver
   end
   
    def csv_client_import 

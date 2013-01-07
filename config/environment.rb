@@ -25,11 +25,11 @@ ActionMailer::Base.smtp_settings = {
    :port => 587,
    :domain => "mfiflex.com",
    :authentication => 'plain',
-   :user_name => "snehal.fulzele@mfiflex.com",
-   :password => "Merc$123",
+   :user_name => "gaurav.singh@mfiflex.co.in",
+   :password => "plus4444",
    :enable_starttls_auto => true 
 }
 
 #:tls => true,
-#Notifier.deliver_email("snehal.fulzele@mfiflex.com")
+#Notifier.deliver_email("gaurav.singh@mfiflex.co.in")
 
