@@ -46,7 +46,7 @@ class ImportClientController < ApplicationController
   
    def csv_client_import 
      config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
-     salesforce = SalesforceBulk::Api.new('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy')
+     salesforce = SalesforceBulk::Api.new('admin@30df.org','Merc@12346CA5XzjJEfkiHlq1YjzFUuDM')
     
      # Query
      res = salesforce.query("mfiforce__Client__c", "select id, name from mfiforce__Client__c limit 100")
