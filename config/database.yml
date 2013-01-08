@@ -7,11 +7,11 @@ development:
   pool: 5
   timeout: 5000
   adapter: postgresql
-  database: d2359mpupn06ra
-  host: ec2-54-243-181-33.compute-1.amazonaws.com
+  database: destk9jn60kr7i
+  host: ec2-54-243-224-88.compute-1.amazonaws.com
   port: 5432
-  username: hqbdwjbxkjuujm
-  password: zsiFy3el6WqW_MYVHh-MZMS7A1
+  username: jvtqarvhuckrjo
+  password: fJz-vR8G2HMkk7eWFmAb_JEcnA
   # pool: 5
   # timeout: 5000
   # adapter: postgresql
