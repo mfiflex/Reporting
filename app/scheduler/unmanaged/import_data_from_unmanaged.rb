@@ -187,7 +187,7 @@ class ImportUnmanagedSalesforceToPG
       
       #Importing ImportAccountingSegmentSetup..
       importAccountingSegmentSetup = ImportAccountingSegmentSetupUnmanaged.new
-      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAddress..
       importAddress = ImportAddressUnmanaged.new

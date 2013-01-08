@@ -186,7 +186,7 @@ class ImportSalesforceToPG
       
       #Importing ImportAccountingSegmentSetup..
       importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
-      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAddress..
       importAddress = ImportAddress.new
