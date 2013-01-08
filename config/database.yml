@@ -35,26 +35,26 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  pool: 5
-  timeout: 5000
-  adapter: postgresql
-  database: mfiforce
-  host: localhost
-  port: 5432
-  username: postgres
-  password: plus4444
+#test:
+ # pool: 5
+ # timeout: 5000
+ # adapter: postgresql
+ # database: mfiforce
+  #host: localhost
+  #port: 5432
+  #username: postgres
+  #password: plus4444
 
 #MFiFlex App Heroku Basic Database
-production:
-  pool: 5
-  timeout: 5000
-  adapter: postgresql
-  database: destk9jn60kr7i
-  host: ec2-54-243-224-88.compute-1.amazonaws.com
-  port: 5432
-  username: jvtqarvhuckrjo
-  password: fJz-vR8G2HMkk7eWFmAb_JEcnA
+#production:
+ # pool: 5
+ # timeout: 5000
+ # adapter: postgresql
+  #database: destk9jn60kr7i
+  #host: ec2-54-243-224-88.compute-1.amazonaws.com
+  #port: 5432
+  #username: jvtqarvhuckrjo
+  #password: fJz-vR8G2HMkk7eWFmAb_JEcnA
 #salesforce-default-realm:
 #    adapter: activesalesforce
 #    url: https://www.salesforce.com
