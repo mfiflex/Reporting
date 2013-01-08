@@ -3,7 +3,7 @@ require 'csv'
 require 'Constants'
 require 'pg'
 require 'mailer'
-require_rel '../scheduler'
+
 
 class ImportSalesforceToPG
   include MFiFlexConstants
@@ -178,16 +178,16 @@ class ImportSalesforceToPG
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
-      importAccountingRuleHeader = ImportAccountingRuleHeader.new
-      importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importAccountingRuleHeader = ImportAccountingRuleHeader.new
+      #importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleLine..
-      importAccountingRuleLine = ImportAccountingRuleLine.new
-      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importAccountingRuleLine = ImportAccountingRuleLine.new
+      #importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingSegmentSetup..
-      importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
-      importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
+      #importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAddress..
       importAddress = ImportAddress.new
