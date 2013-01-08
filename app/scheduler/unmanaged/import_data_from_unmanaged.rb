@@ -1,6 +1,6 @@
 require 'salesforce_bulk'
 require 'csv'
-require 'constants_unmanaged'
+require 'Constants_unmanaged'
 require 'pg'
 require 'mailer'
 require_rel '../unmanaged'
