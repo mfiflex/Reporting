@@ -82,7 +82,7 @@ module ConnectionUtil
       puts e.message  
       puts e.backtrace.inspect 
       messageToTechTeam = "MFiFlex could not import " + objectName + " today. Error message: " + e.message
-      Mailer.mailTo('snehal.fulzele@gmail.com',messageToTechTeam).deliver
+      Mailer.mailTo('gaurav.singh@mfiflex.co.in',messageToTechTeam).deliver
   end  
   
   def quote21313 (str)
