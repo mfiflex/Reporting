@@ -3,6 +3,7 @@ require 'csv'
 require 'Constants'
 require 'pg'
 require 'mailer'
+require_rel '../scheduler'
 
 class ImportSalesforceToPG
   include MFiFlexConstants
