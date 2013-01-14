@@ -20,6 +20,7 @@ class ImportSalesforceToPG
       #Setp 12
       #Importing Clients..
       #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake 
+      t1 = Thread.new{
       importC = ImportClient.new
       importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
@@ -172,12 +173,13 @@ class ImportSalesforceToPG
       #Importing ImportUserBranchInfo..
       importUserBranchInfo = ImportUserBranchInfo.new
       importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
+   }
       #Importing ImportAccountingPeriod..
       #importAccountingPeriod = ImportAccountingPeriod.new
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
+      t2 = Thread.new{
       importAccountingRuleHeader = ImportAccountingRuleHeader.new
       importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
@@ -429,6 +431,9 @@ class ImportSalesforceToPG
       #Importing ImportValueSetValues..
       importValueSetValues = ImportValueSetValues.new
       importValueSetValues.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+    }
+    t1.join
+    t2.join
     
     rescue Exception => e  
       puts e.message  
