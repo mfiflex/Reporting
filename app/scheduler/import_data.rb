@@ -7,7 +7,7 @@ require 'mailer'
 
 class ImportSalesforceToPG
   include MFiFlexConstants
-  #include Databasedotcom::Rails::Controller
+  include Databasedotcom::Rails::Controller
     
   def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId,whereClause)
     #Read config in the caller code
@@ -178,16 +178,16 @@ class ImportSalesforceToPG
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
-      #importAccountingRuleHeader = ImportAccountingRuleHeader.new
-      #importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importAccountingRuleHeader = ImportAccountingRuleHeader.new
+      importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleLine..
-      #importAccountingRuleLine = ImportAccountingRuleLine.new
-      #importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importAccountingRuleLine = ImportAccountingRuleLine.new
+      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingSegmentSetup..
-      #importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
-      #importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
+      importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAddress..
       importAddress = ImportAddress.new

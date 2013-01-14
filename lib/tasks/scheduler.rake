@@ -3,7 +3,7 @@ task :import_data => :environment do
     puts "Begin Importing Data..."
     require 'import_data.rb'
     iSFtoPGTask =  ImportSalesforceToPG.new
-    iSFtoPGTask.importEverything('admin@30df.org','Merc@12346CA5XzjJEfkiHlq1YjzFUuDM','00DE0000000II8g','')
+    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g','')
     puts "done."
 end
 
@@ -11,7 +11,7 @@ task :import_sadunya_data => :environment do
     puts "Begin Importing Sadunyas Data..."
     require 'unmanaged/import_data_from_unmanaged.rb'
     iUnmanagedSFtoPGTask =  ImportUnmanagedSalesforceToPG.new
-    iUnmanagedSFtoPGTask.importEverything('snehal.fulzele@91demo.com','mfiflex@1234oaV1kCNGCxoj65A0oSbfqZ0lQ','00Dd0000000bxQO',' where lastmodifieddate > LAST_MONTH')
+    iUnmanagedSFtoPGTask.importEverything('snehal.fulzele@91demo.com','mfiflex@1234D3Z68dLKAKDsMCCATgAPYdwY','00Dd0000000bxQO',' where lastmodifieddate > LAST_MONTH')
     puts "done."
 end
 
