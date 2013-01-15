@@ -18,8 +18,8 @@ class ImportSalesforceToPG
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
     
       #Importing ImportAccountingRuleHeader..
-      importAccountingRuleHeader = ImportAccountingRuleHeader.new
-      importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importARH = ImportAccountingRuleHeader.new
+      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Setp 12
       #Importing Clients..
