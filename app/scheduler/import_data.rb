@@ -18,8 +18,13 @@ class ImportSalesforceToPG
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
     
       #Importing ImportAccountingRuleHeader..
-      importARH = ImportAccountingRuleHeader.new
+      #importARH = ImportAccountingRuleHeader.new
       #importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
+      #Importing ImportAccountingRuleLine..
+      importAccountingRuleLine = ImportAccountingRuleLine.new
+      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
       
       #Setp 12
       #Importing Clients..
@@ -180,10 +185,6 @@ class ImportSalesforceToPG
       #Importing ImportAccountingPeriod..
       #importAccountingPeriod = ImportAccountingPeriod.new
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAccountingRuleLine..
-      importAccountingRuleLine = ImportAccountingRuleLine.new
-      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingSegmentSetup..
       importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
