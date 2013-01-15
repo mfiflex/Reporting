@@ -17,6 +17,10 @@ class ImportSalesforceToPG
     databaseConfig =  Rails.configuration.database_configuration
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
     
+      #Importing ImportAccountingRuleHeader..
+      importAccountingRuleHeader = ImportAccountingRuleHeader.new
+      importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
       #Setp 12
       #Importing Clients..
       #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake 
@@ -176,10 +180,6 @@ class ImportSalesforceToPG
       #Importing ImportAccountingPeriod..
       #importAccountingPeriod = ImportAccountingPeriod.new
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAccountingRuleHeader..
-      importAccountingRuleHeader = ImportAccountingRuleHeader.new
-      importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleLine..
       importAccountingRuleLine = ImportAccountingRuleLine.new
