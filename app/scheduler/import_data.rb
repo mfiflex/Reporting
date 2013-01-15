@@ -11,7 +11,7 @@ class ImportSalesforceToPG
     
   def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId,whereClause)
     #Read config in the caller code
-    config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
+    #config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
     #get Connection
     #conn = PG.connect('localhost', '5432', '','','mfiforce', 'postgres','' )
     databaseConfig =  Rails.configuration.database_configuration
