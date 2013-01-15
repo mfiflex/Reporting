@@ -3,7 +3,7 @@ require 'csv'
 require 'Constants'
 require 'pg'
 require 'mailer'
-
+require 'import_Accounting_Rule_Line'
 
 class ImportSalesforceToPG
   include MFiFlexConstants
