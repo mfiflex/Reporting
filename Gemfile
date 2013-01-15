@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.11'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 #gem 'asf-soap-adapter', :require => 'activerecord-activesalesforce-adapter'

@@ -11,7 +11,7 @@ task :import_sadunya_data => :environment do
     puts "Begin Importing Sadunyas Data..."
     require 'unmanaged/import_data_from_unmanaged.rb'
     iUnmanagedSFtoPGTask =  ImportUnmanagedSalesforceToPG.new
-    iUnmanagedSFtoPGTask.importEverything('snehal.fulzele@91demo.com','mfiflex@1234oaV1kCNGCxoj65A0oSbfqZ0lQ','00Dd0000000bxQO',' where lastmodifieddate > LAST_MONTH')
+    iUnmanagedSFtoPGTask.importEverything('snehal.fulzele@91demo.com','mfiflex@1234D3Z68dLKAKDsMCCATgAPYdwY','00Dd0000000bxQO',' where lastmodifieddate > LAST_MONTH')
     puts "done."
 end
 
