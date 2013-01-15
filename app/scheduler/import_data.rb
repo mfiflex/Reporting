@@ -19,7 +19,7 @@ class ImportSalesforceToPG
     
       #Importing ImportAccountingRuleHeader..
       importARH = ImportAccountingRuleHeader.new
-      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Setp 12
       #Importing Clients..
