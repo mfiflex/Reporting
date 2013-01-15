@@ -178,7 +178,6 @@ class ImportSalesforceToPG
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
-      t2 = Thread.new{
       importAccountingRuleHeader = ImportAccountingRuleHeader.new
       importAccountingRuleHeader.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
