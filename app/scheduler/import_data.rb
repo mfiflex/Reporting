@@ -43,7 +43,10 @@ class ImportSalesforceToPG
     
       #Setp 12
       #Importing Clients..
-      #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake 
+      #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake
+      importARH = ImportAccountingRuleHeader.new
+      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+       
       importC = ImportClient.new
       importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
@@ -202,8 +205,8 @@ class ImportSalesforceToPG
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
-      importARH = ImportAccountingRuleHeader.new
-      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      #importARH = ImportAccountingRuleHeader.new
+      #importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleLine..
       importAccountingRuleLine = ImportAccountingRuleLine.new
