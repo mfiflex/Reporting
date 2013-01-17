@@ -4,6 +4,30 @@ require 'Constants'
 require 'pg'
 require 'mailer'
 require 'import_Accounting_Rule_Line'
+#require 'import_Accounting_Rule_Header'
+require 'import_Accounting_Segment_Setup'
+require 'import_Address'
+require 'import_Annual_Business_Cycle'
+require 'import_Answer'
+require 'import_Archive_Run'
+require 'import_Bank'
+require 'import_Batch_Process_Log'
+require 'import_Branch_Loan_Product'
+
+require 'import_Branch_Location'
+require 'import_Branch_Savings_Product'
+require 'import_Business_Activity'
+require 'import_Business_Event'
+require 'import_Check'
+require 'import_Client_History'
+require 'import_Client_Identification'
+require 'import_Client_Training'
+require 'import_Collection_fee'
+require 'import_Countries'
+
+
+
+
 
 class ImportSalesforceToPG
   include MFiFlexConstants
@@ -17,15 +41,6 @@ class ImportSalesforceToPG
     databaseConfig =  Rails.configuration.database_configuration
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
     
-      #Importing ImportAccountingRuleHeader..
-      #importARH = ImportAccountingRuleHeader.new
-      #importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAccountingRuleLine..
-      importAccountingRuleLine = ImportAccountingRuleLine.new
-      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      
       #Setp 12
       #Importing Clients..
       #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake 
@@ -185,6 +200,15 @@ class ImportSalesforceToPG
       #Importing ImportAccountingPeriod..
       #importAccountingPeriod = ImportAccountingPeriod.new
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
+      #Importing ImportAccountingRuleHeader..
+      importARH = ImportAccountingRuleHeader.new
+      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
+      #Importing ImportAccountingRuleLine..
+      importAccountingRuleLine = ImportAccountingRuleLine.new
+      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
       
       #Importing ImportAccountingSegmentSetup..
       importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
