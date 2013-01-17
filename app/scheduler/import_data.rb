@@ -13,7 +13,6 @@ require 'import_Archive_Run'
 require 'import_Bank'
 require 'import_Batch_Process_Log'
 require 'import_Branch_Loan_Product'
-
 require 'import_Branch_Location'
 require 'import_Branch_Savings_Product'
 require 'import_Business_Activity'
@@ -24,10 +23,46 @@ require 'import_Client_Identification'
 require 'import_Client_Training'
 require 'import_Collection_Fee'
 require 'import_Countries'
-
-
-
-
+require 'import_Currency'
+require 'import_Daily_Loan_Accrual'
+require 'import_Day_Process'
+require 'import_Disbursal_Adjustment'
+require 'import_Due_Fee'
+require 'import_Employment_Business_Detail'
+require 'import_Failed_Loan_Account'
+require 'import_Family_Details'
+require 'import_Family_Employment_Details'
+require 'import_Financial_Education'
+require 'import_Guarantor_Details'
+require 'import_Holiday'
+require 'import_Home_Evaluation'
+require 'import_Insurance_Product'
+require 'import_Interest_On_Overdue_Payment'
+require 'import_Journal'
+require 'import_MfError'
+require 'import_Office_Name'
+require 'import_Overdue_Fee'
+require 'import_Paid_Fee'
+require 'import_Payment_Mode'
+require 'import_Poverty_Likelihood_Chart'
+require 'import_PPI_Household_Data'
+require 'import_PPI_Indicator'
+require 'import_Product_Category'
+require 'import_Question_Junction'
+require 'import_Question_Set'
+require 'import_Question'
+require 'import_Quick_Link'
+require 'import_Recovery_Order'
+require 'import_Repayment_Schedule'
+require 'import_Repayment_Transaction_Adjustment'
+require 'import_Sales_Income_Estimate'
+require 'import_Savings_Payment_Transaction'
+require 'import_Scheduled_Job'
+require 'import_Scheduled_Queries'
+require 'import_Search'
+require 'import_Staff'
+require 'import_Value_Sets'
+require 'import_Value_Set_Values'
 
 class ImportSalesforceToPG
   include MFiFlexConstants
@@ -44,9 +79,7 @@ class ImportSalesforceToPG
       #Setp 12
       #Importing Clients..
       #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake
-      importARH = ImportAccountingRuleHeader.new
-      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-       
+             
       importC = ImportClient.new
       importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
@@ -205,8 +238,8 @@ class ImportSalesforceToPG
       #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleHeader..
-      #importARH = ImportAccountingRuleHeader.new
-      #importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      importARH = ImportAccountingRuleHeader.new
+      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
       #Importing ImportAccountingRuleLine..
       importAccountingRuleLine = ImportAccountingRuleLine.new
