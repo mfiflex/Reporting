@@ -22,7 +22,7 @@ require 'import_Check'
 require 'import_Client_History'
 require 'import_Client_Identification'
 require 'import_Client_Training'
-require 'import_Collection_fee'
+require 'import_Collection_Fee'
 require 'import_Countries'
 
 
