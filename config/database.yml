@@ -15,11 +15,11 @@ development:
    pool: 5
    timeout: 5000
    adapter: postgresql
-   database: postgres
+   database: LocalDB
    host: localhost
    port: 5432
    username: postgres
-   password: Merc$123
+   password: plus4444
   
   #TEST LOCAL UNAMANGED
   #pool: 5

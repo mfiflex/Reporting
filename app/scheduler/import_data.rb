@@ -69,14 +69,17 @@ class ImportSalesforceToPG
   include MFiFlexConstants
   include Databasedotcom::Rails::Controller
     
-  def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId,whereClause)
+  def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId,conn,whereClause)
     #Read config in the caller code
     #config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
     #get Connection
     #conn = PG.connect('localhost', '5432', '','','mfiforce', 'postgres','' )
-    databaseConfig =  Rails.configuration.database_configuration
-    conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
-    
+   # databaseConfig =  Rails.configuration.database_configuration
+   # conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
+      time_utc = Time.now.to_s
+      field_values = "'" + salesforceOrgId + "'," + "'" + time_utc + "'" 
+      last_fetch_date_string = "insert into mfiforce__last_fetch_date_c(salesforce_org_id,lastfetchdate) values (" + field_values + ")"        
+      conn.exec(last_fetch_date_string)
       #Setp 12
       #Importing Clients..
       #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake
@@ -491,8 +494,11 @@ class ImportSalesforceToPG
       #Importing ImportValueSetValues..
       importValueSetValues = ImportValueSetValues.new
       importValueSetValues.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
+      
+      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'SUCCESS'")
     
     rescue Exception => e  
+      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'ERROR'")     
       puts e.message  
       puts e.backtrace.inspect 
       Mailer.mailTo('gaurav.singh@mfiflex.co.in','MFiFlex could not import data today. Error message: ' + e.message).deliver
