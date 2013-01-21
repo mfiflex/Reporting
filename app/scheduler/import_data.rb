@@ -495,10 +495,10 @@ class ImportSalesforceToPG
       importValueSetValues = ImportValueSetValues.new
       importValueSetValues.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
       
-      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'SUCCESS'")
+      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'SUCCESS' where lastfetchdate = (select lastfetchdate from mfiforce__last_fetch_date_c order by lastfetchDate desc limit 1)")
     
     rescue Exception => e  
-      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'ERROR'")     
+      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'ERROR' where lastfetchdate = (select lastfetchdate from mfiforce__last_fetch_date_c order by lastfetchDate desc limit 1)")     
       puts e.message  
       puts e.backtrace.inspect 
       Mailer.mailTo('gaurav.singh@mfiflex.co.in','MFiFlex could not import data today. Error message: ' + e.message).deliver
