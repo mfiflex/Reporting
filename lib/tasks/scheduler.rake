@@ -1,3 +1,4 @@
+require 'time'
 desc "This task is called by the Heroku scheduler add-on"
 task :import_data => :environment do
     puts "Begin Importing Data..."
@@ -12,10 +13,10 @@ task :import_data => :environment do
     puts "done."
     else
     last_fetched_date = date_res[0]['lastfetchdate']
+    last_fetched_date_conv = Time.parse(time_now).getutc.iso8601
     puts "i am here"
-    where_clause = ' where lastmodifieddate > ' + last_fetched_date
-    puts where_clause
-    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,where_clause)
+    puts last_fetched_date_conv
+    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,' where lastmodifieddate > '+last_fetched_date_conv)
     puts "done."        
     end
     
