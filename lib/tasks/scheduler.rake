@@ -13,7 +13,7 @@ task :import_data => :environment do
     puts "done."
     else
     last_fetched_date = date_res[0]['lastfetchdate']
-    last_fetched_date_conv = Time.parse(time_now).getutc.iso8601
+    last_fetched_date_conv = Time.parse(last_fetched_date).getutc.iso8601
     puts "i am here"
     puts last_fetched_date_conv
     iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,' where lastmodifieddate > '+last_fetched_date_conv)
