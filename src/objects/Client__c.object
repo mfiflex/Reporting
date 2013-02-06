@@ -1,0 +1,1293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Microfinance Client</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Address_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address 1</label>
+        <length>50</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address 2</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_3__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address 3</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Am_I_awesome__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Am I awesome</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Business_Activity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Business Activity</label>
+        <referenceTo>Business_Activity__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Center__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Center</label>
+        <referenceTo>Center__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Check_for_Duplicates__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Check for Duplicates</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Citizenship__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Citizenship</label>
+        <picklist>
+            <picklistValues>
+                <fullName>India</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>City_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>City Name</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Bombay</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>kolkatta</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delhi</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chennai</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ClientCnt__c</fullName>
+        <defaultValue>1</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>ClientCnt</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_External_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Client External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is the point at which client is first Approved.</description>
+        <externalId>false</externalId>
+        <label>Client Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Client_Training__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Client Training</label>
+        <summaryForeignKey>Client_Training__c.Client_ID__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <picklist>
+            <picklistValues>
+                <fullName>INDIA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Current_Loan_Officer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Loan Officer</label>
+        <referenceTo>Staff__c</referenceTo>
+        <relationshipLabel>Clients (Current Loan Officer)</relationshipLabel>
+        <relationshipName>Clients1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_Birth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date of Birth</description>
+        <externalId>false</externalId>
+        <label>Date of Birth</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>District__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>District</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Bugesera</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Burera</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gakenke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gasabo</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Education_level__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Education level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>None</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10th</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>12th</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Graduate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Employment_Business_Details_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Employment/Business Details Count</label>
+        <summaryForeignKey>Employment_Business_Detail__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Ethnicity__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Ethnicity</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Indian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Family_Details_Rec_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Family Details Rec Count</label>
+        <summaryForeignKey>Family_Details__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Family_Employment_Details_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Family Employment Details Count</label>
+        <summaryForeignKey>Family_Employment_Details__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Set__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Fee Set for Client Registration</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fee Set for Client Registration</inlineHelpText>
+        <label>Fee Set</label>
+        <referenceTo>Fee_Set__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Fees_Collected__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Fees Collected</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fees Collected</inlineHelpText>
+        <label>Fees Collected</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Financial_Education__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Financial Education</label>
+        <summaryForeignKey>Financial_Education__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>First_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Given Name</description>
+        <externalId>false</externalId>
+        <label>First Name</label>
+        <length>50</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Female</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Male</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Government_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>Government ID or National ID</description>
+        <externalId>false</externalId>
+        <label>Government ID #</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Group</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Group</inlineHelpText>
+        <label>Group</label>
+        <referenceTo>Group__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Handicapped__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Handicapped</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Home_Evaluation_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Home Evaluation Count</label>
+        <summaryForeignKey>Home_Evaluation__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Home_Town__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Home Town</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This variable store the total count of identification detail records for particular client.</description>
+        <externalId>false</externalId>
+        <label>Identification Details Count</label>
+        <summaryForeignKey>Client_Identification__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Is_Mandate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this field when Details are related to Customer Relative.</inlineHelpText>
+        <label>Is Mandate</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Family Name</description>
+        <externalId>false</externalId>
+        <label>Last Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Officer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Officer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Marital_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Marital Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Single</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Married</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Widowed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Divorced</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Abandoned</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Middle_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Middle Name</description>
+        <externalId>false</externalId>
+        <label>Middle Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>New Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nominee__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Nominee</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>Clients (Nominee)</relationshipLabel>
+        <relationshipName>Clients2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackHistory>true</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_of_children__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Number of children</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Office__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Branch</label>
+        <referenceTo>Office_Name__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Religion__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Religion</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Income_Estimate_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Sales Income Estimate Count</label>
+        <summaryForeignKey>Sales_Income_Estimate__c.Client__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Salutation__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Salutation</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Mr.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mrs.</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ms</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Source_Loan_Officer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Source Loan Officer</label>
+        <referenceTo>Staff__c</referenceTo>
+        <relationshipLabel>Clients</relationshipLabel>
+        <relationshipName>Clients</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Spouse_Father_s_First_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Spouse&apos;s or Father&apos;s Given Name</description>
+        <externalId>false</externalId>
+        <label>Spouse/Father &apos;s First Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spouse_Father_s_Last_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Spouse&apos;s or Father&apos;s Family Name</description>
+        <externalId>false</externalId>
+        <label>Spouse/Father&apos;s Last Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spouse_Father_s_Middle_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Spouse&apos;s or Father&apos;s Middle Name</description>
+        <externalId>false</externalId>
+        <label>Spouse/Father&apos;s Middle Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Spouse_or_Father__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Spouse or Father?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Father</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spouse</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Andaman and Nicobar Islands</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Andhra Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Arunachal Prades</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Assam</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bihar</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chandigarh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Chhattisgarh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dadra and Nagar Haveli</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Daman and Diu</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Delhi</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Goa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gujarat</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Haryana</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Himachal Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jammu and Kashmir</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jharkhand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Karnataka</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kerala</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lakshadweep</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Madhya Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maharashtra</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manipurß</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meghalaya</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mizoram</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nagaland</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Orissa</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Puducherry</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Punjab</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rajasthan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sikkim</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tamil Nadu</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tripura</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uttarakhand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Uttar Pradesh</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>West Bengal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partial Application</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Telephone_No__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Telephone No.</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Fees_Charged__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Total Fees Charged</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trained__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Indicates whether a client has been trained</description>
+        <externalId>false</externalId>
+        <label>Trained On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Vicinity__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Landmark</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zipcode__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Zipcode</label>
+        <length>6</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Zone__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Zone</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isBioScanRegistered__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>this is auto-checked when biometric scan is registered for user</description>
+        <externalId>false</externalId>
+        <label>isBioScanRegistered</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isMember__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( Client_Training__c  &gt; 0  , &apos;Yes&apos;, &apos;No&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>isMember</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Client</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Address_2__c</columns>
+        <columns>First_Name__c</columns>
+        <columns>Last_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>C-{00000000}</displayFormat>
+        <label>Client ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01IE00000000EA1MAM_00NE0000000IWI5MAO</fullName>
+        <active>true</active>
+        <field>Group__c.Group_Leader__c</field>
+        <filterItems>
+            <field>Client__c.Group__r.Id</field>
+            <operation>equals</operation>
+            <valueField>$Source.Id</valueField>
+        </filterItems>
+        <filterItems>
+            <field>Client__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Group_Group Leader</name>
+        <sourceObject>Group__c</sourceObject>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000EM2MAM_00NE0000000G74rMAC</fullName>
+        <active>true</active>
+        <field>Loan_Account__c.Client__c</field>
+        <filterItems>
+            <field>Client__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Loan Account_Client</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000En3MAE_00NE0000000GRSkMAO</fullName>
+        <active>true</active>
+        <field>Savings_Account__c.Client_ID__c</field>
+        <filterItems>
+            <field>Client__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Account_Client ID</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000MpEMAU_00NE0000000GmnCMAS</fullName>
+        <active>true</active>
+        <errorMessage>Selected client in the PPI form is not active.</errorMessage>
+        <field>PPI_Household_Data__c.Client__c</field>
+        <filterItems>
+            <field>Client__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>PPI Household Data_Client</name>
+    </namedFilters>
+    <pluralLabel>Clients</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Office__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>First_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Last_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Loan_Officer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Group__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Center__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>First_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Last_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Group__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>First_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Last_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Group__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Address1_Special_char_check</fullName>
+        <active>true</active>
+        <description>Address1 Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX( Address_1__c , &quot;^[a-zA-Z0-9-&amp;/#\\s]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Address_1__c</errorDisplayField>
+        <errorMessage>Address should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Address2_Special_char_check</fullName>
+        <active>false</active>
+        <description>Address Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX( Address_2__c , &quot;^[a-zA-Z0-9-&amp;/#\\s]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Address_2__c</errorDisplayField>
+        <errorMessage>Address should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Address3_Special_char_check</fullName>
+        <active>false</active>
+        <description>Address Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX( Address_3__c , &quot;^[a-zA-Z0-9-&amp;/#\\s]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Address_3__c</errorDisplayField>
+        <errorMessage>Address should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Age_Between_18_and_60</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR
+      ((IF(
+             MONTH(TODAY())&gt;MONTH( Date_of_Birth__c ),
+             YEAR(TODAY())-YEAR(Date_of_Birth__c ),
+             IF(AND(MONTH(TODAY()) = MONTH(Date_of_Birth__c ), DAY(TODAY()) &gt;=      
+             DAY(Date_of_Birth__c )),YEAR(TODAY())-YEAR(Date_of_Birth__c),
+             (YEAR(TODAY())-YEAR(Date_of_Birth__c ))-1)
+             )
+             &lt;  18) ,
+       (IF(
+            MONTH(TODAY())&gt;MONTH( Date_of_Birth__c ),
+            YEAR(TODAY())-YEAR(Date_of_Birth__c ),
+            IF(AND(MONTH(TODAY()) = MONTH(Date_of_Birth__c ), DAY(TODAY()) &gt;= 
+            DAY(Date_of_Birth__c )),YEAR(TODAY())-YEAR(Date_of_Birth__c),
+           (YEAR(TODAY())-YEAR(Date_of_Birth__c ))-1)
+           )
+           &gt;   60))</errorConditionFormula>
+        <errorDisplayField>Date_of_Birth__c</errorDisplayField>
+        <errorMessage>Age should be between18 to 60 years</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Center_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISBLANK(Center__c)) &amp;&amp; NOT(ISBLANK( Group__c )) &amp;&amp; ( Group__r.Center__c !=  Center__c || ISBLANK(Group__r.Center__c))</errorConditionFormula>
+        <errorMessage>User entered Center does not match Center for Group</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Max_Number_of_Persons</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT( ISBLANK( Group__c ) ) &amp;&amp;  (Group__r.Maximum_number_of_persons__c  =  Group__r.Number_of_Active_Clients__c )</errorConditionFormula>
+        <errorMessage>You cannot add more clients to this group. The allowable number of clients has already been reached.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>City_Special_char_check</fullName>
+        <active>false</active>
+        <description>City_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX( Address_3__c , &quot;^[a-zA-Z\\s]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>City__c</errorDisplayField>
+        <errorMessage>City should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ClientStartDate</fullName>
+        <active>false</active>
+        <description>This will not work here. Will only work in a trigger. Because otherwise you can never make any changes to a client! E.g. add a fee set. So deactivating for now.</description>
+        <errorConditionFormula>Client_Start_Date__c  &lt;    TODAY()</errorConditionFormula>
+        <errorMessage>The client&apos;s start date cannot be before today.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>EitherCenterOrGroupCheck</fullName>
+        <active>false</active>
+        <description>The client&apos;s Loan Officer and the Group&apos;s/Center&apos;s Loan Officer must be the same.</description>
+        <errorConditionFormula>((Group__c &lt;&gt; null) &amp;&amp; ( Loan_Officer__r.Id   &lt;&gt; Group__r.Assigned_LO__r.Id))  || (( Center__c  &lt;&gt; null) &amp;&amp; ( Loan_Officer__r.Id   &lt;&gt;  Center__r.Loan_Officer__r.Id ))</errorConditionFormula>
+        <errorMessage>The client&apos;s Loan Officer and the Group&apos;s/Center&apos;s Loan Officer must be the same.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FirstName_Special_char_check</fullName>
+        <active>true</active>
+        <description>FirstName_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(  First_Name__c  , &quot;^[a-zA-Z]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>First_Name__c</errorDisplayField>
+        <errorMessage>First Name should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>GovernmentID_Special_char_check</fullName>
+        <active>true</active>
+        <description>GovernmentID_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(  Government_ID__c  , &quot;^[a-zA-Z0-9-\\s]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Government_ID__c</errorDisplayField>
+        <errorMessage>GovernmentID should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Group_Staus_check</fullName>
+        <active>true</active>
+        <description>Group_Staus_check</description>
+        <errorConditionFormula>NOT(ISBLANK(Group__c) || ISNULL(Group__c))
+&amp;&amp; NOT( ISPICKVAL( Group__r.Group_Status__c , &apos;Approved&apos;) )</errorConditionFormula>
+        <errorMessage>The Group is not yet  Approved</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LastName_Special_char_check</fullName>
+        <active>true</active>
+        <description>LastName_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(   Last_Name__c   , &quot;^[a-zA-Z0-9-\\s]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Last_Name__c</errorDisplayField>
+        <errorMessage>Last Name should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>MiddleName_Special_char_check</fullName>
+        <active>true</active>
+        <description>MiddleName_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(    Middle_Name__c   , &quot;^[a-zA-Z]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Middle_Name__c</errorDisplayField>
+        <errorMessage>Middle Name should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_of_children_check</fullName>
+        <active>true</active>
+        <description>No of children check</description>
+        <errorConditionFormula>OR(
+          Number_of_children__c &gt; 20,Number_of_children__c &lt; 0
+)</errorConditionFormula>
+        <errorDisplayField>Number_of_children__c</errorDisplayField>
+        <errorMessage>Number of children should be an integer less than 20</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Spouse_FirstName_Special_char_check</fullName>
+        <active>true</active>
+        <description>Spouse_FirstName_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(     Spouse_Father_s_First_Name__c    , &quot;^[a-zA-Z]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Spouse_Father_s_First_Name__c</errorDisplayField>
+        <errorMessage>First Name should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Spouse_LastName_Special_char_check</fullName>
+        <active>true</active>
+        <description>Spouse_LastName_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(      Spouse_Father_s_Last_Name__c    , &quot;^[a-zA-Z]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Spouse_Father_s_Last_Name__c</errorDisplayField>
+        <errorMessage>Last Name should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Spouse_MiddleName_Special_char_check</fullName>
+        <active>true</active>
+        <description>Spouse_MiddleName_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX( Spouse_Father_s_Middle_Name__c   , &quot;^[a-zA-Z]*$&quot;))</errorConditionFormula>
+        <errorDisplayField>Spouse_Father_s_Middle_Name__c</errorDisplayField>
+        <errorMessage>Middle Name should not include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Telephone_Special_char_check</fullName>
+        <active>false</active>
+        <description>Telephone_Special_char_check</description>
+        <errorConditionFormula>NOT(REGEX(  Telephone_No__c    , &quot;^[0-9]{10}$&quot;))</errorConditionFormula>
+        <errorDisplayField>Telephone_No__c</errorDisplayField>
+        <errorMessage>Invalid Telephone No.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Zipcode_check</fullName>
+        <active>false</active>
+        <description>Zipcode_check</description>
+        <errorConditionFormula>NOT(REGEX( Zipcode__c , &quot;\\d{6}&quot;))</errorConditionFormula>
+        <errorMessage>Invalid Zipcode</errorMessage>
+    </validationRules>
+</CustomObject>

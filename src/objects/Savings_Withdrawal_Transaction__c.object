@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Savings Withdrawal Transaction</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Receipt_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Receipt Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Receipt_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <displayFormat>RTRID-{0000000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Receipt ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Savings_Account__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Savings Account</label>
+        <referenceTo>Savings_Account__c</referenceTo>
+        <relationshipLabel>Savings Withdrawal Transactions</relationshipLabel>
+        <relationshipName>Savings_Withdrawal_Transactions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Withdrawal_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Withdrawal Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Withdrawal_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Withdrawal Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <label>Savings Withdrawal Transaction</label>
+    <nameField>
+        <displayFormat>SWT-{000000000}</displayFormat>
+        <label>Savings Withdrawal TransactionID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Savings Withdrawal Transactions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Max_Withdrwal_Amount_check</fullName>
+        <active>true</active>
+        <description>Max_Withdrwal_Amount_check</description>
+        <errorConditionFormula>OR(
+             ( Withdrawal_Amount__c   &gt;  
+             Savings_Account__r.Savings_Product_Name__r.Max_Amount_Per_Withdrawal__c),
+             ( Withdrawal_Amount__c   &gt;    Savings_Account__r.Balance__c  )
+)</errorConditionFormula>
+        <errorDisplayField>Withdrawal_Amount__c</errorDisplayField>
+        <errorMessage>Amount should be within the withdrawal limits and less than account balance.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Savings_Account_Status_check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( Savings_Account__r.Status__c , &apos;Inactive&apos;)</errorConditionFormula>
+        <errorMessage>The account has not been activated yet.</errorMessage>
+    </validationRules>
+</CustomObject>

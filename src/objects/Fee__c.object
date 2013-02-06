@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Fee</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number or % 
+Amount, is a flat amount. For other fee calculation methods, this is a % amount.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number or % 
+Amount, is a flat amount. For other fee calculation methods, this is a % amount.</inlineHelpText>
+        <label>Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Currency__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Currency</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Currency</inlineHelpText>
+        <label>Currency</label>
+        <referenceTo>Currency__c</referenceTo>
+        <relationshipLabel>Fees</relationshipLabel>
+        <relationshipName>Fees</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Default_fees__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Default fees</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Calculation_Method__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Fee Calculation Method</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fee Calculation Method</inlineHelpText>
+        <label>Fee Calculation Method</label>
+        <picklist>
+            <controllingField>Time_of_charge__c</controllingField>
+            <picklistValues>
+                <fullName>Amount calculated as % of loan amount</fullName>
+                <controllingFieldValues>Spread across Loan Repayments</controllingFieldValues>
+                <controllingFieldValues>Time of Disbursement</controllingFieldValues>
+                <controllingFieldValues>Time of First Repayment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amount calculated as % of (loan amount + interest)</fullName>
+                <controllingFieldValues>Spread across Loan Repayments</controllingFieldValues>
+                <controllingFieldValues>Time of Disbursement</controllingFieldValues>
+                <controllingFieldValues>Time of First Repayment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amount calculated as % on interest</fullName>
+                <controllingFieldValues>FD Early Withdrawal Penalty</controllingFieldValues>
+                <controllingFieldValues>Spread across Loan Repayments</controllingFieldValues>
+                <controllingFieldValues>Time of Disbursement</controllingFieldValues>
+                <controllingFieldValues>Time of First Repayment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fixed</fullName>
+                <controllingFieldValues>Check Bounce</controllingFieldValues>
+                <controllingFieldValues>FD Early Withdrawal Penalty</controllingFieldValues>
+                <controllingFieldValues>Spread across Loan Repayments</controllingFieldValues>
+                <controllingFieldValues>Time of Disbursement</controllingFieldValues>
+                <controllingFieldValues>Time of First Repayment</controllingFieldValues>
+                <controllingFieldValues>Time of Registration</controllingFieldValues>
+                <default>true</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Category__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Fee Category</description>
+        <externalId>false</externalId>
+        <label>Fee Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Loan</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Savings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Income_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Fee Income Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>Fees</relationshipLabel>
+        <relationshipName>Fees</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Interest_Bearing__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Interest Bearing</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Interest_Rate__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Interest Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maintenance_Fee_s_Frequency__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Maintenance Fee&apos;s Frequency</label>
+        <picklist>
+            <controllingField>Time_of_charge__c</controllingField>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yearly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Refundable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Refundable</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>State__c</fullName>
+        <deprecated>false</deprecated>
+        <description>State</description>
+        <externalId>false</externalId>
+        <inlineHelpText>State</inlineHelpText>
+        <label>State</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Suspended_Fee_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Suspended Fee Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>Fees (Suspended Fee Account)</relationshipLabel>
+        <relationshipName>Fees_SFA</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Time_of_charge__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Time of charge</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Time of charge</inlineHelpText>
+        <label>Time of charge</label>
+        <picklist>
+            <controllingField>Fee_Category__c</controllingField>
+            <picklistValues>
+                <fullName>Time of First Repayment</fullName>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spread across Loan Repayments</fullName>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Time of Registration</fullName>
+                <controllingFieldValues>Client</controllingFieldValues>
+                <controllingFieldValues>Group</controllingFieldValues>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <controllingFieldValues>Savings</controllingFieldValues>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Time of Disbursement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Late Fees</fullName>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Maintenance Fees</fullName>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pay-Off Fees</fullName>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Check Bounce</fullName>
+                <controllingFieldValues>Insurance</controllingFieldValues>
+                <controllingFieldValues>Loan</controllingFieldValues>
+                <controllingFieldValues>Savings</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FD Early Withdrawal Penalty</fullName>
+                <controllingFieldValues>Savings</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <label>Fee</label>
+    <nameField>
+        <label>Fee Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Fees</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

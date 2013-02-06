@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Is_Training_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>When this box is checked, loan can not be approved without training details</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this when you want training details mandatory while loan approval.</inlineHelpText>
+        <label>Is Training Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Product__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Product</label>
+        <referenceTo>Loan_Product__c</referenceTo>
+        <relationshipLabel>Loan Approval Prerequisites</relationshipLabel>
+        <relationshipName>Loan_Approval_Prerequisites</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Minimum_Number_of_Deposits__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Minimum Number of Deposits</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_Savings_Balance__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Minimum Savings Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_Waiting_Time_For_Loan__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Minimum Waiting Time For Loan</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Track_Balance_Sheet__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Balance Sheet</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Cash_Flow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Cash Flow</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Employment_Business_Details__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Employment / Business Details</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Family_Details__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Family Details</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Family_Employment_Details__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Family Employment Details</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Financial_Education__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Financial Education</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Home_Evaluation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Home Evaluation</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Other_Income__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Other Income</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Ratios__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Ratios</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Sales_Income_Estimate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Sales / Income Estimate</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Sales_by_Product_Gross_Margin__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Sales by Product &amp; Gross Margin</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Savings_History__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Savings History</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Track_Summary_of_Income__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Track Summary of Income</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Use_Sum_of_All_Deposits__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Use Sum of All Deposits</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Loan Approval Prerequisites</label>
+    <nameField>
+        <displayFormat>LAPR-{00000000}</displayFormat>
+        <label>Loan Approval Prerequisites ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Loan Approval Prerequisites</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

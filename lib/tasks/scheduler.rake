@@ -6,17 +6,21 @@ task :import_data => :environment do
     iSFtoPGTask =  ImportSalesforceToPG.new
     databaseConfig =  Rails.configuration.database_configuration
     conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
-    date_res = conn.exec('select lastfetchdate from mfiforce__last_fetch_date_c order by lastfetchDate desc limit 1')
-    if (date_res.ntuples == 0)
+    
+    check_status_table = conn.exec("select * from pg_tables where tablename='mfiforce__last_fetch_date_c'")
+    puts check_status_table
+    if (check_status_table.ntuples == 0)
     puts("nil is here")
-    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,'')
+    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','Merc@1234','bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,'')
     puts "done."
     else
-    last_fetched_date = date_res[0]['lastfetchdate']
+    date_res = conn.exec('select lastfetchStartDate from mfiforce__last_fetch_date_c order by lastfetchStartDate desc limit 1')  
+    last_fetched_date = date_res[0]['lastfetchstartdate']
+    puts last_fetched_date
     last_fetched_date_conv = Time.parse(last_fetched_date).getutc.iso8601
     puts "i am here"
     puts last_fetched_date_conv
-    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,' where lastmodifieddate > '+last_fetched_date_conv)
+    iSFtoPGTask.importEverything('admin@30df.org','Merc@1234bhBAA23eAUxkvupbnJ6riKzkY','Merc@1234','bhBAA23eAUxkvupbnJ6riKzkY','00DE0000000II8g',conn,' where lastmodifieddate > '+last_fetched_date_conv)
     puts "done."        
     end
     

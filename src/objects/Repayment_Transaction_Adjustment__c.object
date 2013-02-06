@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Repayment Transaction Adjustment Object</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Adjustment_Txn_Date__c</fullName>
+        <defaultValue>$User.Current_Branch_s_System_Date__c</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Adjustment Txn Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Adjustment Txn Date</inlineHelpText>
+        <label>Adjustment Txn Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Cleared__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cleared</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Payment_Transaction__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Loan Payment Transaction</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Payment Transaction</inlineHelpText>
+        <label>Loan Payment Transaction</label>
+        <referenceTo>Loan_Payment_Transaction__c</referenceTo>
+        <relationshipName>Repayment_Transaction_Adjustment</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Receipt_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <displayFormat>RATID-{0000000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Receipt ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Rejected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rejected</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Repayment Transaction Reversal</label>
+    <nameField>
+        <displayFormat>RTA-{0000000000}</displayFormat>
+        <label>Repayment Transaction Adjustment ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Repayment Transaction Reversal</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Check_Clear_Flag</fullName>
+        <active>true</active>
+        <errorConditionFormula>(Loan_Payment_Transaction__r.Cleared__c == false &amp;&amp; Loan_Payment_Transaction__r.Rejected__c == false) ||  Loan_Payment_Transaction__r.Rejected__c == true</errorConditionFormula>
+        <errorMessage>An uncleared or rejected payment transaction cannot be reversed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Existing_Reversal_Txn</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp;  Loan_Payment_Transaction__r.Cleared_Reversal_Txn_Count__c &gt; 0</errorConditionFormula>
+        <errorMessage>This repayment transaction has already been reversed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Transaction_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Adjustment_Txn_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>Transaction date cannot be greater than calendar date.</errorMessage>
+    </validationRules>
+</CustomObject>

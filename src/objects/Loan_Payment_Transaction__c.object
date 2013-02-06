@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>regularPayment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>regularPayment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>regularPayment</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Loan Payment Transaction</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Affected_Installment_Ids__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Affected Installment Ids</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Balance_s_Snapshot__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Balance&apos;s Snapshot</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Check__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Check</label>
+        <referenceTo>Check__c</referenceTo>
+        <relationshipLabel>Loan Payment Transactions</relationshipLabel>
+        <relationshipName>Loan_Payment_Transactions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cleared_Reversal_Txn_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cleared Reversal Txn Count</label>
+        <summaryFilterItems>
+            <field>Repayment_Transaction_Adjustment__c.Cleared__c</field>
+            <operation>equals</operation>
+            <value>true</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Repayment_Transaction_Adjustment__c.Loan_Payment_Transaction__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Cleared__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates if this loan payment transaction is supervised or not.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates if this loan payment transaction is supervised or not.</inlineHelpText>
+        <label>Cleared</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Dues_Snapshot__c</fullName>
+        <defaultValue>&quot;&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Dues Snapshot</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Early_Payment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Payment before the scheduled Payment Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Payment before the scheduled Payment Date</inlineHelpText>
+        <label>Early Payment</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Early_Total_Repayment_of_the_Loan__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>After a loan is disbursed, a client can at any time repay the loan in a single payment. 
+he system calculates the total amount due as of the current date, including principal, interest, fees and penalties.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>After a loan is disbursed, a client can at any time repay the loan in a single payment. 
+he system calculates the total amount due as of the current date, including principal, interest, fees and penalties.</inlineHelpText>
+        <label>Pay-off</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Excess__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Excess</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fee_Snapshot__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field stores an encrypted string of all paid &apos;Overdue Fees&apos; and &apos;Charges&apos;. No need to add &apos;Due Fees&apos; because it is being recorded as a part of &apos;Installment Snapshot&apos; field on the installment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field stores an encrypted string of all paid &apos;Overdue Fees&apos; and &apos;Charges&apos;. No need to add &apos;Due Fees&apos; because it is being recorded as a part of &apos;Installment Snapshot&apos; field on the installment.</inlineHelpText>
+        <label>Fee Snapshot</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Fees__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Fees component for this payment</description>
+        <externalId>false</externalId>
+        <label>Fees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Interest component for this payment.</description>
+        <externalId>false</externalId>
+        <label>Interest</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Account__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Loan Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Account</inlineHelpText>
+        <label>Loan Account</label>
+        <referenceTo>Loan_Account__c</referenceTo>
+        <relationshipLabel>Loan Payment Transactions</relationshipLabel>
+        <relationshipName>Loan_Payment_Transactions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Loan_Snapshot__c</fullName>
+        <defaultValue>&quot;&quot;</defaultValue>
+        <externalId>false</externalId>
+        <label>Loan Snapshot</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Manual_Payment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Manual Payment</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Missed_Loan_Installment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Missed Loan Installment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Missed Loan Installment</inlineHelpText>
+        <label>Missed Loan Installment</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Partial_Payment_del__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Read only field. Checked when the payment is less than scheduled.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Read only field. Checked when the payment is less than scheduled.</inlineHelpText>
+        <label>Partial Payment</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Mode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Payment Mode</label>
+        <referenceTo>Payment_Mode__c</referenceTo>
+        <relationshipLabel>Loan Payment Transactions</relationshipLabel>
+        <relationshipName>Loan_Payment_Transactions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Principal__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Principal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Receipt_Date__c</fullName>
+        <defaultValue>$User.Current_Branch_s_System_Date__c</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Receipt Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Receipt Date</inlineHelpText>
+        <label>Receipt Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Receipt_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Receipt ID</description>
+        <displayFormat>RTRID-{0000000000}</displayFormat>
+        <externalId>false</externalId>
+        <inlineHelpText>Receipt ID</inlineHelpText>
+        <label>Receipt ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Rejected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rejected</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reversed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reversed</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Transaction Amount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Transaction Amount</inlineHelpText>
+        <label>Transaction Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Date__c</fullName>
+        <defaultValue>$User.Current_Branch_s_System_Date__c</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Transaction Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Transaction Date</inlineHelpText>
+        <label>Transaction Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Write_Off_Recovery_Payment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Write Off Recovery Payment</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Loan Payment Transaction</label>
+    <nameField>
+        <displayFormat>LPT-{000000000}</displayFormat>
+        <label>Loan Payment Transaction ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Loan Payment Transactions</pluralLabel>
+    <searchLayouts>
+        <listViewButtons>Loan_Pay_Off</listViewButtons>
+        <lookupDialogsAdditionalFields>Transaction_Amount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Transaction_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Receipt_ID__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Receipt_Date__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Transaction_Amount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Transaction_Date__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Receipt_ID__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Receipt_Date__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Check_Check_Amount</fullName>
+        <active>true</active>
+        <errorConditionFormula>Transaction_Amount__c !=  Check__r.Check_Amount__c</errorConditionFormula>
+        <errorMessage>Transaction amount does not match the check amount.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Payment_Mode</fullName>
+        <active>true</active>
+        <errorConditionFormula>Payment_Mode__r.Name  =  &apos;Check&apos; &amp;&amp; ISBLANK( Check__c )</errorConditionFormula>
+        <errorMessage>Please input a check.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Loan_Disbursal_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Loan_Account__r.Disbursal_Date__c ) ||  ISNULL( Loan_Account__r.Disbursal_Date__c )</errorConditionFormula>
+        <errorMessage>This loan is not disbursed yet. You cannot record payment transaction.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Loan_Status_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; (TEXT(Loan_Account__r.Loan_Status__c) = &apos;Partial Application&apos; || TEXT(Loan_Account__r.Loan_Status__c) = &apos;Pending Approval&apos; || TEXT(Loan_Account__r.Loan_Status__c) = &apos;Canceled&apos; || TEXT(Loan_Account__r.Loan_Status__c) = &apos;Closed - Obligations met&apos; || 
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Closed - Rescheduled&apos; || 
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Disbursed to LO&apos; || 
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Partial Application&apos;)</errorConditionFormula>
+        <errorMessage>Invalid Loan Status. You cannot record a repayment transaction for this loan.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Manual_Payment_Fees_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; Manual_Payment__c &amp;&amp;  (ROUND(Fees__c,2) &gt;   ROUND(Loan_Account__r.Fees_Remaining__c,2)  )</errorConditionFormula>
+        <errorMessage>Fee component cannot be greater than &apos;Remaining Fees&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Manual_Payment_Principal_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; Manual_Payment__c &amp;&amp;  (ROUND(Principal__c,2) &gt;  ROUND(Loan_Account__r.Principal_Remaining__c,2) )</errorConditionFormula>
+        <errorMessage>Principal component cannot be greater than &apos;Remaining Principal&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Manual_Payment_Transaction_Amount_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; Manual_Payment__c &amp;&amp;  (  ROUND(Transaction_Amount__c,2)   !=   ( ROUND(Fees__c,2)  +  ROUND(Interest__c,2)  +  ROUND(Principal__c,2) )  )</errorConditionFormula>
+        <errorMessage>Interest, Principal and Fees must sum up to Transaction amount.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Transaction_Amount_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; (ROUND(Transaction_Amount__c,2)    &gt;   ROUND(Loan_Account__r.Pay_Off_Amount_As_Of_Today__c ,2))</errorConditionFormula>
+        <errorDisplayField>Transaction_Amount__c</errorDisplayField>
+        <errorMessage>Transaction Amount can not be greater than payoff amount.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Transaction_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Transaction_Date__c &gt; TODAY() ||  Receipt_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>Transaction/Receipt date cannot be greater than calendar date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Write_Off_Recovery_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; 
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Closed- Written Off&apos; &amp;&amp;
+ NOT(Write_Off_Recovery_Payment__c)</errorConditionFormula>
+        <errorMessage>This is a written off loan. You will have to select the Write Off Recovery Payment option.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Zero_Txn_Amount_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ROUND(Transaction_Amount__c,2) == 0</errorConditionFormula>
+        <errorMessage>Transaction amount should be greater than zero.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Loan_Pay_Off</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Loan Pay Off</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/loanPayoffTxn?Id={!Loan_Account__c.Id}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Bottom_Half_Below_National_Poverty_Line__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Bottom Half Below National Poverty Line</description>
+        <externalId>false</externalId>
+        <label>Bottom Half Below National Poverty Line</label>
+        <precision>5</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>255</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Max_PPI_Score__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Max PPI Score</label>
+        <precision>3</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Min_PPI_Score__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Min PPI Score</label>
+        <precision>2</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Top_Half_Below_National_Poverty_Line__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Top Half Below National Poverty Line</description>
+        <externalId>false</externalId>
+        <label>Top Half Below National Poverty Line</label>
+        <precision>5</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Total_Above_National_Poverty_Line__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Total Above National Poverty Line</description>
+        <externalId>false</externalId>
+        <label>Total Above National Poverty Line</label>
+        <precision>5</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Total_Below_National_Poverty_Line__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Total Below National Poverty Line</description>
+        <externalId>false</externalId>
+        <label>Total Below National Poverty Line</label>
+        <precision>5</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <label>Poverty Likelihood Chart</label>
+    <nameField>
+        <label>Poverty Likelihood Chart Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Poverty Likelihood Chart</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Total_National_Poverty_Line_check</fullName>
+        <active>true</active>
+        <description>Total_National_Poverty_Line_check</description>
+        <errorConditionFormula>Total_Above_National_Poverty_Line__c +  Total_Below_National_Poverty_Line__c &gt; 100</errorConditionFormula>
+        <errorMessage>Total National Poverty Line % can&apos;t exceed 100%</errorMessage>
+    </validationRules>
+</CustomObject>

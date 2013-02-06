@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Accrual_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date on which accrual is posted.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date on which accrual is posted.</inlineHelpText>
+        <label>Accrual Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Accrued_Interest__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is deprecated and should not be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is deprecated and should not be used.</inlineHelpText>
+        <label>Accrued Interest</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eighteenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Eighteenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Eighteenth day of the month.</inlineHelpText>
+        <label>Eighteenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eigth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for eight day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for eight day of the month.</inlineHelpText>
+        <label>Eight</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eleventh__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Eleventh day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Eleventh day of the month.</inlineHelpText>
+        <label>Eleventh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fifteenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Fifteenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Fifteenth day of the month.</inlineHelpText>
+        <label>Fifteenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fifth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Fifth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Fifth day of the month.</inlineHelpText>
+        <label>Fifth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for first day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for first day of the month.</inlineHelpText>
+        <label>First</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fourteenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Fourteenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Fourteenth day of the month.</inlineHelpText>
+        <label>Fourteenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fourth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Fourth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Fourth day of the month.</inlineHelpText>
+        <label>Fourth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Overdue_Fees__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is deprecated and should not be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is deprecated and should not be used.</inlineHelpText>
+        <label>Interest Overdue Fees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Overdue_Interest__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is deprecated and should not be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is deprecated and should not be used.</inlineHelpText>
+        <label>Interest Overdue Interest</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Overdue_Penalty__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is deprecated and should not be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is deprecated and should not be used.</inlineHelpText>
+        <label>Interest Overdue Penalty</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Overdue_Principal__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is deprecated and should not be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is deprecated and should not be used.</inlineHelpText>
+        <label>Interest Overdue Principal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Account</label>
+        <referenceTo>Loan_Account__c</referenceTo>
+        <relationshipLabel>Daily Loan Accrual</relationshipLabel>
+        <relationshipName>Daily_Loan_Accrual</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Month_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Month Id</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Nineteenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Nineteenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Nineteenth day of the month.</inlineHelpText>
+        <label>Nineteenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ninth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for ninth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for ninth day of the month.</inlineHelpText>
+        <label>Ninth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Outstanding_Principal__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is deprecated and should not be used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is deprecated and should not be used.</inlineHelpText>
+        <label>Outstanding Principal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Posted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Denotes if this accrual entry has been posted into the loan account table.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes if this accrual entry has been posted into the loan account table.</inlineHelpText>
+        <label>Posted</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Second__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for second day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for second day of the month.</inlineHelpText>
+        <label>Second</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seventeenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Seventeenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Seventeenth day of the month.</inlineHelpText>
+        <label>Seventeenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seventh__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for seventh day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for seventh day of the month.</inlineHelpText>
+        <label>Seventh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sixteenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Sixteenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Sixteenth day of the month.</inlineHelpText>
+        <label>Sixteenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sixth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for sixth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for sixth day of the month.</inlineHelpText>
+        <label>Sixth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Temp_Accrual_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>field added for testing. should be removed later.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>field added for testing. should be removed later.</inlineHelpText>
+        <label>Temp Accrual Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Tenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for tenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for tenth day of the month.</inlineHelpText>
+        <label>Tenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Third__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Third day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Third day of the month.</inlineHelpText>
+        <label>Third</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Thirteenth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Thirteenth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Thirteenth day of the month.</inlineHelpText>
+        <label>Thirteenth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Thirtieth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Thirtieth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Thirtieth day of the month.</inlineHelpText>
+        <label>Thirtieth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Thirty_First__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Thirty First day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Thirtieth day of the month.</inlineHelpText>
+        <label>Thirty First</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twelfth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for twelfth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for twelfth day of the month.</inlineHelpText>
+        <label>Twelfth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twentieth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twentieth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twentieth day of the month.</inlineHelpText>
+        <label>Twentieth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Eight__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty Eight day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty Eight day of the month.</inlineHelpText>
+        <label>Twenty Eight</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Fifth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty Fifth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty Fifth day of the month.</inlineHelpText>
+        <label>Twenty Fifth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_First__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty First day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty First of the month.</inlineHelpText>
+        <label>Twenty First</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Fourth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty_Fourth__c day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty_Fourth__c day of the month.</inlineHelpText>
+        <label>Twenty Fourth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Ninth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty_Ninth__c day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty_Ninth__c day of the month.</inlineHelpText>
+        <label>Twenty Ninth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Second__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty Second day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty Second of the month.</inlineHelpText>
+        <label>Twenty Second</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Seventh__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty Seventh day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty Seventh of the month.</inlineHelpText>
+        <label>Twenty Seventh</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Sixth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty Sixth day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty Sixth of the month.</inlineHelpText>
+        <label>Twenty Sixth</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Twenty_Third__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Accrual for Twenty Third day of the month.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Accrual for Twenty Third day of the month.</inlineHelpText>
+        <label>Twenty Third</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Daily Loan Accrual</label>
+    <nameField>
+        <displayFormat>DLAID-{0000000000}</displayFormat>
+        <label>Daily Loan Accrual ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Daily Loan Accrual</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Loan_Account__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Month_Id__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Posted__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Loan_Account__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Posted__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Loan_Account__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Posted__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Loan_Account__c</searchFilterFields>
+        <searchFilterFields>Posted__c</searchFilterFields>
+        <searchResultsAdditionalFields>Loan_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Posted__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

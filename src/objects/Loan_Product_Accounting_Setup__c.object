@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Business_Event__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Business Event</label>
+        <referenceTo>Business_Event__c</referenceTo>
+        <relationshipLabel>Loan Product Accounting Setup</relationshipLabel>
+        <relationshipName>Loan_Product_Accounting_Setup</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Default_Rule__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Default Rule</label>
+        <referenceTo>Accounting_Rule_Header__c</referenceTo>
+        <relationshipLabel>Loan Product Accounting Setup (Default Rule)</relationshipLabel>
+        <relationshipName>Loan_Product_Accounting_Setup1</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Product__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Product</label>
+        <referenceTo>Loan_Product__c</referenceTo>
+        <relationshipLabel>Loan Product Accounting Setup</relationshipLabel>
+        <relationshipName>Loan_Product_Accounting_Setup</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Use_Default_Setup__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Use Default Setup</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>User_Defined_Rule__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>User Defined Rule</label>
+        <referenceTo>Accounting_Rule_Header__c</referenceTo>
+        <relationshipLabel>Loan Product Accounting Setup</relationshipLabel>
+        <relationshipName>Loan_Product_Accounting_Setup</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <gender>Feminine</gender>
+    <label>Loan Product Accounting Setup</label>
+    <nameField>
+        <displayFormat>LPASID-{00000}</displayFormat>
+        <label>Loan Product Accounting Setup ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Loan Product Accounting Setup</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Business_Event__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Use_Default_Setup__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Default_Rule__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>User_Defined_Rule__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Business_Event__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Use_Default_Setup__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Default_Rule__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>User_Defined_Rule__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>DefaultOrUserDefinedValidation</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND (Use_Default_Setup__c, NOT(ISBLANK(User_Defined_Rule__c)))</errorConditionFormula>
+        <errorMessage>Please uncheck &apos;Default Setup&apos; if you wish to use a user defined rule.</errorMessage>
+    </validationRules>
+</CustomObject>

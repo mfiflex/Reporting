@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Acccount_Type_Multiplier__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(OR(CONTAINS(Account_Type__r.Name, &quot;ASSET&quot;) ,CONTAINS(Account_Type__r.Name, &quot;EXPENSE&quot;)),1,-1)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Acccount Type Multiplier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Type__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Account Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Account Type</inlineHelpText>
+        <label>Account Type</label>
+        <referenceTo>MF_Account_Type__c</referenceTo>
+        <relationshipLabel>MF Account</relationshipLabel>
+        <relationshipName>MF_Account</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Balance__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This stores balance calculated from all the transactions made on account.</description>
+        <externalId>false</externalId>
+        <label>Transaction Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Branch__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Branch</label>
+        <referenceTo>Office_Name__c</referenceTo>
+        <relationshipLabel>MF Accounts</relationshipLabel>
+        <relationshipName>MF_Accounts</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Category_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Category 1</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Treasury and Operations with Banks and Other Financial Institutions FI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Operations with Clients</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Financial Instruments</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fixed Assets</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Assets</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other liabilities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subsidies</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Earnings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Category_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Category 2</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Accrual Payable Interests</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Accrual Receivable Interests</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Assets in The Union Credit Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Borrowings Overnight and Term Treasury</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cash and Equivalent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cash held in Banks and Other Financial Institutions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cash in Vaults</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consumer Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Current Accounts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Equipment Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Equity Investments</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Finance Loans to Banks and Other Financial Institutions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Financial Borrowings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fixed Assets &amp; Depreciation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gross Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Legal Reserves</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Long Term Deposits</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mortgage Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Net ProfitLoss of Period +- From January</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Network Resources</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non Performing Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non Performing Securities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Long Term Liabilities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Reserves</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Securities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others Assets Stock,…</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Overdraft &amp; Treasury Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Paid up Capital</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Payable Accounts and other short term liabilities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Receivable Accounts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retained EarningsAccumulated Losses</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Saving Accounts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Savings and Deposits:</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Security Deposits</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Short Term Deposits</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subsidies Prior Years</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Susidies Prior Current Year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Suspense Accounts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Term Treasury Loans</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Treasury Bills</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Treasury Bills&amp;Placements</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Category_3__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Category 3</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category_4__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Category 4</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Description</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Description</inlineHelpText>
+        <label>Description</label>
+        <length>100</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FY_Closing_Balance__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>FY Closing Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fiscal_Year__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Fiscal Year</label>
+        <referenceTo>Fiscal_Year__c</referenceTo>
+        <relationshipLabel>MF Accounts</relationshipLabel>
+        <relationshipName>MF_Accounts</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Is_Master__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Master</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>JV_Allowed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>JV Allowed</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Long_Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Long Description</label>
+        <length>2000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Opening_Balance__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>opening balance (starting balance at time of GO LIVE ) for MF Account.</description>
+        <externalId>false</externalId>
+        <label>Opening Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Parent_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Parent Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Parent Account</inlineHelpText>
+        <label>Parent Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>MF Account</relationshipLabel>
+        <relationshipName>MF_Accounts</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Open</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Close</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Name &amp;  &quot; &quot; &amp; Description__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Title</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Balance__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is formula field which shows total balance in account by adding opening balance &amp; transactions balance.</description>
+        <externalId>false</externalId>
+        <formula>Opening_Balance__c  +  Balance__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isLeaf__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>is Leaf</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>MF Account</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Branch__c</columns>
+        <columns>Parent_Account__c</columns>
+        <columns>Is_Master__c</columns>
+        <columns>Fiscal_Year__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Account Number</label>
+        <type>Text</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01IE00000000DPFMA2_00NE0000000HelFMAS</fullName>
+        <active>true</active>
+        <errorMessage>GL is neither of type ASSET nor a master account.</errorMessage>
+        <field>Office_Name__c.Cash_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Account_Type__r.Name</field>
+            <operation>equals</operation>
+            <value>10000 - ASSETS</value>
+        </filterItems>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Office_Cash Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DPFMA2_00NE0000000Hs1pMAC</fullName>
+        <active>true</active>
+        <errorMessage>Please select a Master GL.</errorMessage>
+        <field>Office_Name__c.Check_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Branch_Check Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DPFMA2_00NE0000000s8BXMAY</fullName>
+        <active>true</active>
+        <errorMessage>Please select a master GL.</errorMessage>
+        <field>Office_Name__c.Bank_Account_Checks__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Branch_Bank Account (Checks)</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DPFMA2_00NE0000000s8BvMAI</fullName>
+        <active>true</active>
+        <errorMessage>Please select a master GL.</errorMessage>
+        <field>Office_Name__c.Inward_Check_Clearance_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Branch_Inward Check Clearance Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DPFMA2_00NE0000000s8C0MAI</fullName>
+        <active>true</active>
+        <errorMessage>Please select a master GL.</errorMessage>
+        <field>Office_Name__c.Outward_Check_Clearance_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Branch_Outward Check Clearance Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000Ds7MAE_00NE0000000HsEZMA0</fullName>
+        <active>true</active>
+        <errorMessage>GL is either not an Income or a master account.</errorMessage>
+        <field>Fee__c.Income_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Account_Type__r.Name</field>
+            <operation>equals</operation>
+            <value>30000 - INCOME</value>
+        </filterItems>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Fee_Income Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000Ds7MAE_00NE0000000IMD0MAO</fullName>
+        <active>true</active>
+        <errorMessage>Please select a master GL.</errorMessage>
+        <field>Fee__c.Suspended_Fee_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Fee_Suspended Fee Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DtKMAU_00NE0000000HtqpMAC</fullName>
+        <active>true</active>
+        <field>Loan_Product__c.Product_Interest_Income_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Account_Type__r.Name</field>
+            <operation>equals</operation>
+            <value>30000 - INCOME</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+        <name>Loan Product_Product Interest Income Acc</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DtKMAU_00NE0000000HtrSMAS</fullName>
+        <active>true</active>
+        <field>Loan_Product__c.Product_Loan_Loss_Provision_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Account_Type__r.Name</field>
+            <operation>equals</operation>
+            <value>40000 - EXPENDITURE</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+        <name>Loan Product_Product Loan Loss Provision</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DtKMAU_00NE0000000IECcMAO</fullName>
+        <active>true</active>
+        <field>Loan_Product__c.Product_Loan_Loss_Reserve_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Account_Type__r.Name</field>
+            <operation>equals</operation>
+            <value>20000 - LIABILITIES</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+        <name>Loan Product_Product Loan Loss Reserve A</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DtKMAU_00NE0000000IMCvMAO</fullName>
+        <active>true</active>
+        <field>Loan_Product__c.Product_Int_On_Overdue_Income_Acc__c</field>
+        <filterItems>
+            <field>MF_Account__c.Account_Type__r.Name</field>
+            <operation>equals</operation>
+            <value>30000 - INCOME</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+        <name>Loan Product_Product Int On Overdue Inco</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DtbMAE_00NE0000000GGTSMA4</fullName>
+        <active>true</active>
+        <errorMessage>GL doesn&apos;t match filtering criteria.</errorMessage>
+        <field>Transaction_Entry__c.MF_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <filterItems>
+            <field>MF_Account__c.Branch__r.Name</field>
+            <operation>equals</operation>
+            <valueField>$User.Current_Branch__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Transaction Entry_MF Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DteMAE_00NE0000000IMANMA4</fullName>
+        <active>true</active>
+        <errorMessage>Please select a Master GL.</errorMessage>
+        <field>Savings_Product__c.Interest_Payable_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Product_Interest Payable Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DteMAE_00NE0000000IMBZMA4</fullName>
+        <active>true</active>
+        <errorMessage>Please select a Master GL.</errorMessage>
+        <field>Savings_Product__c.Savings_Product_Control_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Product_Savings Product Control</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DteMAE_00NE0000000IMBsMAO</fullName>
+        <active>true</active>
+        <errorMessage>Please select a Master GL.</errorMessage>
+        <field>Savings_Product__c.Interest_Expense_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Product_Interest Expense Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DteMAE_00NE0000000IMC2MAO</fullName>
+        <active>true</active>
+        <errorMessage>Please select a Master GL.</errorMessage>
+        <field>Savings_Product__c.Accrued_Interest_Payable_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Product_Accrued Interest Payable</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000XFkMAM_00NE0000000HtWWMA0</fullName>
+        <active>true</active>
+        <errorMessage>Please select a master GL.</errorMessage>
+        <field>Accounting_Rule_Line__c.Credit_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Accounting Rule Line_Credit Account</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000XFkMAM_00NE0000000HtY2MAK</fullName>
+        <active>true</active>
+        <errorMessage>Please select a master GL.</errorMessage>
+        <field>Accounting_Rule_Line__c.Debit_Account__c</field>
+        <filterItems>
+            <field>MF_Account__c.Is_Master__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Accounting Rule Line_Debit Account</name>
+    </namedFilters>
+    <pluralLabel>MF Accounts</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Account_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Parent_Account__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Account_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Branch__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Is_Master__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Fiscal_Year__c</lookupDialogsAdditionalFields>
+        <lookupFilterFields>NAME</lookupFilterFields>
+        <lookupFilterFields>Account_Type__c</lookupFilterFields>
+        <lookupFilterFields>Description__c</lookupFilterFields>
+        <lookupPhoneDialogsAdditionalFields>Account_Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Description__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Account_Type__c</searchFilterFields>
+        <searchFilterFields>Description__c</searchFilterFields>
+        <searchResultsAdditionalFields>Account_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Parent_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Branch__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Fiscal_Year__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Is_Master__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Check_Unique_Account</fullName>
+        <active>false</active>
+        <errorConditionFormula>IF((Name = VLOOKUP( $ObjectType.MF_Account__c.Fields.Name , $ObjectType.MF_Account__c.Fields.Name , Name ) 
+&amp;&amp; 
+Branch__c  =  VLOOKUP($ObjectType.MF_Account__c.Fields.Branch__c ,  $ObjectType.MF_Account__c.Fields.Name,Branch__c )
+&amp;&amp;
+ Fiscal_Year__c  =  VLOOKUP( $ObjectType.MF_Account__c.Fields.Fiscal_Year__c , $ObjectType.MF_Account__c.Fields.Name,  Fiscal_Year__c ) 
+),TRUE,FALSE)</errorConditionFormula>
+        <errorMessage>Account Number already exists.</errorMessage>
+    </validationRules>
+</CustomObject>

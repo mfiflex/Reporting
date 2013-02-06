@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Balance_After__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Balance After</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Check_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>TEXT(Check__r.Status__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Check Status</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Check__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Check</label>
+        <referenceTo>Check__c</referenceTo>
+        <relationshipName>Savings_Payment_Transaction</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cleared__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cleared</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_System_Generated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is System Generated</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Opening_Balance__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Opening Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partial_Payment__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( 
+                     AND( 
+                                 (Transaction_Amount__c  &lt;  Savings_Account__r.Recommended_Mandatory_Amnt_for_Deposits__c) , 
+                                   ISPICKVAL(Savings_Account__r.Savings_Product_Name__r.Type_of_Deposits__c , &quot;Mandatory&quot; )  
+                               ) ,
+         &quot;Yes&quot;,&quot;No&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Partial Payment</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Mode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Payment Mode</label>
+        <referenceTo>Payment_Mode__c</referenceTo>
+        <relationshipName>Savings_Payment_Transaction</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Receipt_Date__c</fullName>
+        <defaultValue>$User.Current_Branch_s_System_Date__c</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Receipt Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Receipt_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <displayFormat>STID-{0000000000}</displayFormat>
+        <externalId>false</externalId>
+        <label>Receipt ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Rejected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rejected</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Savings_Account__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Savings Account</label>
+        <referenceTo>Savings_Account__c</referenceTo>
+        <relationshipName>Savings_Payment_Transaction</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Supervision_Required__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Supervision Required</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Terminate_Fixed_Deposit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Terminate Fixed Deposit</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Transaction Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Date__c</fullName>
+        <defaultValue>$User.Current_Branch_s_System_Date__c</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Transaction Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Transaction_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Transaction Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Deposit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Withdrawal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <label>Savings Transaction</label>
+    <nameField>
+        <displayFormat>SPT-{000000000}</displayFormat>
+        <label>Savings Transaction ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Savings Transactions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Cant_be_cleared_and_rejected</fullName>
+        <active>true</active>
+        <errorConditionFormula>(Cleared__c  = true) &amp;&amp; (Rejected__c  = true)</errorConditionFormula>
+        <errorMessage>An error has occurred while updating the transaction.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Check_Amount</fullName>
+        <active>true</active>
+        <errorConditionFormula>Transaction_Amount__c !=  Check__r.Check_Amount__c</errorConditionFormula>
+        <errorMessage>Transaction amount doesn&apos;t match check amount.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Payment_Mode</fullName>
+        <active>true</active>
+        <errorConditionFormula>Payment_Mode__r.Name =  &apos;Check&apos; &amp;&amp; ISBLANK( Check__c )</errorConditionFormula>
+        <errorMessage>Please input a check number.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FD_Deposits_not_allowed</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( Savings_Account__r.Savings_Product_Name__r.Product_Type__c , &apos;Fixed&apos;) 
+&amp;&amp;
+ ISPICKVAL( Transaction_Type__c , &apos;Deposit&apos;)
+&amp;&amp;  Is_System_Generated__c = false</errorConditionFormula>
+        <errorMessage>You cannot make deposits into a Fixed Deposit account.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FD_Early_Withdrawals_Not_Allowed</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( Savings_Account__r.Savings_Product_Name__r.Product_Type__c, &apos;Fixed&apos;) 
+&amp;&amp; Savings_Account__r.Savings_Product_Name__r.Allow_Early_Withdrawals__c=false
+&amp;&amp; ISPICKVAL( Transaction_Type__c , &apos;Withdrawal&apos;)
+&amp;&amp; NOT(Terminate_Fixed_Deposit__c)</errorConditionFormula>
+        <errorMessage>This Fixed Deposit Account does not allow early withdrawals</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Maximum_Withdrawal_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( Transaction_Type__c , &apos;Withdrawal&apos;) 
+&amp;&amp;
+NOT(ISNULL(Savings_Account__r.Savings_Product_Name__r.Max_Amount_Per_Withdrawal__c)) 
+&amp;&amp;
+Transaction_Amount__c &gt;  Savings_Account__r.Savings_Product_Name__r.Max_Amount_Per_Withdrawal__c</errorConditionFormula>
+        <errorMessage>You are trying to withdraw more than what is allowed in the Savings Product definition.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Receipt_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Receipt_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>Receipt date cannot be greater than calendar date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Receipt_Date_System_Date_Check</fullName>
+        <active>false</active>
+        <description>Deprecated since we can&apos;t use $User.mfiforce__Current_System_Date__c</description>
+        <errorConditionFormula>Receipt_Date__c  &gt;  TODAY()</errorConditionFormula>
+        <errorMessage>The Receipt date cannot be past the current calendar date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Savings_Account_Status_check</fullName>
+        <active>true</active>
+        <description>Savings Account Status check</description>
+        <errorConditionFormula>NOT(ISPICKVAL( Savings_Account__r.Status__c, &apos;Active&apos;))</errorConditionFormula>
+        <errorMessage>The account not active yet! Please submit for approval.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Savings_Product_Status_check</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL(Savings_Account__r.Savings_Product_Name__r.Status__c, &apos;Active&apos;))</errorConditionFormula>
+        <errorMessage>The Savings Product is not Active yet! Please submit for approval.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Share_Capital_Account_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW()  &amp;&amp; Savings_Account__r.Share_Capital_Account__c == true &amp;&amp; ISPICKVAL(Transaction_Type__c,&quot;Withdrawal&quot;) &amp;&amp;
+ NOT(ISPICKVAL(Savings_Account__r.Client_ID__r.Status__c, &quot;Closed&quot;))</errorConditionFormula>
+        <errorMessage>The funds in this &apos;Share Capital&apos; account can only be withdrawn once client ends his/her membership. The client status should be &apos;Closed&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Terminate_FD_does_not_make_sense</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT(ISPICKVAL( Savings_Account__r.Savings_Product_Name__r.Product_Type__c, &apos;Fixed&apos;))
+&amp;&amp; Terminate_Fixed_Deposit__c</errorConditionFormula>
+        <errorMessage>This account is not a Fixed Deposit. Please uncheck the Terminate Fixed Deposit flag.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Transaction_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Transaction_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>Transaction date cannot be greater than calendar date.</errorMessage>
+    </validationRules>
+</CustomObject>

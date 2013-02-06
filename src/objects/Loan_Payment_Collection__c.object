@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Payment Collection</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Actual_Collected_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Actual Collected Amount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Actual Collected Amount</inlineHelpText>
+        <label>Actual Collected Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Attendance__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Attendance</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Present</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Absent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Late</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved Leave</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Client</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Client</inlineHelpText>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>Loan Payment Collection Records</relationshipLabel>
+        <relationshipName>Loan_Payment_Collection_Records</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Collection_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Collection Date</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Collection Date</inlineHelpText>
+        <label>Collection Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Due_Fees__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Due Fees</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Due Fees</inlineHelpText>
+        <label>Due Fees</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Due_Interest__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Due Interest</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Due Interest</inlineHelpText>
+        <label>Due Interest</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Due_Penalty__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Due Penalty</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Due Penalty</inlineHelpText>
+        <label>Due Penalty</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Due_Principal__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Due Principal</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Due Principal</inlineHelpText>
+        <label>Due Principal</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Id</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_On_Total_Overdue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Interest on total overdue</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest on total overdue</inlineHelpText>
+        <label>Interest On Total Overdue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Loan Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Account</inlineHelpText>
+        <label>Loan Account</label>
+        <referenceTo>Loan_Account__c</referenceTo>
+        <relationshipLabel>Loan Payment Collection Records</relationshipLabel>
+        <relationshipName>Loan_Payment_Collection_Records</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Net_Total_Due_Fees__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Net Total due fee to be collected.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Net Total due fee to be collected.</inlineHelpText>
+        <label>Net Total Due Fees</label>
+        <summarizedField>Collection_Fee__c.Collection_Fee_Amount__c</summarizedField>
+        <summaryForeignKey>Collection_Fee__c.Loan_Payment_Collection_Record__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Overdue_Fees__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue fees from previous installments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue fees from previous installments</inlineHelpText>
+        <label>Overdue Fees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Interest__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue interest from previous installments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue interest from previous installments</inlineHelpText>
+        <label>Overdue Interest</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Penalty__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue penalty from previous installments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue penalty from previous installments</inlineHelpText>
+        <label>Overdue Penalty</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Principal__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue principal from previous installments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue principal from previous installments</inlineHelpText>
+        <label>Overdue Principal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Collected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Payment Collected</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Payment Collected</inlineHelpText>
+        <label>Payment Collected</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Repayment_Schedule__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Repayment Schedule</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Repayment Schedule</inlineHelpText>
+        <label>Repayment Schedule</label>
+        <referenceTo>Repayment_Schedule__c</referenceTo>
+        <relationshipName>Payment_Collection_Records</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_Collection_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Net_Total_Due_Fees__c   +  Due_Interest__c  +  Due_Principal__c +  Overdue_Fees__c +  Overdue_Interest__c +  Overdue_Principal__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Collection Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Loan Payment Collection Record</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Id__c</columns>
+        <columns>Attendance__c</columns>
+        <columns>Client__c</columns>
+        <columns>Collection_Date__c</columns>
+        <columns>Due_Fees__c</columns>
+        <columns>Due_Interest__c</columns>
+        <columns>Due_Penalty__c</columns>
+        <columns>Due_Principal__c</columns>
+        <columns>Loan_Account__c</columns>
+        <columns>Repayment_Schedule__c</columns>
+        <columns>Total_Collection_Amount__c</columns>
+        <columns>Actual_Collected_Amount__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>PCN-{0000000000}</displayFormat>
+        <label>Payment Collection ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Loan Payment Collection Records</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

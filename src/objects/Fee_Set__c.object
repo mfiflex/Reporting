@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>A set of fee</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Fee_Set_Category__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Fee Set Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Loan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Savings</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Fees__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Number of Fees</label>
+        <summaryForeignKey>Fee_Junction__c.Fee_Set__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <label>Fee Set</label>
+    <nameField>
+        <label>Fee Set Name</label>
+        <type>Text</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01IE00000000DtKMAU_00NE0000000GAmIMAW</fullName>
+        <active>true</active>
+        <errorMessage>Selected Fee Set&apos;s category must be of type &apos;Loan&apos; and it should include at least one fee.</errorMessage>
+        <field>Loan_Product__c.Fee_Set__c</field>
+        <filterItems>
+            <field>Fee_Set__c.Fee_Set_Category__c</field>
+            <operation>equals</operation>
+            <value>Loan</value>
+        </filterItems>
+        <filterItems>
+            <field>Fee_Set__c.Number_of_Fees__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Loan Product_Fee Set</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000DteMAE_00NE0000000GAmXMAW</fullName>
+        <active>true</active>
+        <errorMessage>Selected Fee Set&apos;s category must be of type &apos;Savings&apos; and it should include at least one fee.</errorMessage>
+        <field>Savings_Product__c.Fee_Set__c</field>
+        <filterItems>
+            <field>Fee_Set__c.Number_of_Fees__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filterItems>
+        <filterItems>
+            <field>Fee_Set__c.Fee_Set_Category__c</field>
+            <operation>equals</operation>
+            <value>Savings</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Product_Fee Set</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000EA1MAM_00NE0000000GAmSMAW</fullName>
+        <active>true</active>
+        <errorMessage>Selected Fee Set&apos;s category must be of type &apos;Group&apos; and it should include at least one fee.</errorMessage>
+        <field>Group__c.Group_Fee_Set__c</field>
+        <filterItems>
+            <field>Fee_Set__c.Fee_Set_Category__c</field>
+            <operation>equals</operation>
+            <value>Group</value>
+        </filterItems>
+        <filterItems>
+            <field>Fee_Set__c.Number_of_Fees__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Group_Group Fee Set</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000EAGMA2_00NE0000000HeloMAC</fullName>
+        <active>true</active>
+        <errorMessage>Selected Fee Set&apos;s category must be of type &apos;Client&apos; and it should include at least one fee.</errorMessage>
+        <field>Client__c.Fee_Set__c</field>
+        <filterItems>
+            <field>Fee_Set__c.Fee_Set_Category__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </filterItems>
+        <filterItems>
+            <field>Fee_Set__c.Number_of_Fees__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Client_Fee Set</name>
+    </namedFilters>
+    <namedFilters>
+        <fullName>nf_01IE00000000ZTdMAM_00NE0000000IL1iMAG</fullName>
+        <active>true</active>
+        <errorMessage>Selected Fee Set&apos;s category must be of type &apos;Insurance&apos; and it should include at least one fee.</errorMessage>
+        <field>Insurance_PRoduct__c.Insurance_Fee_Set__c</field>
+        <filterItems>
+            <field>Fee_Set__c.Number_of_Fees__c</field>
+            <operation>notEqual</operation>
+            <value>0</value>
+        </filterItems>
+        <filterItems>
+            <field>Fee_Set__c.Fee_Set_Category__c</field>
+            <operation>equals</operation>
+            <value>Insurance</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Insurance Product_Insurance Fee Set</name>
+    </namedFilters>
+    <pluralLabel>Fee Set</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

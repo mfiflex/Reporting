@@ -1,0 +1,1922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>loanApplication</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>tabbedLoanAccount</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Loan Account</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Account_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Account Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Current</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Accrual_Start_Date__c</fullName>
+        <description>Date from the interest accrual will start</description>
+        <externalId>false</externalId>
+        <label>Accrual Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Accrual_Start_Days__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Accrual Start Days after the loan effective date.</description>
+        <externalId>false</externalId>
+        <label>Accrual Start Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Accrual_Stop_Indicator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>if Accrual needs to be stopped.</description>
+        <externalId>false</externalId>
+        <label>Accrual Stop Indicator</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Aging__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF(AND(Number_of_Days_Overdue__c&gt;0,Number_of_Days_Overdue__c&lt;=30), &quot;0-30&quot;, IF(AND(Number_of_Days_Overdue__c&gt;30,Number_of_Days_Overdue__c&lt;=60),&quot;31-60&quot;,
+IF(AND(Number_of_Days_Overdue__c&gt;60,Number_of_Days_Overdue__c&lt;=90),&quot;61-90&quot;,
+IF(AND(Number_of_Days_Overdue__c&gt;90,Number_of_Days_Overdue__c&lt;=120),&quot;91-120&quot;,
+IF(AND(Number_of_Days_Overdue__c&gt;120,Number_of_Days_Overdue__c&lt;=180),&quot;121-180&quot;,
+IF(Number_of_Days_Overdue__c&gt;180,&quot;180+&quot;,
+&quot;&quot;))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Aging</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Application Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Average_Monthly_Income__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Average Monthly Income</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Balloon_Payment__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Balloon Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Branch__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Branch</label>
+        <referenceTo>Office_Name__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cleared_Disbursal_Txn_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cleared Disbursal Txn Count</label>
+        <summaryFilterItems>
+            <field>Loan_Disbursal_Transaction__c.Cleared__c</field>
+            <operation>equals</operation>
+            <value>true</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>Loan_Disbursal_Transaction__c.Reversed__c</field>
+            <operation>equals</operation>
+            <value>false</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Loan_Disbursal_Transaction__c.Loan_Account__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Loan Account Owner</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Account Owner</inlineHelpText>
+        <label>Client</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Closed_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Closed Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Co_Applicant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Co Applicant</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>Loan Accounts (Co Applicant)</relationshipLabel>
+        <relationshipName>Loan_Accounts2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Collateral_Notes__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Collateral Notes</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Collateral Notes</inlineHelpText>
+        <label>Collateral Notes</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Collateral_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Collateral Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Fixed Asset</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Current_Loan_Officer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Loan Officer</label>
+        <referenceTo>Staff__c</referenceTo>
+        <relationshipLabel>Loan Accounts (Current Loan Officer)</relationshipLabel>
+        <relationshipName>Loan_Accounts1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Delinquency_Grace_Days__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Delinquency Grace Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delinquent_Amount__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Delinquent Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disbursal_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This date is used as a Loan Start Date to generate the repayment schedule. The user can fill this field at the beginning of the loan to project when loan is disbursed; but this field can be updated anytime before disbursement.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This date is used as a Loan Start Date to generate the repayment schedule. The user can fill this field at the beginning of the loan to project when loan is disbursed; but this field can be updated anytime before disbursement.</inlineHelpText>
+        <label>Disbursal Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Due_Day__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Due Day for the loan account.</description>
+        <externalId>false</externalId>
+        <label>Due Day</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Excess__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Excess</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Expected_Disbursal_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Expected Disbursal Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Repayment_Start_Date__c</fullName>
+        <defaultValue>TODAY() + 30</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Expected Repayment Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Accrued__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Fee Accrued</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fee_Set__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Fee Set</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fee Set</inlineHelpText>
+        <label>Fee Set</label>
+        <referenceTo>Fee_Set__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Fees_Paid__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Fees Paid</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fees Paid</inlineHelpText>
+        <label>Fees Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fees_Remaining__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Fees Remaining</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fees Remaining</inlineHelpText>
+        <label>Fees Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fees_Suspended__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Denotes the total fees amount, which has been suspended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes the total fees amount, which has been suspended.</inlineHelpText>
+        <label>Fees Suspended</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Installment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date of the first installment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of the first installment</inlineHelpText>
+        <label>First Installment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Frequency_of_Loan_Payment__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Frequency of Loan Payment</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bi-weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Funder__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Funder</label>
+        <referenceTo>Funder__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Grace_Period_for_Repayments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Inherited from product definition.
+If grace period type (as per product definition) is “None”, OR,  If Interest is deducted at disbursement, then this field is disabled.  If the loan account is still in grace period, the length of grace period can be extended or reduced.  It cannot be reduced for the period already crossed. For example, if the grace period is for three installments, and when the account is at 0.5 installments, it cannot be reduced to one installment, but can be reduced to two installments.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If grace period type is “None”, OR,  If Interest is deducted at disbursement, then this field is disabled.  If the loan account is still in grace period, the length of grace period can be extended or reduced.</inlineHelpText>
+        <label>Grace Period for Repayments</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Group</label>
+        <referenceTo>Group__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Guarantor__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Guarantor</label>
+        <referenceTo>Client__c</referenceTo>
+        <relationshipLabel>Loan Accounts (Guarantor)</relationshipLabel>
+        <relationshipName>Loan_Accounts1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Income_Suspended__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Income Suspended</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Accrued_Not_Due__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>This field gets updated on Due date. It is the accrued interest that is posted on the account.</description>
+        <externalId>false</externalId>
+        <label>Interest Due</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Calculation_Method__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Interest Calculation Method</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest Calculation Method</inlineHelpText>
+        <label>Billing Method</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Flat</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Declining Balance</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Interest Only</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Flexible Repayment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Interest_On_Overdue_Paid__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Interest on overdue amount paid so far.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest on overdue amount paid so far.</inlineHelpText>
+        <label>Interest On Overdue Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_On_Overdue_Suspended__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Denotes the total interest on the overdue amount, which has been suspended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes the total interest on the overdue amount, which has been suspended.</inlineHelpText>
+        <label>Interest On Overdue Suspended</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_On_Total_Overdue__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Interest on total overdue</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest on total overdue</inlineHelpText>
+        <label>Interest On Total Overdue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Only_Period__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Interest Only Period</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Paid__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Interest Paid
+Account Balance Details- System calculated Uneditable fields</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest Paid
+Account Balance Details- System calculated Uneditable fields</inlineHelpText>
+        <label>Interest Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Rate_Last__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Last Interest Rate</description>
+        <externalId>false</externalId>
+        <label>Last Interest Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Rate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Interest Rate</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest Rate</inlineHelpText>
+        <label>Interest Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Interest_Remaining__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Interest Remaining</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest Remaining</inlineHelpText>
+        <label>Financed Interest</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Suspended__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Denotes the total interest amount, which has been suspended.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Denotes the total interest amount, which has been suspended.</inlineHelpText>
+        <label>Interest Suspended</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_Rescheduled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Rescheduled</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_Accrual_Date__c</fullName>
+        <description>Last accrual Date on loan account</description>
+        <externalId>false</externalId>
+        <label>Last Accrual Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_Installment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date of the last installment paid</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of the last installment paid</inlineHelpText>
+        <label>Maturity Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>LoanCnt__c</fullName>
+        <defaultValue>1</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>LoanCnt</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Account_External_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Loan Account External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Loan Amount</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Amount</inlineHelpText>
+        <label>Loan Amount</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Cycle_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Cycle Count</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Product_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Loan Product Name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Product Name</inlineHelpText>
+        <label>Loan Product Name</label>
+        <referenceTo>Loan_Product__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Purpose__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Loan Purpose</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Purpose</inlineHelpText>
+        <label>Loan Purpose</label>
+        <referenceTo>Loan_Purpose__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Active - Good Standing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Active - Bad Standing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canceled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Obligations met</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed- Written Off</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partial Application</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Rescheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Disbursed to LO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Maturity_Date_Current__c</fullName>
+        <externalId>false</externalId>
+        <label>Maturity Date Current</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Monthly_Payment__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used only for &apos;Balloon Payment&apos; loan products.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used only for &apos;Balloon Payment&apos; loan products.</inlineHelpText>
+        <label>Monthly Payment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Field_3__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>New Field 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Next_Due_Generation_Date__c</fullName>
+        <description>Next Due Generation Date.</description>
+        <externalId>false</externalId>
+        <label>Next Due Generation Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Next_Installment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Date of the next installment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date of the next installment</inlineHelpText>
+        <label>Next Installment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Next_Repayment_Amount_As_Of_Today__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Tells the amount due as next repayment for this account as of today</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tells the amount due as next repayment for this account as of today</inlineHelpText>
+        <label>Next Repayment Amount As Of Today</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Days_Overdue__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Number of Days Overdue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Installments__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number of installments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of installments</inlineHelpText>
+        <label>Number of Installments</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Past_Installments__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Number of Past Installments</label>
+        <summaryFilterItems>
+            <field>Repayment_Schedule__c.Past_Due_Date__c</field>
+            <operation>equals</operation>
+            <value>true</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Repayment_Schedule__c.Loan_Account__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Oldest_Due_Date__c</fullName>
+        <description>Oldest Due Date</description>
+        <externalId>false</externalId>
+        <label>Oldest Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Overdue_Amount_As_Of_Today__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Tells the amount overdue for this account as of today</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tells the amount overdue for this account as of today</inlineHelpText>
+        <label>Overdue Amount As Of Today</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Interest_Rate__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Overdue Interest Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Interest__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue interest from previous installments</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue interest from previous installments</inlineHelpText>
+        <label>Overdue Interest</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Penalty__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue penalty from previous installments.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue penalty from previous installments.</inlineHelpText>
+        <label>Overdue Penalty</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overdue_Principal__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Overdue principal from earlier installments.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Overdue principal from earlier installments.</inlineHelpText>
+        <label>Overdue Principal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pay_Off_Amount_As_Of_Today__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Tells the pay off amount for this account as of today</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tells the pay off amount for this account as of today</inlineHelpText>
+        <label>Pay Off Amount As Of Today</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Amount__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Loan payment amount. It excludes any fee that is gathered as a part of EMI.</description>
+        <externalId>false</externalId>
+        <label>Payment Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Tolerance_End_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>End date for the payment tolerance</description>
+        <externalId>false</externalId>
+        <inlineHelpText>End date for the payment tolerance</inlineHelpText>
+        <label>Payment Tolerance End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Payment_Tolerance_Rate__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Payment Tolerance Rate</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Tolerance_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Start date to apply the payment tolerance</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Start date to apply the payment tolerance</inlineHelpText>
+        <label>Payment Tolerance Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Penalty_Paid__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Penalty Paid</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Penalty Paid</inlineHelpText>
+        <label>Penalty Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Penalty_Remaining__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Penalty Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pmt_Amt_Cur__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Current Payment Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pre_Bill_Days__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Number of days before due date to have the bill generated.</description>
+        <externalId>false</externalId>
+        <label>Pre Bill Days</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Previous_Installment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date of the installment currently being paid</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date of the installment currently being paid</inlineHelpText>
+        <label>Previous Installment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Principal_Adjustment__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Addition to the Principal amount made through Principal Adjustment transaction.</inlineHelpText>
+        <label>Principal Adjustment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Principal_Paid__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Principal Paid
+Account Balance Details- System calculated Uneditable fields</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Principal Paid
+Account Balance Details- System calculated Uneditable fields</inlineHelpText>
+        <label>Principal Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Principal_Remaining__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Principal Remaining</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Principal Remaining</inlineHelpText>
+        <label>Principal Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rate_Change_Dt_Last__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Last Rate Change Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Rate_Change_Dt_Next__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Next Rate Change Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Repayment_Procedure__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Repayment Procedure</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Equal Monthly Installments</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Flexible</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Repayment_Schedule_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Repayment Schedule Count</label>
+        <summaryFilterItems>
+            <field>Repayment_Schedule__c.Is_Archived__c</field>
+            <operation>equals</operation>
+            <value>false</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Repayment_Schedule__c.Loan_Account__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Repayment_Tied_to_Meeting_Schedule__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Repayment Tied to Meeting Schedule</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Repayments_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Repayments Count</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Repayments Count</inlineHelpText>
+        <label>Repayments Count</label>
+        <summaryForeignKey>Loan_Payment_Transaction__c.Loan_Account__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Reserve_Amount_for_Next_Due__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Amount to be used to satisfy future dues.</inlineHelpText>
+        <label>Reserve Amount for Next Due</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Savings_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Savings Account</label>
+        <referenceTo>Savings_Account__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Savings_Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Savings Product</label>
+        <referenceTo>Savings_Product__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Source_Loan_Officer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Source Loan Officer</label>
+        <referenceTo>Staff__c</referenceTo>
+        <relationshipLabel>Loan Accounts</relationshipLabel>
+        <relationshipName>Loan_Accounts</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Status_Order__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CASE( 
+  Loan_Status__c, &apos;Active - Bad Standing&apos;, 1,
+    100)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status Order</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Suspended__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Suspended</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Term_Cur__c</fullName>
+        <description>Current Term</description>
+        <externalId>false</externalId>
+        <label>Current Term</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Counting_Method__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Time Counting Method</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Month And Days</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Actual Days</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Total_Amount_Overdue__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Total_Overdue_Fees__c +  Overdue_Interest__c +  Overdue_Principal__c +  Overdue_Penalty__c + Interest_On_Total_Overdue__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Amount Overdue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Amount_Paid__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Interest_Paid__c + Principal_Paid__c + Fees_Paid__c +  Penalty_Paid__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Amount Paid</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Amount_Remaining__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Principal_Remaining__c + Interest_Remaining__c + Fees_Remaining__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Amount Remaining</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Due_Charges__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Total Due Charges</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Overdue_Fees__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Total Overdue Fees</label>
+        <summarizedField>Overdue_Fee__c.Overdue_Amount__c</summarizedField>
+        <summaryForeignKey>Overdue_Fee__c.Loan_Account__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Uncleared_Disbursal_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The disbursed amount, which has not yet been supervised.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The disbursed amount, which has not yet been supervised.</inlineHelpText>
+        <label>Uncleared Disbursal Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Uncleared_Repayment_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The repaid amount, which has not yet been supervised.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The reapaid amount, which has not yet been supervised.</inlineHelpText>
+        <label>Uncleared Repayment Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Uncleared_Written_Off_Amount__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Uncleared Written Off Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Write_off_Tolerance_Amount__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Write off Tolerance Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Loan Account</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Client__c</columns>
+        <columns>Loan_Product_Name__c</columns>
+        <columns>Loan_Amount__c</columns>
+        <columns>Loan_Status__c</columns>
+        <columns>Interest_Accrued_Not_Due__c</columns>
+        <columns>Is_Rescheduled__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>LAI-{00000000}</displayFormat>
+        <label>Loan Account ID</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01IE000000042AQMAY_00NE0000003aAzgMAE</fullName>
+        <active>true</active>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <errorMessage>The selected Loan Account is not valid. Please check its status.</errorMessage>
+        <field>Teller_Cash_Transaction__c.Loan_Account__c</field>
+        <filterItems>
+            <field>Loan_Account__c.Loan_Status__c</field>
+            <operation>equals</operation>
+            <value>Active - Good Standing</value>
+        </filterItems>
+        <filterItems>
+            <field>Loan_Account__c.Loan_Status__c</field>
+            <operation>equals</operation>
+            <value>Active - Bad Standing</value>
+        </filterItems>
+        <filterItems>
+            <field>Loan_Account__c.Loan_Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filterItems>
+        <filterItems>
+            <field>Loan_Account__c.Loan_Status__c</field>
+            <operation>equals</operation>
+            <value>Disbursed to LO</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Teller Cash Transaction_Loan Account</name>
+    </namedFilters>
+    <pluralLabel>Loan Accounts</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Loan_Amount__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Loan_Product_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Loan_Purpose__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Principal_Paid__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Principal_Remaining__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Loan_Status__c</customTabListAdditionalFields>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Loan_Amount__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Loan_Product_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Loan_Purpose__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Loan_Amount__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Loan_Product_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Loan_Purpose__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Loan_Amount__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Loan_Product_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Loan_Purpose__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Application_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Application_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>Application Date cannot be greater than calendar date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Center_Loan_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c  , &apos;Center-Group-Client&apos;),
+ OR(
+         ISBLANK( Client__r.Center__c ) , 
+         ISBLANK( Client__r.Group__c ) 
+  )
+)</errorConditionFormula>
+        <errorMessage>The Loan Product is of type &apos;Center-Group-Client (Center Loan)&apos;.  Client must be associated with a Center and a Group.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Branch</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+AND(
+NOT(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;)), 
+ NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c), 
+Branch__c !=  Client__r.Office__c
+),
+AND(
+NOT(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;)), 
+ $Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c, 
+Branch__c !=   Account__r.Branch__c
+),
+AND(
+ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;), 
+Branch__c !=  Group__r.Office__c
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot create a loan application for a client/group who doesn&apos;t belong to this branch.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Group_Loan_Product</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;),
+ISBLANK( Group__c) 
+)</errorConditionFormula>
+        <errorMessage>This is a Group loan. You must specify a group.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Individual_Loan_Product</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+AND(
+NOT(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;)),
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c), 
+ISBLANK( Client__c) 
+),
+AND(
+NOT(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;)),
+$Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c, 
+ISBLANK(  Account__c ) 
+)
+)</errorConditionFormula>
+        <errorMessage>This is an individual loan. You must specify a client.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Check_Top_Up_Loan</fullName>
+        <active>true</active>
+        <errorConditionFormula>Loan_Product_Name__r.Is_Sub_Product__c == true &amp;&amp;   ISPICKVAL(Loan_Product_Name__r.Parent_Loan_Product__r.Status__c, &apos;Inactive&apos;)</errorConditionFormula>
+        <errorMessage>Top up loan&apos;s parent must be active.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Client_Coaplicant_validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c) 
+,
+OR(
+        ( NOT(ISBLANK(Co_Applicant__c)) &amp;&amp; NOT(ISBLANK(Client__c )) &amp;&amp; Co_Applicant__c =  Client__c ),
+        ( NOT(ISBLANK(Guarantor__c )) &amp;&amp; NOT(ISBLANK(Co_Applicant__c )) &amp;&amp; Co_Applicant__c =  Guarantor__c )
+       )
+)</errorConditionFormula>
+        <errorDisplayField>Co_Applicant__c</errorDisplayField>
+        <errorMessage>Co-applicant can not be same as Client or Guarantor</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Client_Guarantor</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c)
+,OR(
+         (  NOT(ISBLANK(Guarantor__c )) &amp;&amp; NOT(ISBLANK(Client__c ))  &amp;&amp; Guarantor__c =  Client__c ),
+         (NOT(ISBLANK(Guarantor__c )) &amp;&amp; NOT(ISBLANK(Co_Applicant__c ))  &amp;&amp; Guarantor__c =  Co_Applicant__c )
+      )
+)</errorConditionFormula>
+        <errorDisplayField>Guarantor__c</errorDisplayField>
+        <errorMessage>Guarantor can not be same as Client or Co-applicant.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Clients_Status_check</fullName>
+        <active>true</active>
+        <description>Client&apos;s_Status_check</description>
+        <errorConditionFormula>OR(
+AND(
+NOT( ISPICKVAL(Loan_Product_Name__r.Loan_Product_Type__c,&quot;Group&quot;)),
+NOT( $Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c ),
+NOT( ISPICKVAL(Client__r.Status__c, &quot;Active&quot;))
+),
+AND(
+NOT( ISPICKVAL(Loan_Product_Name__r.Loan_Product_Type__c,&quot;Group&quot;)),
+ $Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c ,
+NOT( ISPICKVAL(Account__r.Active__c, &quot;Yes&quot;))
+)
+)</errorConditionFormula>
+        <errorMessage>The client account is not active.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Close_Date_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>Closed_Date__c  &gt;  TODAY()</errorConditionFormula>
+        <errorMessage>Close Date cant not be greater than System date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Expected_Disbursal_Date_check</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISCHANGED(Expected_Disbursal_Date__c), Expected_Disbursal_Date__c &lt;   Branch__r.Current_System_Date__c 
+)</errorConditionFormula>
+        <errorDisplayField>Disbursal_Date__c</errorDisplayField>
+        <errorMessage>Expected Disbursal Date cannot be less than current system date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Group_Loan_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(
+AND(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group-Client&apos;),
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c),
+NOT(ISBLANK( Client__r.Center__c ))
+),
+AND(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group-Client&apos;),
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c),
+ISBLANK( Client__r.Group__c ) )
+)</errorConditionFormula>
+        <errorMessage>The Loan Product is of type &apos;Group-Client (Group Loan)&apos;.  Client must not have a Center. Client must have a Group.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Individual_Loan_Validation</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c  , &apos;Client&apos;),
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c),
+OR(
+NOT(ISBLANK( Client__r.Center__c)),
+NOT(ISBLANK( Client__r.Group__c))
+)
+)</errorConditionFormula>
+        <errorMessage>The Loan Product is of type &apos;Client (Individual Loan)&apos;. Client must not be associated with a Group or a Center.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Interest_Only_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL( Interest_Calculation_Method__c  , &apos;Interest Only&apos;),
+ ISBLANK(Interest_Only_Period__c) 
+)</errorConditionFormula>
+        <errorMessage>&apos;Interest Only Period&apos; cannot be blank for an &apos;Interest Only&apos; loan product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Interest_Only_Product_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISPICKVAL(  Loan_Product_Name__r.Interest_Calculation_Method__c  , &apos;Interest Only&apos;),
+ ISBLANK(Interest_Only_Period__c) 
+)</errorConditionFormula>
+        <errorMessage>&apos;Interest Only Period&apos; cannot be blank for an &apos;Interest Only&apos; loan product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Interest_Rate_Boundary_Check</fullName>
+        <active>true</active>
+        <description>Interest Rate Boundary Check</description>
+        <errorConditionFormula>AND(ISPICKVAL(Loan_Product_Name__r.Loan_Cycle_Setup__c, &apos;Same for all Loans&apos;),(Interest_Rate__c &gt; Loan_Product_Name__r.Max_Interest_Rate__c 
+ || 
+ Interest_Rate__c &lt; Loan_Product_Name__r.Min_Interest_Rate__c))</errorConditionFormula>
+        <errorDisplayField>Interest_Rate__c</errorDisplayField>
+        <errorMessage>The Interest Rate should fall between the Limits specified in the Loan Product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Loan_Amount_Boundary_Check</fullName>
+        <active>true</active>
+        <description>Loan_Amount_Boundary_Check</description>
+        <errorConditionFormula>AND(ISPICKVAL(Loan_Product_Name__r.Loan_Cycle_Setup__c, &apos;Same for all Loans&apos;), ( Loan_Amount__c &gt;  Loan_Product_Name__r.Max_Loan_Amount__c 
+ || 
+ Loan_Amount__c &lt;  Loan_Product_Name__r.Min_Loan_Amount__c ))</errorConditionFormula>
+        <errorDisplayField>Loan_Amount__c</errorDisplayField>
+        <errorMessage>The Loan Amount should fall between the Limits specified in the Loan Product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Meeting_Schedule_Check</fullName>
+        <active>true</active>
+        <description>Check Meeting Schedule of Group</description>
+        <errorConditionFormula>AND(
+NOT(ISPICKVAL( Loan_Product_Name__r.Loan_Product_Type__c , &apos;Group&apos;)),
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c),
+OR(
+AND ( Repayment_Tied_to_Meeting_Schedule__c ,
+ISBLANK( Client__r.Group__c ),
+ISBLANK( Client__r.Center__c )
+)
+,
+AND ( Repayment_Tied_to_Meeting_Schedule__c ,
+NOT($Setup.Org_Parameters__c.Integrate_Salesforce_CRM__c),
+ISBLANK( Client__r.Group__r.Meeting_Schedule__c ),
+ISBLANK( Client__r.Center__r.Meeting_Schedule__c )
+)
+)
+)</errorConditionFormula>
+        <errorMessage>Client&apos;s group or center does not have a meeting schedule. Or Client is not associated with a Center or a Group.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_of_Installments_Boundary_Check</fullName>
+        <active>true</active>
+        <description>No_of_Installments_Boundary_Check</description>
+        <errorConditionFormula>AND(ISPICKVAL(Loan_Product_Name__r.Loan_Cycle_Setup__c, &apos;Same for all Loans&apos;),(  Number_of_Installments__c  &gt;  Loan_Product_Name__r.Max_Number_of_Installments__c 
+ || 
+  Number_of_Installments__c  &lt;   Loan_Product_Name__r.Min_Number_of_Installments__c ))</errorConditionFormula>
+        <errorDisplayField>Number_of_Installments__c</errorDisplayField>
+        <errorMessage>The No. of Installments should fall between the Limits specified in the Loan Product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Overdue_Interest_Rate_Boundary_Check</fullName>
+        <active>true</active>
+        <description>Interest Rate Boundary Check</description>
+        <errorConditionFormula>AND(ISPICKVAL(Loan_Product_Name__r.Loan_Cycle_Setup__c, &apos;Same for all Loans&apos;),(Overdue_Interest_Rate__c &gt; Loan_Product_Name__r.Max_Overdue_Interest_Rate__c 
+ || 
+ Overdue_Interest_Rate__c &lt; Loan_Product_Name__r.Min_Overdue_Interest_Rate__c))</errorConditionFormula>
+        <errorDisplayField>Overdue_Interest_Rate__c</errorDisplayField>
+        <errorMessage>The Overdue Interest Rate should fall between the Limits specified in the Loan Product.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Repayment_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT( ISNULL( Expected_Repayment_Start_Date__c ) )
+&amp;&amp;
+Expected_Repayment_Start_Date__c &lt;=
+Expected_Disbursal_Date__c</errorConditionFormula>
+        <errorMessage>The Expected Repayment Start Date must not be before the Expected Disbursal Date.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Expected_Repayment_Start_Date</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( NOT(ISBLANK(Expected_Repayment_Start_Date__c)) ,
+Expected_Repayment_Start_Date__c &lt;   Branch__r.Current_System_Date__c ,
+ ISNEW()  )</errorConditionFormula>
+        <errorMessage>Expected repayment start date cannot be less than current system date.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Principal_Adjustment</fullName>
+        <availability>online</availability>
+        <description>Principal_Adjustment</description>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Principal Adjustment</masterLabel>
+        <openType>newWindow</openType>
+        <page>principalAdjustment</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
+    <webLinks>
+        <fullName>Regenerate_Schedule</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Regenerate Schedule</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/13.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)} 
+var retVal = sforce.apex.execute(&quot;mfiforce/RegenerateAmortizationScheduleCtrl&quot;,&quot;regenerateAmortizationSchedule&quot;, {loanAccId:&quot;{!Loan_Account__c.Id}&quot;}); 
+window.alert(retVal);
+window.location.reload();</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Reschedule_Loan</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Reschedule</masterLabel>
+        <openType>newWindow</openType>
+        <page>rescheduleALoan</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
+    <webLinks>
+        <fullName>View_Accrual_History</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Accrual History</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/loanAccrualHistory?Id={!Loan_Account__c.Id}</url>
+    </webLinks>
+</CustomObject>

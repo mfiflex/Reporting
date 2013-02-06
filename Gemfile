@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
+gem 'highline'
 #gem 'asf-soap-adapter', :require => 'activerecord-activesalesforce-adapter'
 #gem 'facets', '2.8.4'
 #gem 'omniauth'
@@ -14,7 +15,11 @@ gem 'databasedotcom'
 gem 'databasedotcom-rails'
 gem 'heroku'
 gem 'require_all'
+gem 'metaforce','>= 1.0.6'
+gem 'nokogiri'
 gem 'debugger'
+gem 'rubyzip'
+gem 'file-temp'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

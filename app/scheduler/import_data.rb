@@ -1,504 +1,184 @@
+require 'metaforce'
+require 'nokogiri'
 require 'salesforce_bulk'
 require 'csv'
+require 'mailer'
 require 'Constants'
 require 'pg'
-require 'mailer'
-require 'import_Accounting_Rule_Line'
-require 'import_Accounting_Rule_Header'
-require 'import_Accounting_Segment_Setup'
-require 'import_Address'
-require 'import_Annual_Business_Cycle'
-require 'import_Answer'
-require 'import_Archive_Run'
-require 'import_Bank'
-require 'import_Batch_Process_Log'
-require 'import_Branch_Loan_Product'
-require 'import_Branch_Location'
-require 'import_Branch_Savings_Product'
-require 'import_Business_Activity'
-require 'import_Business_Event'
-require 'import_Check'
-require 'import_Client_History'
-require 'import_Client_Identification'
-require 'import_Client_Training'
-require 'import_Collection_Fee'
-require 'import_Countries'
-require 'import_Currency'
-require 'import_Daily_Loan_Accrual'
-require 'import_Day_Process'
-require 'import_Disbursal_Adjustment'
-require 'import_Due_Fee'
-require 'import_Employment_Business_Detail'
-require 'import_Failed_Loan_Account'
-require 'import_Family_Details'
-require 'import_Family_Employment_Details'
-require 'import_Financial_Education'
-require 'import_Guarantor_Details'
-require 'import_Holiday'
-require 'import_Home_Evaluation'
-require 'import_Insurance_Product'
-require 'import_Interest_On_Overdue_Payment'
-require 'import_Journal'
-require 'import_MfError'
-require 'import_Month_Process'
-require 'import_Office_Name'
-require 'import_Overdue_Fee'
-require 'import_Paid_Fee'
-require 'import_Payment_Mode'
-require 'import_Poverty_Likelihood_Chart'
-require 'import_PPI_Household_Data'
-require 'import_PPI_Indicator'
-require 'import_Product_Category'
-require 'import_Question_Junction'
-require 'import_Question_Set'
-require 'import_Question'
-require 'import_Quick_Link'
-require 'import_Recovery_Order'
-require 'import_Repayment_Schedule'
-require 'import_Repayment_Transaction_Adjustment'
-require 'import_Sales_Income_Estimate'
-require 'import_Savings_Payment_Transaction'
-require 'import_Scheduled_Job'
-require 'import_Scheduled_Queries'
-require 'import_Search'
-require 'import_Staff'
-require 'import_Value_Sets'
-require 'import_Value_Set_Values'
+require 'import_custom_objects'
+
 
 class ImportSalesforceToPG
   include MFiFlexConstants
-  include Databasedotcom::Rails::Controller
+  #include Databasedotcom::Rails::Controller
     
-  def importEverything(salesforceUsername,salesforcePassword,salesforceOrgId,conn,whereClause)
-    #Read config in the caller code
-    #config = YAML.load_file(File.join(::Rails.root, 'config', 'databasedotcom.yml'))    
-    #get Connection
-    #conn = PG.connect('localhost', '5432', '','','mfiforce', 'postgres','' )
-   # databaseConfig =  Rails.configuration.database_configuration
-   # conn = PG.connect(databaseConfig[Rails.env]["host"], databaseConfig[Rails.env]["port"], '','',databaseConfig[Rails.env]["database"], databaseConfig[Rails.env]["username"],databaseConfig[Rails.env]["password"] )
+  def importEverything(salesforceUsername,salesforcePasswordWithSecurity,salesforcePassword,salesforceSecurityToken,salesforceOrgId,conn,whereClause)
+    
+      client = Metaforce.new :username => salesforceUsername, :password => salesforcePassword, :security_token => salesforceSecurityToken
+      Metaforce::Job.disable_threading!
+      manifest = Metaforce::Manifest.new(:custom_object => ['*'],:profile => ['*']) #Create Package.xml For Retrieving Metadata API
+      client.retrieve_unpackaged(manifest).extract_to('./src').perform #Retrieves Metadata Objects in XML Format
+      custom_object = client.list_metadata('CustomObject').collect { |t| t.full_name } #Retrieve List Of Custom Objects
+      tables_list = conn.exec("select * from pg_tables where schemaname='public'") #Fetches Schema of Existing Tables in Postgres 
+    
+      if (tables_list.ntuples == 0) #Create Tables If Schema is Empty 
+        create_status_table = "CREATE TABLE mfiforce__last_fetch_date_c(id SERIAL,fetchStatus character(50),lastfetchStartDate timestamp with time zone,lastfetchEndDate timestamp with time zone,error_description varchar(32768),salesforce_org_id character(255),CONSTRAINT mfiforce__last_fetch_date_c_pkey PRIMARY KEY (id));" 
+        create_index_fetch_table = "CREATE INDEX mfiforce__last_fetch_date_c_lastfetchStartDate_sfid_idx ON mfiforce__last_fetch_date_c USING btree (lastfetchStartDate, salesforce_org_id);"
+        conn.exec(create_status_table)
+        conn.exec(create_index_fetch_table)
+        custom_object.each do |custom_object_value|
+           append_object = custom_object_value + ".object"
+           custom_object_path = "./src/objects/" + append_object
+           custom_object_value_str = ("mfiforce__" + custom_object_value).downcase! #Append Namespaces
+           if File.exists?(custom_object_path) #Create Tables If Metadata Custom Object File Exists
+               doc = Nokogiri::XML(File.open(custom_object_path)) #Parse XML Metadata Object File
+               custom_fields = doc.xpath('//xmlns:fields/xmlns:fullName') #Retrieves Field Names
+               custom_field_types = doc.xpath('//xmlns:fields/xmlns:type') #Retrieves Field Types
+               field_type = String.new
+                   custom_fields.zip(custom_field_types).each do |custom_fields_value,custom_field_types_value| #Zip Arrays into pair of field name and field type
+                        field_type = replace_salesforce_types(custom_fields_value,custom_field_types_value,field_type) #Replace Salesforce Custom Field Types with Postgres Field Types             
+                   end
+                   create_table = "CREATE TABLE " + custom_object_value_str + " (id character(50) NOT NULL,isdeleted boolean,name character(80),createddate timestamp with time zone,createdbyid character(50),lastmodifieddate timestamp with time zone,lastmodifiedbyid character(50),systemmodstamp timestamp with time zone," + field_type + "salesforce_org_id character(255),CONSTRAINT " + custom_object_value_str + "_pkey PRIMARY KEY (id));"
+                   create_index = "CREATE INDEX " + custom_object_value_str + "_name_sfid_idx ON " + custom_object_value_str + " USING btree (name, salesforce_org_id);"
+                   conn.exec(create_table)
+                   conn.exec(create_index)
+           else
+               next
+           end                    
+        end
+      else #Algorithm For Altering the Table Schema  
+        custom_object.each do |custom_object_value|    
+           append_object = custom_object_value + ".object"
+           custom_object_path = "./src/objects/" + append_object
+           custom_object_value_str = ("mfiforce__" + custom_object_value).downcase
+           if File.exists?(custom_object_path)
+              doc = Nokogiri::XML(File.open(custom_object_path))
+              custom_fields = doc.xpath('//xmlns:fields/xmlns:fullName')
+              custom_field_types = doc.xpath('//xmlns:fields/xmlns:type')
+                tables_list.each do |tables_list_values|
+                tables_list_value_arr = tables_list_values.values_at('tablename')
+                tables_list_value_str = tables_list_value_arr.map{|i| i.to_s}.join("")
+                if (custom_object_value_str.eql?tables_list_value_str) #Compare Custom Objects With Postgres Tables 
+                    $flag_object = 1
+                    pg_tables_exist = "select column_name from information_schema.columns where table_name='" + tables_list_value_str + "'" 
+                    pg_columns = conn.exec(pg_tables_exist) #Fetches List of coloumns in Postgres
+                    alter_field_type = String.new
+                    custom_fields.zip(custom_field_types).each do |custom_field_value,custom_field_types_value|
+                        custom_field_value_str = "mfiforce__" + custom_field_value.text.downcase
+                        custom_field_types_value_str = (custom_field_types_value.text).to_s 
+                        alter_field_type = alter_replace_salesforce_types(custom_field_value,custom_field_types_value_str,alter_field_type) 
+                        pg_columns.each do |pg_cloumn|
+                          pg_columns_value = pg_cloumn.values_at('column_name')
+                          pg_columns_value_str = pg_columns_value.map{|i| i.to_s}.join("")
+                          if(custom_field_value_str.eql?pg_columns_value_str) #Compare Column names
+                            $flag = 1 #flag becomes one if column does exist and breaks out of the loop
+                            break
+                          else
+                            $flag = 0 #flag becomes zero if column does not exist
+                          end    
+                        end
+                        if ($flag == 0)
+                          alter_table = "ALTER TABLE " + custom_object_value_str + " ADD COLUMN " + alter_field_type    
+                          conn.exec(alter_table) 
+                        end
+                    end
+                    break    
+                else
+                    $flag_object = 0 # Becomes Zero If there is a new Custom Object
+                end
+                end
+                if ($flag_object == 0)
+                   field_type = String.new
+                   custom_fields.zip(custom_field_types).each do |node,node_types|
+                      field_type = replace_salesforce_types(node,node_types,field_type)    
+                   end
+                   create_table = "CREATE TABLE " + custom_object_value_str + " (id character(50) NOT NULL,isdeleted boolean,name character(80),createddate timestamp with time zone,createdbyid character(50),lastmodifieddate timestamp with time zone,lastmodifiedbyid character(50),systemmodstamp timestamp with time zone," + field_type + "salesforce_org_id character(255),CONSTRAINT " + custom_object_value_str + "_pkey PRIMARY KEY (id));"
+                   create_index = "CREATE INDEX " + custom_object_value_str + "_name_sfid_idx ON " + custom_object_value_str + " USING btree (name, salesforce_org_id);"
+                   conn.exec(create_table)
+                   conn.exec(create_index)
+                end     
+           end
+        end
+        puts "Finished"    
+   end
+   
       time_utc = Time.now.to_s
       field_values = "'" + salesforceOrgId + "'," + "'" + time_utc + "'" 
-      last_fetch_date_string = "insert into mfiforce__last_fetch_date_c(salesforce_org_id,lastfetchdate) values (" + field_values + ")"        
+      last_fetch_date_string = "insert into mfiforce__last_fetch_date_c(salesforce_org_id,lastfetchStartDate) values (" + field_values + ")"        
       conn.exec(last_fetch_date_string)
-      #Setp 12
-      #Importing Clients..
-      #importC.import('admin@30df.org','Merc1243HGRcayiE38dzluu4LkACcfOjy',conn)rake
-             
-      importC = ImportClient.new
-      importC.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Sept 13
-      #Importing Groups..
-      importG = ImportGroup.new
-      importG.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-        
-      #Importing Center..
-      importCenter = ImportCenter.new
-      importCenter.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanAccountHistory..
-      importLHistory = ImportLoanAccountHistory.new
-      importLHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanAccount..
-      importLAcc = ImportLoanAccount.new
-      importLAcc.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanApprovalPrerequisites..
-      importLAppPreerq = ImportLoanApprovalPrerequisites.new
-      importLAppPreerq.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanBalanceSSnapshot..
-      importLBalSnapshot = ImportLoanBalanceSSnapshot.new
-      importLBalSnapshot.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanDisbursalTransaction..
-      importLDisTxn = ImportLoanDisbursalTransaction.new
-      importLDisTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanLossProvisioningSetup..
-      importLLPS = ImportLoanLossProvisioningSetup.new
-      importLLPS.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)  
-      
-      #Importing ImportLoanPaymentCollection..
-      importLPCollection = ImportLoanPaymentCollection.new
-      importLPCollection.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanPaymentTransaction..
-      importLPTxn = ImportLoanPaymentTransaction.new
-      importLPTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanProductAccountingSetup..
-      importLPAccountingSetup = ImportLoanProductAccountingSetup.new
-      importLPAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanProductCycle..
-      importLPCycle = ImportLoanProductCycle.new
-      importLPCycle.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanProduct..
-      importLProduct = ImportLoanProduct.new
-      importLProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanPurpose..
-      importLPurpose = ImportLoanPurpose.new
-      importLPurpose.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanPurpose..
-      importLStatus = ImportLoanStatus.new
-      importLStatus.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoanWriteOffTransaction..
-      importLWOffTxn = ImportLoanWriteOffTransaction.new
-      importLWOffTxn.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportLoansHistory..
-      importLoansHistory = ImportLoansHistory.new
-      importLoansHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Sept 14th
-      #Importing ImportFeeJunction..
-      importFeeJunction = ImportFeeJunction.new
-      importFeeJunction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFeeSet..
-      importFeeSet = ImportFeeSet.new
-      importFeeSet.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFee..
-      importFee = ImportFee.new
-      importFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFee..
-      importFiscalYear = ImportFiscalYear.new
-      importFiscalYear.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFunderPortfolio..
-      importFunderPortfolio = ImportFunderPortfolio.new
-      importFunderPortfolio.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFunder..
-      importFunder = ImportFunder.new
-      importFunder.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportGroupPosition..
-      importGroupPosition = ImportGroupPosition.new
-      importGroupPosition.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportMeetingSchedule..
-      importMeetingSchedule = ImportMeetingSchedule.new
-      importMeetingSchedule.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportMfAccount..
-      importMfAccount = ImportMfAccount.new
-      importMfAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportMfAccountType..
-      importMfAccountType = ImportMfAccountType.new
-      importMfAccountType.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsAccountInterest..
-      importSavingsAccountInterest = ImportSavingsAccountInterest.new
-      importSavingsAccountInterest.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsAccount..
-      importSavingsAccount = ImportSavingsAccount.new
-      importSavingsAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsPaymentCollectionRecord..
-      importSavingsPaymentCollectionRecord = ImportSavingsPaymentCollectionRecord.new
-      importSavingsPaymentCollectionRecord.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsProductAccountingSetup..
-      importSavingsProductAccountingSetup = ImportSavingsProductAccountingSetup.new
-      importSavingsProductAccountingSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsProduct..
-      importSavingsProduct = ImportSavingsProduct.new
-      importSavingsProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsWithdrawalTransaction..
-      importSavingsWithdrawalTransaction = ImportSavingsWithdrawalTransaction.new
-      importSavingsWithdrawalTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportTransactionEntry..
-      importTransactionEntry= ImportTransactionEntry.new
-      importTransactionEntry.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportTransactionSource..
-      importTransactionSource = ImportTransactionSource.new
-      importTransactionSource.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportTransaction..
-      importTransaction = ImportTransaction.new
-      importTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportUserBranchInfo..
-      importUserBranchInfo = ImportUserBranchInfo.new
-      importUserBranchInfo.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-   
-      #Importing ImportAccountingPeriod..
-      #importAccountingPeriod = ImportAccountingPeriod.new
-      #importAccountingPeriod.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAccountingRuleHeader..
-      importARH = ImportAccountingRuleHeader.new
-      importARH.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAccountingRuleLine..
-      importAccountingRuleLine = ImportAccountingRuleLine.new
-      importAccountingRuleLine.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      
-      #Importing ImportAccountingSegmentSetup..
-      importAccountingSegmentSetup = ImportAccountingSegmentSetup.new
-      importAccountingSegmentSetup.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAddress..
-      importAddress = ImportAddress.new
-      importAddress.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAmazonConfig..
-      #importAmazonConfig = ImportAmazonConfig.new
-      #importAmazonConfig.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAnnualBusinessCycle..
-      importAnnualBusinessCycle = ImportAnnualBusinessCycle.new
-      importAnnualBusinessCycle.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportAnswer..
-      importAnswer = ImportAnswer.new
-      importAnswer.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportArchiveRun..
-      importArchiveRun = ImportArchiveRun.new
-      importArchiveRun.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing importBank..
-      importBank = ImportBank.new
-      importBank.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportBatchProcessLog..
-      importBatchProcessLog = ImportBatchProcessLog.new
-      importBatchProcessLog.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing importBranchLoanProduct..
-      importBranchLoanProduct = ImportBranchLoanProduct.new
-      importBranchLoanProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportBranchLocation..
-      importBranchLocation = ImportBranchLocation.new
-      importBranchLocation.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportBranchSavingsProduct..
-      importBranchSavingsProduct = ImportBranchSavingsProduct.new
-      importBranchSavingsProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportBusinessActivity..
-      importBusinessActivity = ImportBusinessActivity.new
-      importBusinessActivity.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportBusinessEvent..
-      importBusinessEvent = ImportBusinessEvent.new
-      importBusinessEvent.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportCheck..
-      importCheck = ImportCheck.new
-      importCheck.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportClientHistory..
-      importClientHistory = ImportClientHistory.new
-      importClientHistory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportClientIdentification..
-      importClientIdentification = ImportClientIdentification.new
-      importClientIdentification.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportClientTraining..
-      importClientTraining = ImportClientTraining.new
-      importClientTraining.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportCollectionFee..
-      importCollectionFee = ImportCollectionFee.new
-      importCollectionFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportCountries..
-      importCountries = ImportCountries.new
-      importCountries.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportCurrency..
-      importCurrency = ImportCurrency.new
-      importCurrency.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportDailyLoanAccrual..
-      importDailyLoanAccrual = ImportDailyLoanAccrual.new
-      importDailyLoanAccrual.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportDayProcess..
-      importDayProcess = ImportDayProcess.new
-      importDayProcess.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportDisbursalAdjustment..
-      importDisbursalAdjustment = ImportDisbursalAdjustment.new
-      importDisbursalAdjustment.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportDueFee..
-      importDueFee = ImportDueFee.new
-      importDueFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportDueFee..
-      importEmploymentBusinessDetail = ImportEmploymentBusinessDetail.new
-      importEmploymentBusinessDetail.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFailedLoanAccount..
-      importFailedLoanAccount = ImportFailedLoanAccount.new
-      importFailedLoanAccount.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFamilyDetails..
-      importFamilyDetails = ImportFamilyDetails.new
-      importFamilyDetails.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFamilyEmploymentDetails..
-      importFamilyEmploymentDetails = ImportFamilyEmploymentDetails.new
-      importFamilyEmploymentDetails.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportFinancialEducation..
-      importFinancialEducation = ImportFinancialEducation.new
-      importFinancialEducation.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportGuarantorDetails..
-      importGuarantorDetails = ImportGuarantorDetails.new
-      importGuarantorDetails.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportHoliday..
-      importHoliday = ImportHoliday.new
-      importHoliday.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportHomeEvaluation..
-      importHomeEvaluation = ImportHomeEvaluation.new
-      importHomeEvaluation.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportInsuranceProduct..
-      importInsuranceProduct = ImportInsuranceProduct.new
-      importInsuranceProduct.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportInterestOnOverduePayment..
-      importInterestOnOverduePayment = ImportInterestOnOverduePayment.new
-      importInterestOnOverduePayment.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportJournal..
-      importJournal = ImportJournal.new
-      importJournal.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportMFError..
-      #importMFError = ImportMfError.new
-      #importMFError.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportMFError..
-      importMonthProcess = ImportMonthProcess.new
-      importMonthProcess.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportOfficeName..
-      #importOfficeName = ImportOfficeName.new
-      #importOfficeName.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      
-      #Importing ImportOverdueFee..
-      importOverdueFee = ImportOverdueFee.new
-      importOverdueFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportPaidFee..
-      importPaidFee = ImportPaidFee.new
-      importPaidFee.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportPaymentMode..
-      importPaymentMode = ImportPaymentMode.new
-      importPaymentMode.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportPovertyLikelihoodChart..
-      importPovertyLikelihoodChart = ImportPovertyLikelihoodChart.new
-      importPovertyLikelihoodChart.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportPPIHouseholdData..
-      importPPIHouseholdData = ImportPPIHouseholdData.new
-      importPPIHouseholdData.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportPPIIndicator..
-      importPPIIndicator = ImportPPIIndicator.new
-      importPPIIndicator.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportPPIChartCountryAndYear..
-      #importPPIChartCountryAndYear = ImportPPIChartCountryAndYear.new
-      #importPPIChartCountryAndYear.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportProductCategory..
-      importProductCategory = ImportProductCategory.new
-      importProductCategory.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportQuestionJunction..
-      importQuestionJunction = ImportQuestionJunction.new
-      importQuestionJunction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportQuestionSet..
-      importQuestionSet = ImportQuestionSet.new
-      importQuestionSet.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportQuestion..
-      importQuestion = ImportQuestion.new
-      importQuestion.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportQuickLink..
-      importQuickLink = ImportQuickLink.new
-      importQuickLink.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportRecoveryOrder..
-      importRecoveryOrder = ImportRecoveryOrder.new
-      importRecoveryOrder.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportRepaymentSchedule..
-      importRepaymentSchedule = ImportRepaymentSchedule.new
-      importRepaymentSchedule.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportRepaymentTransactionAdjustment..
-      importRepaymentTransactionAdjustment = ImportRepaymentTransactionAdjustment.new
-      importRepaymentTransactionAdjustment.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSalesIncomeEstimate..
-      importSalesIncomeEstimate = ImportSalesIncomeEstimate.new
-      importSalesIncomeEstimate.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSavingsPaymentTransaction..
-      importSavingsPaymentTransaction = ImportSavingsPaymentTransaction.new
-      importSavingsPaymentTransaction.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportScheduledJob..
-      importScheduledJob = ImportScheduledJob.new
-      importScheduledJob.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportScheduledQueries..
-      importScheduledQueries = ImportScheduledQueries.new
-      importScheduledQueries.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportSearch..
-      importSearch = ImportSearch.new
-      importSearch.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportStaff..
-      importStaff = ImportStaff.new
-      importStaff.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportValueSets..
-      importValueSets = ImportValueSets.new
-      importValueSets.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      #Importing ImportValueSetValues..
-      importValueSetValues = ImportValueSetValues.new
-      importValueSetValues.import(salesforceUsername,salesforcePassword,conn,salesforceOrgId,whereClause)
-      
-      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'SUCCESS' where lastfetchdate = (select lastfetchdate from mfiforce__last_fetch_date_c order by lastfetchDate desc limit 1)")
+      #Logic For Fetching Data From Salesforce     
+      custom_object.each do |custom_object_value|
+           append_object = custom_object_value + ".object"
+           custom_object_path = "./src/objects/" + append_object
+           custom_object_value_str = ("mfiforce__" + custom_object_value).downcase
+           if File.exists?(custom_object_path)
+                $field_ret = String.new
+                doc = Nokogiri::XML(File.open(custom_object_path))
+                doc_profile = Nokogiri::XML(File.open("./src/profiles/Sys Admin.profile"))
+                field_permissions_field_name = doc_profile.xpath('//xmlns:fieldPermissions/xmlns:field')
+                field_permissions_readable = doc_profile.xpath('//xmlns:fieldPermissions/xmlns:readable')
+                custom_fields = doc.xpath('//xmlns:fields/xmlns:fullName')
+                custom_external_id = doc.xpath('//xmlns:fields/xmlns:externalId')
+                custom_required = doc.xpath('//xmlns:fields/xmlns:required')
+                custom_types = doc.xpath('//xmlns:fields/xmlns:type')
+                custom_fields.zip(custom_external_id,custom_types).each do |custom_field_value,custom_external_id_value,custom_types_value|
+                  if(custom_field_value.text == "Id__c")#Skip Coloumns with ID in MetaData
+                    next
+                  end
+                  if (custom_external_id_value.text == "true")#Skip Coloumns with ExternaID in MetaData
+                    next
+                  end
+                  if (custom_object_value_str == "mfiforce__amazonconfig__c" || custom_object_value_str == "mfiforce__org_parameters__c" || custom_object_value_str == "mfiforce__organization_parameters__c")
+                    $field_ret = $field_ret + "," + "mfiforce__" + custom_field_value.text
+                    next
+                  end
+                  custom_required.each do |custom_required_value| # Algorithm For determining Hidden Fields using Required and Field Permission Tags
+                    custom_required_parent = custom_required_value.parent
+                    custom_required_parent_field_name = custom_required_parent.first_element_child.text
+                    if (custom_field_value.text == custom_required_parent_field_name)
+                      if (custom_required_value.text == "false")
+                        $flag_select_field = 0
+                        break
+                      else
+                        $flag_select_field = 1
+                      break
+                      end  
+                    else    
+                      $flag_select_field = 0
+                    end   
+                  end
+                if ($flag_select_field == 0)
+                   field_permissions_field_name.zip(field_permissions_readable).each do |field_permissions_field_name_value,field_permissions_readable_value|
+                    if ((custom_object_value + "." + custom_field_value.text == field_permissions_field_name_value.text) && (field_permissions_readable_value.text == "true"))
+                      $flag_select_field = 1
+                      break
+                    end
+                   end  
+                end
+                if (custom_types_value.text == "MasterDetail")
+                    $flag_select_field = 1
+                end 
+                if ($flag_select_field == 1)                     
+                  $field_ret = $field_ret + "," + "mfiforce__" + custom_field_value.text
+                else
+                  puts custom_field_value.text + " Hidden"
+                end 
+                end
+                retrieve_query = "SELECT Id,CreatedById,LastModifiedById,CreatedDate,LastModifiedDate,IsDeleted,SystemModstamp,Name" + $field_ret + " FROM " + custom_object_value_str
+                puts retrieve_query  
+                importCO = ImportCustomObjects.new
+                importCO.import(salesforceUsername,salesforcePasswordWithSecurity,custom_object_value_str,retrieve_query,conn,salesforceOrgId,whereClause)   
+           end
+      end
+     end_time = Time.now.to_s 
+     conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'SUCCESS',lastfetchEndDate = '" + end_time + "',error_description = 'Successfully Transferred Data to PG' where lastfetchStartdate = (select lastfetchStartDate from mfiforce__last_fetch_date_c order by lastfetchStartDate desc limit 1)")
     
     rescue Exception => e  
-      conn.exec("UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'ERROR' where lastfetchdate = (select lastfetchdate from mfiforce__last_fetch_date_c order by lastfetchDate desc limit 1)")     
+      end_time = Time.now.to_s
+      message_exception = String.new
+      message_exception = e.message + e.backtrace.inspect 
+      update_error = "UPDATE mfiforce__last_fetch_date_c SET fetchstatus = 'ERROR',lastfetchEndDate = '" + end_time + "',error_description = '" + message_exception + "' where lastfetchStartdate = (select lastfetchStartDate from mfiforce__last_fetch_date_c order by lastfetchStartDate desc limit 1)"
+      conn.exec(update_error)     
       puts e.message  
       puts e.backtrace.inspect 
       Mailer.mailTo('gaurav.singh@mfiflex.co.in','MFiFlex could not import data today. Error message: ' + e.message).deliver
@@ -507,3 +187,5 @@ class ImportSalesforceToPG
   end
   
 end
+
+

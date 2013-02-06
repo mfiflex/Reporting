@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Loan Disbursal Transaction</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Check__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Check</label>
+        <referenceTo>Check__c</referenceTo>
+        <relationshipLabel>Loan Disbursal Transactions</relationshipLabel>
+        <relationshipName>Loan_Disbursal_Transactions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Cleared_Reversal_Txn_Count__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cleared Reversal Txn Count</label>
+        <summaryFilterItems>
+            <field>Disbursal_Adjustment__c.Cleared__c</field>
+            <operation>equals</operation>
+            <value>true</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Disbursal_Adjustment__c.Loan_Disbursal_Transaction__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Cleared__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Cleared</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Disbursal_Date__c</fullName>
+        <defaultValue>$User.Current_Branch_s_System_Date__c</defaultValue>
+        <deprecated>false</deprecated>
+        <description>By default, this is the date specified in the proposed disbursal date in the account details. If the date is modified during loan disbursal, the repayment schedule is regenerated accordingly.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>By default, this is the date specified in the proposed disbursal date in the account details. If the date is modified during loan disbursal, the repayment schedule is regenerated accordingly.</inlineHelpText>
+        <label>Disbursal Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Account__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Loan Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Loan Account</inlineHelpText>
+        <label>Loan Account</label>
+        <referenceTo>Loan_Account__c</referenceTo>
+        <relationshipLabel>Loan Disbursal Transactions</relationshipLabel>
+        <relationshipName>Loan_Disbursal_Transactions</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Mode_of_Payment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mode of Payment</label>
+        <referenceTo>Payment_Mode__c</referenceTo>
+        <relationshipLabel>Loan Disbursal Transactions</relationshipLabel>
+        <relationshipName>Loan_Disbursal_Transactions</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Receipt_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Receipt ID</description>
+        <displayFormat>RID-{0000000000}</displayFormat>
+        <externalId>false</externalId>
+        <inlineHelpText>Receipt ID</inlineHelpText>
+        <label>Receipt ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Rejected__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Rejected</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reversed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reversed</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>Loan Disbursal Transaction</label>
+    <nameField>
+        <displayFormat>LDTI-{0000000000}</displayFormat>
+        <label>Loan Disbursal Transaction ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Loan Disbursal Transactions</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Receipt_ID__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Disbursal_Date__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Receipt_ID__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Disbursal_Date__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Check_Existing_Disbursal_Txn</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW()  &amp;&amp; Loan_Account__r.Cleared_Disbursal_Txn_Count__c &gt; 0</errorConditionFormula>
+        <errorMessage>This loan account has already been disbursed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cheque_Mode_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Mode_of_Payment__r.Name == &apos;Check&apos; &amp;&amp; ISBLANK( Check__c )</errorConditionFormula>
+        <errorMessage>Please  input a check.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Expected_Disbursal_Date_Check</fullName>
+        <active>false</active>
+        <errorConditionFormula>Disbursal_Date__c &gt;  Loan_Account__r.Expected_Disbursal_Date__c</errorConditionFormula>
+        <errorMessage>Disbursal date cannot be greater than Expected Disbursal date in Loan Account.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Internal_Transfer_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Mode_of_Payment__r.Name == &apos;Internal Transfer&apos; &amp;&amp; ISBLANK( Loan_Account__r.Savings_Account__c )</errorConditionFormula>
+        <errorMessage>No savings account is linked to this loan to perform an internal transfer.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Loan_Status_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNEW() &amp;&amp; 
+(TEXT(Loan_Account__r.Loan_Status__c) = &apos;Partial Application&apos; ||  TEXT(Loan_Account__r.Loan_Status__c) = &apos;Pending Approval&apos; ||  TEXT(Loan_Account__r.Loan_Status__c) = &apos;Canceled&apos; ||  TEXT(Loan_Account__r.Loan_Status__c) = &apos;Closed - Obligations met&apos; ||
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Closed - Rescheduled&apos; ||
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Closed- Written Off&apos; ||
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Disbursed to LO&apos; ||
+TEXT(Loan_Account__r.Loan_Status__c) = &apos;Partial Application&apos;)</errorConditionFormula>
+        <errorMessage>Invalid Loan Status. You cannot disburse this loan.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Transaction_Date_Check</fullName>
+        <active>true</active>
+        <errorConditionFormula>Disbursal_Date__c &gt; TODAY()</errorConditionFormula>
+        <errorMessage>Disbursal date cannot be greater than calendar date.</errorMessage>
+    </validationRules>
+</CustomObject>

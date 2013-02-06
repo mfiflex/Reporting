@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>MFI can define a type of an office. E.g. Divisional Branch, Cluster etc</description>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Office_Type_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Unique Identifier</description>
+        <displayFormat>{000}</displayFormat>
+        <externalId>true</externalId>
+        <inlineHelpText>Unique Identifier</inlineHelpText>
+        <label>Office_Type_ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Office_Type_Short_Code__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <description>Office Type Short Code</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Office Type Short Code</inlineHelpText>
+        <label>Office Type Short Code</label>
+        <length>10</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <label>Branch Type</label>
+    <nameField>
+        <label>Office Type</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Branch Types</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

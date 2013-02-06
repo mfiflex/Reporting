@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Accrued_Interest_Payable_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Accrued Interest Payable Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>Savings Products (Accrued Interest Payable)</relationshipLabel>
+        <relationshipName>Savings_Products_A_I_P</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Allow_Early_Withdrawals__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Allow Early Withdrawals</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Amount_applies_to__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Amount applies to</label>
+        <picklist>
+            <controllingField>Type_of_Owner__c</controllingField>
+            <picklistValues>
+                <fullName>Entire Group</fullName>
+                <controllingFieldValues>Group</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Per Individual</fullName>
+                <controllingFieldValues>Center</controllingFieldValues>
+                <controllingFieldValues>Group</controllingFieldValues>
+                <controllingFieldValues>Individual</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Entire Center</fullName>
+                <controllingFieldValues>Center</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Amount_for_Deposit__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mandatory Amount or %</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Balance_Used_for_Int_Rate_Calculation__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Only Compound Interest Calculation is supported
+If changed, the changes are reflected in the Open accounts as soon as the change is detected by the Mifos system
+If the attribute is modified, the interest installments should be recalculated.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Only Compound Interest Calculation is supported
+If changed, the changes are reflected in the Open accounts as soon as the change is detected by the Mifos system
+If the attribute is modified, the interest installments should be recalculated.</inlineHelpText>
+        <label>Balance Used for Interest Calculation</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Minimum Balance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Average Balance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Cash_Fixed_Deposit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Create Fixed Deposit with Cash</label>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Deposit_Frequency__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Deposit Frequency</label>
+        <picklist>
+            <controllingField>Type_of_Deposits__c</controllingField>
+            <picklistValues>
+                <fullName>Biweekly</fullName>
+                <controllingFieldValues>Mandatory - % of Loan Amount</controllingFieldValues>
+                <controllingFieldValues>Mandatory - Fixed Amount</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <controllingFieldValues>Mandatory - % of Loan Amount</controllingFieldValues>
+                <controllingFieldValues>Mandatory - Fixed Amount</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Weekly</fullName>
+                <controllingFieldValues>Mandatory - % of Loan Amount</controllingFieldValues>
+                <controllingFieldValues>Mandatory - Fixed Amount</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <controllingFieldValues>Voluntary</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Set__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Fee Set</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Fee Set</inlineHelpText>
+        <label>Fee Set</label>
+        <referenceTo>Fee_Set__c</referenceTo>
+        <relationshipLabel>Savings Products</relationshipLabel>
+        <relationshipName>Savings_Products</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Fixed_Deposit_Term__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Fixed Deposit Term (days)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Frequency_of_Int_Rate_Calc__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Frequency of Interest Calculation</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Frequency_of_Interest_Posting_to_Account__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number of months
+If this field is modified, recalculation is not required. The change affects the future interest calculations only.
+If the frequency is changed in between two interest postings, interest should be recalculated with new frequency from the last posting date.
+Note: Interest should be posted on the last day of the month for all the accounts.</description>
+        <externalId>false</externalId>
+        <label>Frequency of Interest Posting (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interest_Expense_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Interest Expense Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>Savings Products (Interest Expense Account)</relationshipLabel>
+        <relationshipName>Savings_Products_I_E_A</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Interest_Payable_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Interest Payable Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>Savings Products (Interests Payable)</relationshipLabel>
+        <relationshipName>Savings_Products_I_P</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Interest_Rate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>nnualized rate is stored by the system.
+In case of change in interest rate, system should calculate the interest using the new rate from the time of  change. . However the old interest rate should be recorded for reporting purposes.
+E.g. Supposing the interest is to be posted on a monthly basis and on the 30th day the rate is changed. Interest should be calculated using the old rate for 29 days and use the new rate for 30th day and onwards.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>nnualized rate is stored by the system.
+In case of change in interest rate, system should calculate the interest using the new rate from the time of  change. . However the old interest rate should be recorded for reporting purposes.</inlineHelpText>
+        <label>Default Interest Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Maintenance_Fees__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Frequency at which maintenance fees must be applied. The maintenance fee is picked up from the associated fee set. This option is ignored if the associated fee set does not have a fee with &apos;Time of Charge&apos; declared as &apos;Maintenance&apos;.</inlineHelpText>
+        <label>Maintenance Fees</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yearly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Max_Amount_Per_Withdrawal__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Flat Amount of savings account.
+This specifies the maximum amount that can be withdrawn from a savings account per day.
+For a group savings account, this restriction applies to each withdrawal.
+If left blank or “0”, then system does not assume any withdrawal limitations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Flat Amount of savings account.
+This specifies the maximum amount that can be withdrawn from a savings account per day.
+For a group savings account, this restriction applies to each withdrawal.</inlineHelpText>
+        <label>Max Amount Per Withdrawal</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maximum_Interest_Rate__c</fullName>
+        <defaultValue>100</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Maximum Interest Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Min_Balance_Required_for_Interest_Rate_c__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Interest is not calculated on accounts that have balance amounts below this number.
+If left blank or “0”, then system does not assume any minimum balance required for interest.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Interest is not calculated on accounts that have balance amounts below this number.
+If left blank or “0”, then system does not assume any minimum balance required for interest.</inlineHelpText>
+        <label>Min Balance for Interest Calc</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_Interest_Rate__c</fullName>
+        <defaultValue>0.0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Minimum Interest Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Savings</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Current</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fixed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Savings_Product_Control_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Savings Product Control Account</label>
+        <referenceTo>MF_Account__c</referenceTo>
+        <relationshipLabel>Savings Products (Savings Product Control Account)</relationshipLabel>
+        <relationshipName>Savings_Products_C_A</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Savings_Product_External_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>true</externalId>
+        <label>Savings Product External Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Savings Product Start Date</description>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Inactive</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Time_Period_for_Int_Rate_Calculation__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Number of months
+If this field is modified, recalculation is not required. The change affects the future interest calculations only.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Number of months
+If this field is modified, recalculation is not required. The change affects the future interest calculations only.</inlineHelpText>
+        <label>Time Period for Interest Calc (months)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_of_Deposits__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Depending on this selection, system should show the correct set of GL codes to select from.</description>
+        <externalId>false</externalId>
+        <label>Product Kind</label>
+        <picklist>
+            <controllingField>Product_Type__c</controllingField>
+            <picklistValues>
+                <fullName>Voluntary</fullName>
+                <controllingFieldValues>Current</controllingFieldValues>
+                <controllingFieldValues>Savings</controllingFieldValues>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mandatory - Fixed Amount</fullName>
+                <controllingFieldValues>Current</controllingFieldValues>
+                <controllingFieldValues>Savings</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mandatory - % of Loan Amount</fullName>
+                <controllingFieldValues>Current</controllingFieldValues>
+                <controllingFieldValues>Savings</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type_of_Owner__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Individual or Group Savings Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Individual or Group Savings Account</inlineHelpText>
+        <label>Type of Owner</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Individual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Center</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>maximum_amount_for_fixed_deposit__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>maximum amount for fixed deposit.</inlineHelpText>
+        <label>Maximum Amount for Fixed Deposit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>minimum_amount_for_fixed_deposit__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Minimum amount for fixed deposit .</inlineHelpText>
+        <label>Minimum Amount for Fixed Deposit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Savings Product</label>
+    <nameField>
+        <label>Savings Product Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <namedFilters>
+        <fullName>nf_01IE00000000En3MAE_00NE0000000G9thMAC</fullName>
+        <active>true</active>
+        <field>Savings_Account__c.Savings_Product_Name__c</field>
+        <filterItems>
+            <field>Savings_Product__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Active</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+        <name>Savings Account_Savings Product Name</name>
+    </namedFilters>
+    <pluralLabel>Savings Products</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Start_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Current_Account_Interest_Rate</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( Product_Type__c , &apos;Current&apos;) 
+&amp;&amp;
+Interest_Rate__c &gt; 0</errorConditionFormula>
+        <errorMessage>For current accounts, interest rate must be 0.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FD_Max_Min</fullName>
+        <active>true</active>
+        <description>FD Max and Min must make sense</description>
+        <errorConditionFormula>ISPICKVAL(Product_Type__c, &apos;Fixed&apos;)
+&amp;&amp;
+NOT(ISNULL(maximum_amount_for_fixed_deposit__c))
+&amp;&amp;
+NOT(ISNULL(minimum_amount_for_fixed_deposit__c))
+&amp;&amp;
+(maximum_amount_for_fixed_deposit__c &lt;  minimum_amount_for_fixed_deposit__c)</errorConditionFormula>
+        <errorMessage>The Maximum amount is less than the minimum amount for the Fixed Deposit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>FD_must_have_days_defined</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(Product_Type__c, &apos;Fixed&apos;)
+&amp;&amp;
+ISNULL(Fixed_Deposit_Term__c)</errorConditionFormula>
+        <errorMessage>You must define the term for a Fixed Deposit.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Freq_Of_Int_Posting_less_than_calc</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(  Frequency_of_Int_Rate_Calc__c  , &apos;Quarterly&apos;) 
+&amp;&amp;
+ Frequency_of_Interest_Posting_to_Account__c &lt; 3</errorConditionFormula>
+        <errorMessage>Frequency of Interest Posting cannot be less Frequency of Interest Calculation.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Freq_Of_Int_Posting_valid</fullName>
+        <active>true</active>
+        <errorConditionFormula>Frequency_of_Interest_Posting_to_Account__c &gt;12 ||
+Frequency_of_Interest_Posting_to_Account__c &lt; 1</errorConditionFormula>
+        <errorMessage>Please enter a valid Frequency of Interest Posting in months (1-12)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Interest_Rate_Frequency_Related</fullName>
+        <active>true</active>
+        <errorConditionFormula>Interest_Rate__c &gt; 0
+&amp;&amp;
+(ISNULL( Frequency_of_Interest_Posting_to_Account__c )
+    || Frequency_of_Interest_Posting_to_Account__c &lt;= 0)</errorConditionFormula>
+        <errorMessage>The frequency of interest posting cannot be zero if the interest rate is not zero.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Interest_Rate_Negative</fullName>
+        <active>true</active>
+        <errorConditionFormula>Interest_Rate__c &lt; 0</errorConditionFormula>
+        <errorDisplayField>Interest_Rate__c</errorDisplayField>
+        <errorMessage>The interest rate cannot be negative.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Interest_Rate_Time_Related</fullName>
+        <active>true</active>
+        <errorConditionFormula>Interest_Rate__c &gt; 0
+&amp;&amp;
+(ISNULL( Time_Period_for_Int_Rate_Calculation__c )
+    || Time_Period_for_Int_Rate_Calculation__c &lt;= 0)</errorConditionFormula>
+        <errorMessage>The time period for interest calculation cannot be zero if the interest rate is not zero.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Mandatory_Must_have_Amount</fullName>
+        <active>true</active>
+        <errorConditionFormula>IF(ISPICKVAL( Type_of_Deposits__c, &quot;Mandatory - Fixed Amount&quot; ),  ISBLANK(Amount_for_Deposit__c), false)
+||
+IF(ISPICKVAL( Type_of_Deposits__c, &quot;Mandatory - % of Loan Amount&quot; ),  ISBLANK(Amount_for_Deposit__c) || Amount_for_Deposit__c &gt; 100 || Amount_for_Deposit__c &lt; 0, false)</errorConditionFormula>
+        <errorDisplayField>Amount_for_Deposit__c</errorDisplayField>
+        <errorMessage>Recommended value for deposit amount is invalid</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Min_Interest_Max_interest</fullName>
+        <active>true</active>
+        <errorConditionFormula>OR(Interest_Rate__c &lt;  Minimum_Interest_Rate__c, Interest_Rate__c &gt; Maximum_Interest_Rate__c)</errorConditionFormula>
+        <errorMessage>The default interest rate must lie between the minimum and maximum interest rates.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Min_Max_interest</fullName>
+        <active>false</active>
+        <errorConditionFormula>Maximum_Interest_Rate__c &gt;  Minimum_Interest_Rate__c</errorConditionFormula>
+        <errorDisplayField>Accrued_Interest_Payable_Account__c</errorDisplayField>
+        <errorMessage>The maximum interest rate must be less than the minimum interest rate.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Minimum_Balance</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( Balance_Used_for_Int_Rate_Calculation__c  , &apos;Minimum Balance&apos;) 
+&amp;&amp; 
+(Min_Balance_Required_for_Interest_Rate_c__c  &lt; 0
+|| ISBLANK(Min_Balance_Required_for_Interest_Rate_c__c))</errorConditionFormula>
+        <errorMessage>Please enter a valid Minimum Balance for Interest Calculation (must be greater than or equal to 0)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Savings_Product_Name_check</fullName>
+        <active>true</active>
+        <errorConditionFormula>REGEX( Name , &quot;[a-bA-B0-9-\\s]&quot;)</errorConditionFormula>
+        <errorMessage>Name can&apos;t include special characters</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>maximum_deposite_greater_rule</fullName>
+        <active>false</active>
+        <errorConditionFormula>minimum_amount_for_fixed_deposit__c  &gt; maximum_amount_for_fixed_deposit__c</errorConditionFormula>
+        <errorMessage>Maximum amount for fixed deposit should always greater than minimum amount for fixed deposit.</errorMessage>
+    </validationRules>
+</CustomObject>
